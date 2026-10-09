@@ -126,6 +126,33 @@ def page_comment_date(body):
         return None
 
 
+EMAIL_ADDR = re.compile(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.[a-z]{2,}', re.I)
+ANCHOR = re.compile(r'<a\b[^>]*>(.*?)</a>', re.I | re.S)
+NAME_FIELD = re.compile(r'(<span[^>]*>\s*name\s*</span>\s*:)(.*?)(?=<br|<span|$)', re.I | re.S)
+TEXT_FIELD = re.compile(r'(<span[^>]*>\s*comment\s*</span>\s*:)(.*)$', re.I | re.S)
+QA_NAME = re.compile(r'(\d{2}\.\d{2}\.\d{2}[^<]*?:\s*<span[^>]*>)(.*?)(</span>\s*says:)', re.I | re.S)
+
+
+def names_only(fragment):
+    """A commenter's identity reduced to the name they typed (decided 2026-10-09):
+    links around the name are unwrapped and email addresses removed."""
+    return EMAIL_ADDR.sub('[email removed]', ANCHOR.sub(lambda m: m.group(1), fragment))
+
+
+def anonymize_comment(html):
+    html = NAME_FIELD.sub(lambda m: m.group(1) + names_only(m.group(2)), html)
+    return TEXT_FIELD.sub(lambda m: m.group(1) + EMAIL_ADDR.sub('[email removed]', m.group(2)), html)
+
+
+def anonymize_qa(doc):
+    """Q&A answer pages: names-only for each 'NAME says:' header, no emails in answers."""
+    i = doc.find('answers:</span>')
+    if i < 0:
+        return doc
+    tail = QA_NAME.sub(lambda m: m.group(1) + names_only(m.group(2)) + m.group(3), doc[i:])
+    return doc[:i] + EMAIL_ADDR.sub('[email removed]', tail)
+
+
 def strip_spam(doc):
     """Remove spam comments (and their separator rows). Returns (doc, removed, kept)."""
     removed = kept = 0
@@ -140,5 +167,5 @@ def strip_spam(doc):
             removed += 1
             return ''
         kept += 1
-        return m.group(0)
+        return anonymize_comment(m.group(0))
     return COMMENT.sub(sub, doc), removed, kept

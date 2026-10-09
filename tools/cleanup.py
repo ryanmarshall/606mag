@@ -7,7 +7,7 @@ reader-comment spam (see comments.py).
 """
 import re
 
-from comments import strip_spam
+from comments import anonymize_qa, strip_spam
 
 SCRIPT_EL = re.compile(r'<script\b[^>]*>.*?</script\s*>', re.I | re.S)
 TRACKER_SIG = re.compile(r'googlesyndication\.com|google_ad_client|google-analytics\.com|'
@@ -36,6 +36,7 @@ def clean(doc, stats):
     for rx in AD_MARKUP:
         doc, n = rx.subn('', doc)
         stats['ad-server elements stripped'] += n
+    doc = anonymize_qa(doc)
     doc, removed, kept = strip_spam(doc)
     stats['spam comments removed'] += removed
     stats['reader comments kept'] += kept

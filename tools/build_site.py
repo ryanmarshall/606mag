@@ -85,7 +85,25 @@ def out_path_for(key, mime):
         segs.append(slug_query(pairs) + '.' + e)
     return '/'.join(segs)
 
+# ---------------------------------------------------------------- reader-facing only
+# Internal leftovers are not published (decided 2026-10-09); they stay in the vault.
+INTERNAL = re.compile(
+    r'^/(admin|simon|site|popupDEV|testimages)(/|$)'          # CMS, unrelated site, dev folders
+    r'|^/(test\.htm|template\d*\.html|include\.php|main_include\.php|meta\.php'
+    r'|comment\.(php|html)|index\.(new|letter)\.php)$'          # tests, drafts, include output
+    r'|/thumbs\.db$|^/issues/general/New Folder/', re.I)
+LISTING_TITLE = re.compile(rb'<title>\s*Index of /', re.I)
+
+def internal(key, info):
+    if INTERNAL.search(key[0]):
+        return True
+    if info['mime'].startswith('text/html'):
+        with open(os.path.join(blobs, info['digest']), 'rb') as fh:
+            return bool(LISTING_TITLE.search(fh.read(2048)))
+    return False
+
 # ---------------------------------------------------------------- mapping table
+stats = Counter()
 entries = []          # (key, out_path, info)
 taken = set()         # lowercase out paths (macOS is case-insensitive)
 lookup, lookup_ci = {}, {}
@@ -109,6 +127,9 @@ done.sort(key=lambda t: (len(key_of(t[0])[1]), len(t[0]), t[0]))
 for ident, info in done:
     key = key_of(ident)
     mime = info['mime']
+    if internal(key, info):
+        stats['internal pages not published'] += 1
+        continue
     ext_in_url = posixpath.splitext(key[0])[1].lower()
     if mime.startswith('text/html') and ext_in_url in MEDIA_EXTS - {'.html'}:
         dropped.append(ident)       # an HTML error page served at an image/css URL
@@ -163,7 +184,6 @@ def resolve(abs_url):
 
 # ---------------------------------------------------------------- rewriting
 missing = defaultdict(set)    # (kind, url) -> referring pages
-stats = Counter()
 recording = [True]            # off while rendering history snapshots
 
 def relpath(target, page_out):
