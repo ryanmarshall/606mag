@@ -1,0 +1,52 @@
+#article_body {
+	position: relative;
+	left: 79px;
+	z-index: 0;
+	width: 500;
+}
+#auth {
+	position: relative;
+	width: 161;
+	top: -35px;
+	left: 339px;
+	z-index: 2;
+}
+#sub_image{
+   position:relative;
+   top:-420px;
+	 left:-200px;
+}
+#job_title {
+	position: relative;
+	width: 500;
+	top: 70px;
+	left: -45px;
+	text-align: center;
+}
+#email_submit {
+	position: relative;
+	top: -14px;
+	left: 15px;
+}
+#email_submit2 {
+	position: relative;
+	top: 0px;
+}
+#body_jobs{
+	position: relative;
+	left: 0px;
+	top: -60px;
+}
+#image1 {
+	position: relative;
+	width: 307;
+	left: 180px;
+	top: -30px;
+}
+#caption1 {
+	position: relative;
+	width: 160;
+	top: 100px;
+	left: 10px;
+}
+.style1 {color: #FFFFFF}

@@ -1,0 +1,93 @@
+---
+// The last published page frame, verbatim: issue picker, masthead, issue menu and
+// footer come from the issue's own published page, laid out by the original
+// main606.css. Narrower windows get stepped overrides (see the style block).
+// Rendered in the 2004 pages' quirks mode: see src/middleware.ts.
+import { attrs, type Issue } from '../lib/content';
+interface Props { issue: Issue; title: string; mainAttrs: string; pageCss?: string }
+const { issue, title, mainAttrs, pageCss = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <link href="/archive/main606.css" rel="stylesheet" type="text/css" />
+  <style is:global set:html={issue.themeCss}></style>
+  <style is:global set:html={pageCss}></style>
+  <style is:global>
+    /* The original is a fixed 976px layout; it is left exactly as it was whenever it fits.
+       Narrower windows change only what no longer fits, in steps: */
+    .menu-toggle { display: none; }
+    /* 1. Under 976px: the masthead fits the window and the empty right-hand column (it held
+       ads) goes; the menu and page still sit side by side as designed (792px). */
+    @media (max-width: 975px) {
+      #navBar { width: auto; right: 0; }
+      #content { width: auto; }
+      .ad-column { display: none; }
+    }
+    /* 2. Under 800px: the issue menu folds into a button above the page and the masthead
+       stacks; the page itself keeps its original 682px design while it fits. */
+    @media (max-width: 799px) {
+      body { margin: 0; }
+      #issues, #navBar, #content { position: static; width: auto; height: auto; }
+      #issues { padding: 6px 8px 0; text-align: left; }
+      #issues table { margin: 0; }
+      #navBar table { width: 100%; }
+      #navBar td { display: inline-block; vertical-align: bottom; }
+      #navBar img[src*="header_deviders"], #navBar img[src*="header_left"] { display: none; }
+      #navBar .header_border_middle img { max-width: 60vw; height: auto; }
+      #content > table, #content > table > tbody, #content > table > tbody > tr,
+      #content > table > tbody > tr > td { display: block; width: auto !important; }
+      .submenu_maincell { width: auto !important; background-image: none !important; border-bottom: 1px solid #878787; }
+      .submenu_maincell > img, .submenu_maincell > table { display: none; }
+      .submenu_maincell.open > table { display: table; width: 100%; }
+      .menu-toggle { display: block; width: 100%; padding: 8px; border: 0; background: none; text-align: left;
+                     font: 13px Arial, sans-serif; color: inherit; cursor: pointer; }
+      #content > table > tbody > tr > td.main_cell_margin { width: 682px !important; margin: 0 auto; }
+      #footer { left: 0; }
+    }
+    /* 3. Phones (under 690px), where the 682px page can't fit: its content reflows into one
+       column (tables stack, nudged offsets drop, images scale) and the footer fits the screen. */
+    @media (max-width: 689px) {
+      #content > table > tbody > tr > td.main_cell_margin { width: auto !important; margin: 0; padding: 8px; border-right: 0 !important; }
+      .main_cell_margin img { max-width: 100%; height: auto; }
+      .main_cell_margin table, .main_cell_margin tbody, .main_cell_margin tr, .main_cell_margin td {
+        display: block; width: auto !important; max-width: 100%; }
+      .main_cell_margin * { position: static !important; max-width: 100%; box-sizing: border-box; }
+      .main_cell_margin [style*="width"], .main_cell_margin div { width: auto !important; }
+      #footer { width: auto; }
+    }
+  </style>
+  <script is:inline>
+    // Dreamweaver helpers the 2004 pages call (rollovers, popups).
+    function MM_preloadImages(){var d=document;if(d.images){if(!d.MM_p)d.MM_p=[];var i,j=d.MM_p.length,a=arguments;for(i=0;i<a.length;i++)if(a[i].indexOf('#')!=0){d.MM_p[j]=new Image;d.MM_p[j++].src=a[i];}}}
+    function MM_swapImgRestore(){var i,x,a=document.MM_sr;for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++)x.src=x.oSrc;}
+    function MM_findObj(n,d){var x;if(!d)d=document;if(!(x=d[n])&&d.all)x=d.all[n];if(!x&&d.getElementById)x=d.getElementById(n);for(var i=0;!x&&d.forms&&i<d.forms.length;i++)x=d.forms[i][n];return x;}
+    function MM_swapImage(){var i,j=0,x,a=arguments;document.MM_sr=[];for(i=0;i<(a.length-2);i+=3)if((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x;if(!x.oSrc)x.oSrc=x.src;x.src=a[i+2];}}
+    function MM_openBrWindow(u,n,f){window.open(u,n,f);}
+  </script>
+</head>
+<body>
+  <Fragment set:html={issue.frame.issues} />
+  <Fragment set:html={issue.frame.nav} />
+  <div id="content">
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="110" align="left" valign="top" class="submenu_maincell">
+          <button class="menu-toggle" type="button" aria-expanded="false"
+                  onclick="var c=this.parentNode;c.classList.toggle('open');this.setAttribute('aria-expanded',c.classList.contains('open'))">issue {issue.number} contents</button>
+          <Fragment set:html={issue.frame.menu} />
+        </td>
+        <td {...attrs(mainAttrs)}>
+          <slot />
+          <Fragment set:html={issue.frame.footer} />
+        </td>
+        <td width="180" align="center" valign="top" class="ad-column">&nbsp;</td>
+      </tr>
+    </table>
+    <br />
+  </div>
+</body>
+</html>

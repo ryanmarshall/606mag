@@ -1,0 +1,9 @@
+.lines {
+	padding: 8px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #878787;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #878787;
+}

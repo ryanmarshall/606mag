@@ -1,0 +1,186 @@
+body {
+	margin-left: 5px;
+	margin-top: 8px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Arial, Verdana, "Arial Black";
+	background-color:#FFFFFF;
+}
+.bodytext{
+   font-size: 9pt;
+}
+#issues {
+	position:absolute;
+	left:3px;
+	top:5px;
+	width:111px;
+	height:65px;
+	text-align: center;
+	vertical-align: baseline;
+}
+#aboutus {
+	position:absolute;
+	left:410px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+  text-align:left;
+}
+#abouttext {
+	position:absolute;
+	left:430px;
+	top:49px;
+	height:12px;
+	vertical-align: middle;
+  text-align:left;
+  width:200px;
+	font-size: 12px;
+	font-weight: 900;
+
+}
+#welikefun {
+	position:absolute;
+	left:513px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+  text-align:left;
+}
+#welikefuntext{
+  /*border:1px solid;*/
+	position:absolute;
+	left:532px;
+	top:49px;
+	height:12px;
+	vertical-align: middle;
+  text-align:left;
+  width:450px;
+  color: #000000;
+	font-size: 12px;
+	font-weight: 900;
+
+}
+#news {
+	position:absolute;
+	left:589px;
+	top:26px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+  text-align:left;
+}
+#events {
+	position:absolute;
+	left:646px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+}
+#contact {
+	position:absolute;
+	left:754px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+}
+#submissions {
+	position:absolute;
+	left:821px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+}
+#links {
+	position:absolute;
+	left:924px;
+	top:34px;
+	width:11px;
+	height:35px;
+	vertical-align: bottom;
+}
+#navBar {
+	position:absolute;
+	left:121px;
+	top:5px;
+	width:854px;
+	height:65px;
+}
+#ad_right {
+	position:absolute;
+	left:796px;
+	top:79px;
+	width:179px;
+	z-index: 1;
+	visibility: visible;
+	overflow: visible;
+	/*border:1px solid;*/
+}
+
+#content {
+	position:absolute;
+	left:4px;
+	top:79px;
+	width:972px;
+}
+.main_cell_margin {
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+	margin-top: 0px;
+}
+.main_cell_margin_index {
+	margin-left: 10px;
+}
+.submenu_padding {
+	margin: 5px;
+}
+.header_sub {
+	font-size: 18px;
+	font-weight: 900;
+	color: #5A738F;
+}
+.caption{font-size: 8pt}
+
+/*ISSUE BOX CSS*/
+.issue_none {
+	background-color: #CCCCCD;
+	height: 13px;
+	width: 13px;
+}
+.issue_true {
+	color: #FFFFFF;
+	background-color: #506B89;
+	height: 13px;
+	width: 13px;
+}
+.issue_cell_height {
+	font-family: Arial, Verdana, "Arial Black";
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight: 900;
+}
+.issue_header {
+	font-family: Arial, Verdana, "Arial Black";
+	font-size: 12px;
+	font-weight: 900;
+}
+a.issue:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.issue:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.issue:hover {
+	color: #FFFFFF;
+}
+/*ISSUE CSS*/.auth_space {
+	margin-bottom: 5px;
+	margin-left: 10px;
+}

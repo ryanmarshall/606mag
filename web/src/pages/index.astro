@@ -1,0 +1,80 @@
+---
+// The front door: the site's final front page (the staff's farewell letter and the
+// twelve 2004 covers), in its original markup so it lays out exactly as it did.
+// Only the addresses are new; phones get a stacked layout (below 800px).
+import { issues } from '../lib/content';
+const L = '/archive/images/last_images/';
+// cover image, alt text, rollover month image name (the original named December "dev"), month art width
+const covers: [string, string, number, number][] = [
+  ['ISSUE 1 Jan', 'jan', 66, 75], ['ISSUE 2 Feb', 'feb', 72, 75], ['ISSUE 3 March', 'march', 56, 75],
+  ['ISSUE 4 April', 'april', 43, 75], ['ISSUE 5 May', 'may', 41, 75], ['ISSUE 6 June', 'june', 42, 75],
+  ['ISSUE 7 July', 'july', 31, 75], ['ISSUE 8 Aug', 'aug', 47, 75], ['ISSUE  9 Sept', 'sept', 71, 72],
+  ['ISSUE 10 Oct', 'oct', 55, 72], ['ISSUE  11 Nov', 'nov', 68, 72], ['ISSUE 12 Dec', 'dev', 70, 72],
+].map(([alt, m, w, h], n) => [alt as string, m as string, w as number, h as number]);
+const monthFile = (m: string) => (m === 'dev' ? 'dec' : m);
+const rows = [0, 3, 6, 9].map(i => covers.slice(i, i + 3).map((c, j) => ({ c, n: i + j })));
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sixosix Magazine : 606 : chicago : Final Issue</title>
+<script is:inline>
+// Old links like 606mag.com/?id=60 land here (the front page exists, so the 404 page never
+// runs). Hand any query to the old-link redirect page via an address that doesn't exist.
+if (location.search) location.replace('index.php' + location.search + location.hash);
+</script>
+<script is:inline>
+function MM_preloadImages(){var d=document;if(d.images){if(!d.MM_p)d.MM_p=[];var i,j=d.MM_p.length,a=arguments;for(i=0;i<a.length;i++)if(a[i].indexOf('#')!=0){d.MM_p[j]=new Image;d.MM_p[j++].src=a[i];}}}
+function MM_swapImgRestore(){var i,x,a=document.MM_sr;for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++)x.src=x.oSrc;}
+function MM_findObj(n,d){var x;if(!d)d=document;if(!(x=d[n])&&d.all)x=d.all[n];if(!x&&d.getElementById)x=d.getElementById(n);for(var i=0;!x&&d.forms&&i<d.forms.length;i++)x=d.forms[i][n];return x;}
+function MM_swapImage(){var i,j=0,x,a=arguments;document.MM_sr=[];for(i=0;i<(a.length-2);i+=3)if((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x;if(!x.oSrc)x.oSrc=x.src;x.src=a[i+2];}}
+</script>
+<style>
+  @media (max-width: 799px) {
+    .door-space p { margin: 0; }
+    .door-space br { display: none; }
+    .door, .door > tbody, .door > tbody > tr, .door > tbody > tr > td { display: block; width: auto; }
+    .door > tbody > tr > td { padding: 8px 0; text-align: center; }
+    .door > tbody > tr > td > br { display: none; }
+    .door .letter { max-width: 100%; height: auto; }
+    .covers img { max-width: 100%; height: auto; }
+  }
+</style>
+</head>
+<body onload={`MM_preloadImages(${covers.map(([, m]) => `'${L}${monthFile(m)}x.gif'`).join(',')})`}>
+<div align="center" class="door-space">
+  <p>    <br>
+    <br>
+    <br>
+    <br>
+  </p>
+</div>
+
+<table border="0" align="center" cellpadding="5" cellspacing="0" class="door">
+  <tr>
+    <td width="390" align="left"><img class="letter" src={L + 'letter.gif'} width="364" height="456"
+      alt="Handwritten letter: 'Dear Mr Vernon: We accept the fact that we had to sacrifice a whole year on the web for whatever it is we did wrong... Sincerely Yours, Staff of Sixosix Magazine'"></td>
+    <td valign="top"><br>
+      <table border="0" align="center" cellpadding="1" cellspacing="0" class="covers">
+        {rows.map(row => (
+          <tr>
+            {row.map(({ c: [alt, m, , h], n }) => (
+              <td><a href={issues[n].url}><img src={`${L}${n + 1}x.gif`} alt={alt} name={`issue${n + 1}`} width="112" height={h} border="0" id={`issue${n + 1}`}
+                onmouseover={`MM_swapImage('${m}','','${L}${monthFile(m)}x.gif',1)`} onmouseout="MM_swapImgRestore()"></a></td>
+            ))}
+          </tr>
+        ))}
+        <tr align="center">
+          <td colspan="3">{covers.slice(0, 7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} name={m} width={w} height="15" id={m} alt="" />)}<br>
+          {covers.slice(7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} name={m} width={w} height="15" id={m} alt="" />)}<img src={L + '2004.gif'} width="31" height="15" alt="2004"></td>
+        </tr>
+        <tr align="left" valign="top">
+          <td colspan="3"><br>
+              <img src={L + 'logo.gif'} width="153" height="24" alt="sixosix"></td>
+        </tr>
+    </table></td></tr>
+</table>
+</body>
+</html>

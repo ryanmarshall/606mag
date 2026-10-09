@@ -1,0 +1,14 @@
+#menu {
+	position: relative;
+	width: 14;
+	text-align: center;
+	vertical-align: top;
+	top: 20px;
+	left: 0px;
+}
+#auth {
+	position: relative;
+	width: 160;
+	top: 82px;
+	left: 24px;
+}

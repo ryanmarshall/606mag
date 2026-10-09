@@ -1,0 +1,9 @@
+.marg {
+	height: 30px;
+}
+.back {
+	background-image: url(../../thurs/threads/images/background.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 350px;
+}

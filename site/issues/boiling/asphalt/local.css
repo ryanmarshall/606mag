@@ -1,0 +1,28 @@
+#indent {
+	position: relative;
+	width: 250px;
+	left: 70px;
+}
+#indent2 {
+	position: relative;
+	width: 315px;
+	left: 19px;
+	top: 13px;
+}
+#hover {
+	position: relative;
+	width: 459;
+	top: -1220px;
+	left: 90px;
+}
+#link {
+	position: relative;
+	width: 270;
+	top: -920px;
+	left: 320px;
+}
+.back{
+	background-image: url(images/po_grph.gif);
+	background-repeat: no-repeat;
+	background-position: center 400px;
+}

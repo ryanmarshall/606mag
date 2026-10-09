@@ -1,0 +1,68 @@
+#email_submit {
+	position: relative;
+	top: 30px;
+	left: 4px;
+}
+#hughes_title {
+	position: relative;
+	width: 225;
+	left: 350px;
+	top: -200px;
+} 
+.back {
+	background-attachment: fixed;
+	background-image: url(images/word.gif);
+	background-repeat: repeat-x;
+	background-position: right top;
+}
+#slick {
+	position: relative;
+	width: 113;
+	top: -185px;
+	left: 291px;
+}
+#hughes_image {
+	position: relative;
+	width: 300;
+	height: 300;
+	left: 13px;
+}
+#author {
+	position: relative;
+	width: 160;
+	left: 460px;
+	top: -96px;
+}
+#author2 {
+	position: relative;
+	width: 655;
+	left: 0px;
+	top: -6px;
+	background-image: url(../../../_missing.gif);
+	background-repeat: no-repeat;
+	text-align: center;
+}
+
+#main_body {
+	position: relative;
+	top: -170px;
+	left: 13px;
+	width: 410;
+}
+#body_insert {
+	position: relative;
+	width: 655;
+	left: 0px;
+	top: 0px;
+	background-image: url(../../../_missing.gif);
+	background-repeat: no-repeat;
+	text-align: center;
+}
+.style3 {color: #000000}
+.style2 {color: #5A738F}
+#main_body2 {
+	position: relative;
+	top: 10px;
+	left: 13px;
+  width: 410;
+}

@@ -1,0 +1,19 @@
+---
+import Magazine from '../../../../layouts/Magazine.astro';
+import Comments from '../../../../components/Comments.astro';
+import { articles, issueByNumber, type Article, type Page } from '../../../../lib/content';
+export function getStaticPaths() {
+  return articles
+    .filter((a) => issueByNumber.has(a.issue))
+    .flatMap((article) => article.pages.map((page) => ({
+      params: { issue: String(article.issue), slug: article.slug, page: page.path.replace(/\/$/, '') || undefined },
+      props: { article, page },
+    })));
+}
+const { article, page } = Astro.props as { article: Article; page: Page };
+const issue = issueByNumber.get(article.issue)!;
+---
+<Magazine issue={issue} title={article.pageTitle ?? issue.title} mainAttrs={page.mainAttrs} pageCss={page.css}>
+  <Fragment set:html={page.html} />
+  {page.path === '' && <Comments comments={article.comments} title={article.title} color={issue.colorLight} />}
+</Magazine>

@@ -1,0 +1,30 @@
+---
+// Reader comments in the magazine's original comment markup (from the database:
+// genuine comments only, names only).
+import type { Comment } from '../lib/content';
+interface Props { comments: Comment[]; title: string; color: string }
+const { comments, title, color } = Astro.props;
+---
+{comments.length > 0 && (
+  <Fragment>
+    <br /><br />
+    <table width="640" border="0" cellspacing="5" cellpadding="0" align="center" class="comments-table">
+      <tr><td colspan="2" style="font-size: 12px;font-weight: 900">comments: <span style="font-weight:400;font-size:12px;">{title}</span></td></tr>
+      <tr><td colspan="2" style={`background-color: ${color};height: 5px`}></td></tr>
+      {comments.map((c) => (
+        <Fragment>
+          <tr>
+            <td colspan="2" style="font-size: 11px;">
+              <span style={`color: ${color};`}>subject</span>: {c.subject}<br />
+              <span style={`color: ${color};`}>date</span>: {c.date}<br />
+              <span style={`color: ${color};`}>name</span>: {c.name}<br />
+              <span style={`color: ${color};`}>comment</span>:<br />
+              <Fragment set:html={c.text.replace(/\n/g, '<br />')} />
+            </td>
+          </tr>
+          <tr><td colspan="2" style={`border: 1px solid ${color};font-size: 3px;`}>&nbsp;</td></tr>
+        </Fragment>
+      ))}
+    </table>
+  </Fragment>
+)}

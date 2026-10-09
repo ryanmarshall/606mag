@@ -1,0 +1,35 @@
+#title {
+	position: relative;
+	left: -1px;
+	font-size: 18px;
+	font-weight: 900;
+	color: #000000;
+	width: 200;
+}
+#summery {
+	position: relative;
+	width: 200;
+	color: #4F6A88;
+}
+#auth {
+	width: 160px;
+}
+#auth2 {
+	position: relative;
+	width: 160px;
+	left: 30px;
+}
+#text_body {
+	position: relative;
+	list-style-type: square;
+	list-style-image: url(images/point.gif);
+	left: 1px;
+	width: 650px;
+}
+.point {
+	list-style-image: url(images/point.gif);
+}
+.pointblack {
+	list-style-image: url(images/pointblack.gif);
+}
+.style7 {color: #5B9CC4}

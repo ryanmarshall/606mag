@@ -1,0 +1,25 @@
+.title_line {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #947B6C;
+	padding-top: 20px;
+	font-weight: 900;
+}
+.body_text {
+	padding-top: 6px;
+}
+.fact {
+	padding-top: 18px;
+}
+.image_bump {
+	padding-top: 20px;
+}
+.side_line {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #947B6C;
+	padding-right: 15px;
+}
+.left_margin {
+	padding-left: 15px;
+}

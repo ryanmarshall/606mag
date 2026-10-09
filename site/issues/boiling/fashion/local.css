@@ -1,0 +1,19 @@
+.right_line {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #936A69;
+}
+.box {
+	height: 19px;
+	width: 19px;
+	vertical-align: middle;
+}
+.bottom_line {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #936A69;
+	padding-bottom: 7px;
+}
+.text {
+	font-size: 11px;
+}

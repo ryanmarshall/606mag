@@ -1,0 +1,38 @@
+#contact_title {
+	position: relative;
+	top: 68px;
+	left: 277px;
+	width: 100;
+}
+#event_image {
+	position: relative;
+	width: 245;
+	left: 12px;
+}
+#contact_address {
+	position: relative;
+	width: 160;
+	left: 160px;
+	top: 60px;
+}
+#contact_emails {
+	position: relative;
+	top: 80px;
+	left: 110px;
+	width: 250;
+}
+.style2 {color: #5A738F}
+#email_submit {
+	position: relative;
+	top: 20px;
+	width: 200;
+	left: 4px;
+}
+.contentBody1 {font-size: 11px;
+color: rgb(0,0,0);
+font-family: Arial, sans-serif;
+}
+.contentSubHead1 {font-size: 12px;
+color: rgb(97, 142, 180);
+font-family: Arial, sans-serif;
+}

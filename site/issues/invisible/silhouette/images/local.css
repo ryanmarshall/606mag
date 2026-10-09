@@ -1,0 +1,25 @@
+#auth {
+	position: relative;
+	width: 66;
+	top: -168px;
+	left: -125px;
+}
+#offset {
+	position: relative;
+	left: 47px;
+	top: 2px;
+	width: 100;
+}
+#menu {
+	position: relative;
+	left: 2px;
+	width: 200;
+	top: 11px;
+}
+#image {
+	position: relative;
+	width: 300;
+	top: 0px;
+	left: 20px;
+	text-align: center;
+}

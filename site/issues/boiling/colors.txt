@@ -1,0 +1,3 @@
+ORANGE
+dark: #936A69
+light: #CF9E9F

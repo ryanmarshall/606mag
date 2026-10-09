@@ -1,0 +1,26 @@
+.back {
+	background-image: url(images/background.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.left_margin {
+	padding-left: 26px;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+.right_margin {
+	padding-bottom: 18px;
+	padding-right: 25px;
+}
+a.current:link {
+	color: #AED136;
+}
+a.current:visited {
+	color: #AED136;
+}
+a.blank:link {
+	color: #000000;
+}
+a.blank:visited {
+	color: #000000;
+}

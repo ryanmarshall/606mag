@@ -1,0 +1,8 @@
+.intro_back {
+	background-image: url(images/_introbkg_br.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.space_left {
+	padding-left: 10px;
+}

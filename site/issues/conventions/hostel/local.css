@@ -1,0 +1,16 @@
+.top {
+	background-image: url(images/top_back.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.bottom {
+	background-image: url(images/bottom_back.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+}

@@ -1,0 +1,11 @@
+---
+import Magazine from '../../../layouts/Magazine.astro';
+import { issues, type Issue } from '../../../lib/content';
+export function getStaticPaths() {
+  return issues.map((issue) => ({ params: { issue: String(issue.number) }, props: { issue } }));
+}
+const { issue } = Astro.props as { issue: Issue };
+---
+<Magazine issue={issue} title={issue.title} mainAttrs={issue.coverAttrs} pageCss={issue.coverCss}>
+  <Fragment set:html={issue.coverHtml} />
+</Magazine>

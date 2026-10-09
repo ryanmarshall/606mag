@@ -2,6 +2,7 @@
   "_about": "Hand-curated comment exclusions for the 606mag rebuild. Comments dated before the bot era (2006-04-01) are all kept except these. Remove an entry to restore that comment.",
   "comment_exclusions": [
     {"name": "Chaser's", "starts": "Does anyone know if those Chaser pills", "why": "2004 product astroturf (hangover pills)"},
-    {"name": "Lol", "starts": "The hangover cure of all time", "why": "2004 product astroturf (hangover pills)"}
+    {"name": "Lol", "starts": "The hangover cure of all time", "why": "2004 product astroturf (hangover pills)"},
+    {"name": "Giulia", "starts": "Single Gay Men March 28, 2006", "why": "2006 commercial dating-event ad"}
   ]
 }

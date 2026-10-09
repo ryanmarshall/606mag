@@ -1,0 +1,10 @@
+.line {
+	background-image: url(images/line_back.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.line2 {
+	background-image: url(images/line_back2.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+}

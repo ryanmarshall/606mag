@@ -1,0 +1,257 @@
+#fun_image {
+	text-align: center;
+	position: relative;
+	top: 45px;
+}
+#fun_title {
+	left: 100px;
+	position: relative;
+	width: 150px;
+	font-size: 18px;
+	font-weight: 900;
+	top: 20px;
+	color: #4F6A88;
+	font-family: Arial, Verdana, "Arial Black";
+}
+#sad_sub {
+	position: relative;
+	width: 250px;
+	left: 90px;
+	top: -55px;
+	font-family: Arial, Verdana, "Arial Black";
+}
+.style1 {
+	color: #000000;
+	font-size: 12px;
+}
+.style2 {
+	color: #4F6A88;
+}
+#hoot {
+	position: relative;
+	top: -18px;
+	left: 1px;
+	width: 74;
+	height: 69;
+}
+#hoot_sub {
+	position: relative;
+	left: 91px;
+	top: -89px;
+	width: 250;
+}
+#scav {
+	position: relative;
+	top: -20px;
+	left: 1px;
+	width: 74;
+	height: 69;
+}
+#scav_sub {
+	position: relative;
+	left: 91px;
+	top: -91px;
+	width: 255;
+}#hell {
+	position: relative;
+	top: -55px;
+	left: 1px;
+	width: 74;
+	height: 69;
+}
+#hell_sub {
+	position: relative;
+	left: 91px;
+	top: -125px;
+	width: 255;
+}
+#sadlibs {
+	position: relative;
+	top: 15px;
+}
+#email_submit {
+	position: relative;
+	top: 20px;
+	width: 200;
+	left: 4px;
+}
+/*new section*/
+
+
+.lightBlueText
+{
+font-family: Arial;
+font-size: 11px;
+color: rgb(97,142,180);
+}
+
+#faceSad {
+	position:relative;
+	left:40px;
+	top:40px;
+	width:95px;
+	height:89px;
+}
+
+
+
+#title {
+	position:relative;
+	left:100px;
+	top:-55px;
+	width:300px;
+	height:31px;
+}
+.headTotal
+{
+height: 120px;
+}
+.sad_header
+{
+font-family: Arial, sans-serif;
+color: rgb(79,106,136);
+font-size: 20px;
+font-weight: bold;
+}
+
+.headerSub
+{
+font-family: Arial, sans-serif;
+color: rgb(97,142,180);
+font-size: 12px;
+font-weight: bold;
+}
+
+#tableWords
+{
+position:relative;
+left:0;
+top:0;
+}
+
+.submitBtn
+{
+font-family: Arial, sans-serif;
+font-size:  12px; 
+font-weight: 900;
+color: #4C5460;
+background-color: ;
+
+}
+#story
+{
+position:relative;
+left:50;
+top:0;
+width: 450px;
+font-size: 11px;
+color: #000000;
+}
+.news
+{
+margin: 0 45px 0 45px;
+width: 450px;
+}
+#faceSad {
+	position:relative;
+	left:20px;
+	top:10px;
+	width:95px;
+	height:89px;
+}
+#faceHoot {
+	position:relative;
+	left:40px;
+	top:10px;
+	width:95px;
+	height:89px;
+}
+
+#tablePictures
+{
+position:relative;
+left:26px;
+top:-5px;
+width:600px;
+}
+
+#webClues
+{
+width: 350px;
+font-family: Arial;
+font-size: 11px;
+color: rgb(79,106,136);
+}
+#hoottitle {
+	position:relative;
+	left:100px;
+	top:-55px;
+	width:450px;
+	height:31px;
+}
+
+.paragraph
+{
+font-family: Arial;
+font-size: 11px;
+}
+
+#facescav {
+	position:relative;
+	left:20px;
+	top:10px;
+	width:95px;
+	height:89px;
+}
+
+
+
+#titlescav {
+	position:relative;
+	left:100px;
+	top:-55px;
+	width:450px;
+	height:31px;
+}
+
+#tableWords
+{
+position:relative;
+left:90px;
+top:-10px;
+width:400px;
+}
+#link
+{
+position:relative;
+left:20px;
+top:0px;
+width:300px;
+}
+#webClues
+{
+width: 350px;
+font-family: Arial;
+font-size: 11px;
+color: rgb(79,106,136);
+}
+#submitBtn2
+{
+font-family: Arial, sans-serif;
+font-size:  11px; 
+font-weight: 900;
+color: #4C5460;
+background-color: #E1E1E1;
+height: 20px;
+}
+.text_main{
+font-size: 11px;
+float:left;
+}
+#hell_body {
+	position: relative;
+	left: 50px;
+	top: 0px;
+	width: 580;
+
+}

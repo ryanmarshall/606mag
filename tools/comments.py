@@ -127,6 +127,12 @@ def page_comment_date(body):
 
 
 EMAIL_ADDR = re.compile(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.[a-z]{2,}', re.I)
+PHONE = re.compile(r'\(?\b\d{3}\)?[ .-]*\d{3}[ .-]\d{4}\b')
+
+
+def scrub(text):
+    """Contact details typed into a comment: emails and phone numbers removed."""
+    return PHONE.sub('[phone removed]', EMAIL_ADDR.sub('[email removed]', text))
 ANCHOR = re.compile(r'<a\b[^>]*>(.*?)</a>', re.I | re.S)
 NAME_FIELD = re.compile(r'(<span[^>]*>\s*name\s*</span>\s*:)(.*?)(?=<br|<span|$)', re.I | re.S)
 TEXT_FIELD = re.compile(r'(<span[^>]*>\s*comment\s*</span>\s*:)(.*)$', re.I | re.S)
@@ -139,9 +145,36 @@ def names_only(fragment):
     return EMAIL_ADDR.sub('[email removed]', ANCHOR.sub(lambda m: m.group(1), fragment))
 
 
+SUBJECT_FIELD = re.compile(r'(<span[^>]*>\s*subject\s*</span>\s*:)(.*?)(?=<br|<span|$)', re.I | re.S)
+
+
 def anonymize_comment(html):
+    html = SUBJECT_FIELD.sub(lambda m: m.group(1) + scrub(m.group(2)), html)
     html = NAME_FIELD.sub(lambda m: m.group(1) + names_only(m.group(2)), html)
-    return TEXT_FIELD.sub(lambda m: m.group(1) + EMAIL_ADDR.sub('[email removed]', m.group(2)), html)
+    return TEXT_FIELD.sub(lambda m: m.group(1) + scrub(m.group(2)), html)
+
+
+QA_ANSWER = re.compile(r'<tr>\s*<td align="left">\s*(\d{2})\.(\d{2})\.(\d{2})[^<]*?:\s*<span[^>]*>(.*?)</span>\s*says:'
+                       r'\s*</td>\s*</tr>\s*<tr>\s*<td[^>]*>(.*?)</td>\s*</tr>', re.I | re.S)
+
+
+def strip_qa_spam(doc):
+    """Q&A answers follow the comment policy: dated answers from the bot era (April
+    2006 on) and hard spam are removed. Returns (doc, removed)."""
+    removed = 0
+    def sub(m):
+        nonlocal removed
+        mm, dd, yy, name, text = m.groups()
+        try:
+            when = datetime(2000 + int(yy), int(mm), int(dd), tzinfo=timezone.utc)
+        except ValueError:
+            when = None
+        href = NAME_HREF.search(name)
+        if keep_comment(when, re.sub(r'<[^>]+>', ' ', name), text, '', href.group(1) if href else ''):
+            return m.group(0)
+        removed += 1
+        return ''
+    return QA_ANSWER.sub(sub, doc), removed
 
 
 def anonymize_qa(doc):
@@ -150,7 +183,7 @@ def anonymize_qa(doc):
     if i < 0:
         return doc
     tail = QA_NAME.sub(lambda m: m.group(1) + names_only(m.group(2)) + m.group(3), doc[i:])
-    return doc[:i] + EMAIL_ADDR.sub('[email removed]', tail)
+    return doc[:i] + scrub(tail)
 
 
 def strip_spam(doc):

@@ -1,0 +1,17 @@
+.background {
+	background-image: url(images/backg.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+a.current:link {
+	color: #AED136;
+}
+a.current:visited {
+	color: #AED136;
+}
+a.blank:link {
+	color: #000000;
+}
+a.blank:visited {
+	color: #000000;
+}

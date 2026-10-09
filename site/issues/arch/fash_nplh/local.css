@@ -1,0 +1,12 @@
+.border {
+	border: 1px solid #F2BF42;
+	height: 14px;
+	width: 19px;
+}
+.out_border {
+	border: 1px solid #F2BF42;
+}
+.border_fill {
+	border: 1px solid #F2BF42;
+	background-color: #F2BF42;
+}

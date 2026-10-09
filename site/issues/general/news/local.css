@@ -1,0 +1,29 @@
+#image_news {
+	position: relative;
+	left: 39px;
+	top: 43px;
+	width: 198;
+}
+#news_text {
+	position: relative;
+	width: 360;
+	top: -229px;
+	left: 309px;
+}
+#email_submit {
+	position: relative;
+	top: 20px;
+	width: 200;
+	left: 4px;
+}
+#news {
+	position: relative;
+}
+.style5 {color: #5A738F}
+.style6 {font-weight: bold}
+#main_title {
+	position: relative;
+	width: 75;
+	top: -50px;
+	left: 240px;
+}

@@ -87,9 +87,14 @@ for f in CC_FILES:
                                          'len': r.get('bytes', 0), 'source': r.get('source', 'cc')})
         n_cc += 1
 
-# as published wins: server-copy files only fill pages that no archive captured
+# as published wins: server-copy files only fill pages that no archive captured (an
+# archived HTML error page at an image/stylesheet address is not a published version)
+MEDIA_EXT = re.compile(r'\.(jpe?g|gif|png|bmp|ico|swf|pdf|doc|css|js)$', re.I)
 for ident, cs in caps.items():
-    if any(c.get('source') != 'server' for c in cs):
+    media = MEDIA_EXT.search(ident.split('?')[0])
+    published_real = [c for c in cs if c.get('source') != 'server'
+                      and not (media and c['mime'].startswith('text/html'))]
+    if published_real:
         caps[ident] = [c for c in cs if c.get('source') != 'server']
 
 home_digests = {c['digest'] for i in HOME_IDS for c in caps.get(i, [])}

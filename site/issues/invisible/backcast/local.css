@@ -1,0 +1,19 @@
+#title {
+	position: relative;
+	width: 440;
+	left: -3px;
+	top: -830px;
+}
+#left_body {
+	position: relative;
+	width: 170px;
+}
+#right_body {
+	position: relative;
+	width: 170px;
+}
+.style8 {
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight:900;
+}

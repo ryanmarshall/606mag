@@ -1,0 +1,10 @@
+.back {
+	background-image: url(images/back.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 315px;
+	width: 473px;
+	padding-top: 16px;
+	padding-left: 13px;
+	padding-bottom: 13px;
+}

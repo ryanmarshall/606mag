@@ -1,0 +1,16 @@
+.title_line {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #936A69;
+	padding-top: 20px;
+	font-weight: 900;
+}
+.body_text {
+	padding-top: 6px;
+}
+.fact {
+	padding-top: 18px;
+}
+.image_bump {
+	padding-top: 20px;
+}

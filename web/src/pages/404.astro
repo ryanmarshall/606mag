@@ -1,0 +1,89 @@
+---
+// Old 606mag.com links (main.php?id=…, issue_id, index.vN.php, any old file address) are
+// translated here: GitHub Pages serves this page for every unknown address. Works under
+// ryanmarshall.github.io/606mag/ and under 606mag.com/.
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>sixosix magazine chicago</title>
+  <style>
+    body { font: 12px Arial, Verdana, sans-serif; color: #707171; background: #fff; margin: 80px 16px; text-align: center; }
+    a { color: #6C7393; text-decoration: none; }
+    a:hover { color: #878787; }
+    #notfound { display: none; }
+  </style>
+</head>
+<body>
+  <p id="moving">one moment&hellip;</p>
+  <div id="notfound">
+    <p>that page isn&rsquo;t here anymore.</p>
+    <p><a id="home" href="/">sixosix magazine &rarr;</a></p>
+  </div>
+  <script is:inline>
+    (function () {
+      var path = location.pathname;
+      var base = path.indexOf('/606mag/') === 0 ? '/606mag/' : '/';
+      var rest = path.slice(base.length);
+      try { rest = decodeURIComponent(rest); } catch (e) {}
+      document.getElementById('home').href = base;
+      // Same canonical form as the build: drop session ids and "amp;" key prefixes, sort,
+      // and encode like Python's urlencode (space as "+", only A-Z a-z 0-9 _ . - ~ kept).
+      var enc = function (s) {
+        return encodeURIComponent(s).replace(/[!'()*]/g, function (c) {
+          return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+        }).replace(/%20/g, '+');
+      };
+      var pairs = [];
+      new URLSearchParams(location.search).forEach(function (v, k) {
+        k = k.replace(/^(amp;)+/, '');
+        if (k && k.toLowerCase() !== 'phpsessid') pairs.push([k, v]);
+      });
+      pairs.sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0; });
+      var get = function (k) { for (var i = 0; i < pairs.length; i++) if (pairs[i][0] === k) return pairs[i][1]; return null; };
+      var query = pairs.map(function (p) { return enc(p[0]) + '=' + enc(p[1]); }).join('&');
+      var go = function (target) { location.replace(base + target + location.hash); };
+      var notFound = function () {
+        document.getElementById('moving').style.display = 'none';
+        document.getElementById('notfound').style.display = 'block';
+      };
+      fetch(base + 'redirects.json').then(function (r) { return r.json(); }).then(function (map) {
+        // own entries only (an address like ?id=constructor must not match a built-in name)
+        var own = function (o, k) { return k !== null && Object.prototype.hasOwnProperty.call(o, k) ? o[k] : undefined; };
+        var file = rest.replace(/\/+$/, '');
+        var cover = /^index\.v(\d+)\.php$/.exec(file);
+        if (cover && own(map.issues, cover[1])) return go(own(map.issues, cover[1]));
+        if (file === 'main.php' || file === '' || file === 'index.php') {
+          var id = get('id'), issue = get('issue_id');
+          if (own(map.articles, id)) {
+            var a = own(map.articles, id);
+            var key = pairs.filter(function (p) {
+              return p[0] !== 'id' && !(p[0] === 'page' && (p[1] === 'index' || p[1] === ''));
+            }).map(function (p) { return enc(p[0]) + '=' + enc(p[1]); }).join('&');
+            return go(a.base + (own(a.pages, key) !== undefined ? own(a.pages, key) : ''));
+          }
+          if (own(map.issues, issue)) return go(own(map.issues, issue));
+          if (!query) return go('');
+          // a section page: the exact page, its old root-alias form, else the section's index
+          // (alias entries that point at the homepage don't count as a match)
+          var gen = get('general');
+          var tries = ['/' + file + '?' + query, '/main.php?' + query, '/?' + query];
+          if (gen) ['general=' + enc(gen) + '&page=index', 'general=' + enc(gen)].forEach(function (q) {
+            tries.push('/main.php?' + q, '/?' + q);
+          });
+          for (var t = 0; t < tries.length; t++) {
+            var h = own(map.archive, tries[t]);
+            if (h && h !== 'main.html') return go('archive/' + h);
+          }
+          return go('');
+        }
+        var hit = own(map.archive, '/' + rest + (query ? '?' + query : '')) || own(map.archive, '/' + rest);
+        if (hit) return go('archive/' + hit);
+        notFound();
+      }).catch(notFound);
+    })();
+  </script>
+</body>
+</html>

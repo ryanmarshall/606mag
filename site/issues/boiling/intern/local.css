@@ -1,0 +1,23 @@
+#title {
+	position: relative;
+	width: 198;
+	left: 240px;
+}
+.italic {
+	font-style: italic;
+}
+.space {
+	text-align: center;
+	padding-top: 40px;
+	padding-bottom: 30px;
+}
+#animated {
+	position: relative;
+	width: 150;
+	top: -102px;
+	left: 0px;
+}
+#last_p {
+	position: relative;
+	width: 380;
+}

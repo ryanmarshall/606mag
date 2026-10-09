@@ -1,0 +1,14 @@
+.back {
+	background-color: #95CAEE;
+}
+.link_white {
+	color: #000000;
+	text-decoration: none;
+}
+.link_blue {
+	color: #95CAEE;
+	text-decoration: none;
+}
+.border {
+	border: 1px dashed #95CAEE;
+}

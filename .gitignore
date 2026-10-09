@@ -14,8 +14,7 @@ tools/*.jsonl
 tools/*.log
 tools/*.none
 
-# Generated archive mirror: committed later, once privacy rules are applied.
-site/
+# Archive mirror build scratch (site/ itself is the cleaned, published archive).
 site.building/
 
 # Local tooling
@@ -24,3 +23,9 @@ site.building/
 __pycache__/
 *.pyc
 node_modules/
+
+# Astro site
+web/node_modules/
+web/dist/
+web/.astro/
+web/public/archive

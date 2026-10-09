@@ -1,0 +1,10 @@
+#summery {
+	position: relative;
+	width: 316;
+}
+.justify_summery {
+	text-align: justify;
+	font-size: 9pt;
+	line-height: 12pt;
+	color: #5A738F
+}

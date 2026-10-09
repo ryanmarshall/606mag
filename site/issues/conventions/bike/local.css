@@ -1,0 +1,29 @@
+.underline {
+	background-color: #9FAE8B;
+	height: 1px;
+}
+.thumb_height {
+	height: 52px;
+}
+.select_underline {
+	background-color: #9FAE8B;
+	height: 3px;
+}
+.thumb_space {
+	padding-bottom: 5px;
+}
+.underline_nocolor {
+	height: 3px;
+}
+.space_main {
+	height: 100px;
+}
+.main_imagespace {
+	padding-bottom: 10px;
+}
+#auth {
+	position: relative;
+	width: 78;
+	top: -89px;
+	left: 418px;
+}

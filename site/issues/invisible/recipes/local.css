@@ -1,0 +1,16 @@
+#header_text {
+	position: relative;
+	left: 180px;
+	top: -42px;
+	width: 480;
+}
+.style7 {
+	font-size: 12px;
+	font-weight: bold;
+}
+#auth {
+	position: relative;
+	left: 10px;
+	top: 10px;
+	width: 480;
+}

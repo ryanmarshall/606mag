@@ -1,0 +1,36 @@
+#event_image {
+	position: relative;
+	left: 16px;
+	top: 22px;
+	width: 233;
+}
+#email_submit {
+	position: relative;
+	top: 20px;
+	width: 200;
+	left: 12px;
+}
+#event_title {
+	position: relative;
+	width: 80;
+	left: 264px;
+	top: 37px;
+}
+#event_body {
+	position: relative;
+	top: 74px;
+	left: 0px;
+	width: 350px;
+}
+.line {
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #<?=$dark?>;
+	padding-bottom: 5px;
+}
+.marg_top {
+	padding-top: 5px;
+}
+.margin_thumbs {
+	padding: 3px;
+}

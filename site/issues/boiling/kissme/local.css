@@ -1,0 +1,18 @@
+.body_border {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #CF9E9F;
+	border-right-color: #CF9E9F;
+	border-bottom-color: #CF9E9F;
+	border-left-color: #CF9E9F;
+	padding: 13px;
+}
+.space {
+	height: 15px;
+}

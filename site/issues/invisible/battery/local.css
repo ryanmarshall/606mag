@@ -1,0 +1,27 @@
+#top_images {
+	position: relative;
+	left: 110px;
+	width: 400;
+}
+#auth {
+	position: relative;
+	width: 142;
+	top: -185px;
+	left: 511px;
+}
+#lower {
+	position: relative;
+	top: 7px;
+}
+#title {
+	position: relative;
+	left: 1px;
+	top: 5px;
+}
+#body_text {
+	position: relative;
+	width: 400;
+	left: 110px;
+	top: -25px;
+}
+.style7 {color: #5B9CC4}

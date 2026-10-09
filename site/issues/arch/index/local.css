@@ -1,0 +1,33 @@
+.feature_border {
+	border: 1px solid #CF9E9F;
+	padding: 1px;
+}
+.side_bar {
+	background-image: url(images/side_bar.gif);
+	background-repeat: repeat-y;
+	background-position: left;
+}
+.cover_image_margin {
+	padding-bottom: 10px;
+}
+.feature_summery {
+	font-size: 9px;
+}
+.space {
+	font-size: 5px;
+}
+.article_space {
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+}
+.article_summery {
+	font-size: 10px;
+}
+.news {
+	padding: 3px;
+}
+.border {
+	border: 1px solid #707171;
+	height:70px;
+}

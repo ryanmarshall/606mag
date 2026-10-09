@@ -1,0 +1,28 @@
+
+a.current {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 900;
+}
+a:visited.current {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 900;
+}
+.current_back {
+	background-color: #C7C4A3;
+}
+a.else {
+	color: #8CB485;
+	text-decoration: none;
+	font-weight: 900;
+	font-size: 14px;
+}
+a:visited.else {
+	color: #8CB485;
+	text-decoration: none;
+	font-weight: 900;
+	font-size: 14px;
+}

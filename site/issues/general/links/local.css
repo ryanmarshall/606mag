@@ -1,0 +1,35 @@
+#email_submit { 
+    position: relative; 
+} 
+#links_image {
+	position: relative;
+	width: 225;
+	left: 18px;
+	top: 11px;
+} 
+
+#links_title { 
+    position: relative; 
+	top: -181px; 
+	left: 256px; 
+	width: 60; 
+} 
+#links1 {
+	position: relative;
+	width: 140;
+	top: 55px;
+	left: 42px;
+} 
+#links2 { 
+    position: relative; 
+	width: 140; 
+	left: 205px; 
+	top: -160px; 
+} 
+.style2 {color: #5A738F}
+#email_submit {
+	position: relative;
+	top: 20px;
+	width: 200;
+	left: 4px;
+}

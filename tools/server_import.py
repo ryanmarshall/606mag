@@ -11,7 +11,7 @@ Usage: server_import.py COMPARE_JSON SERVER_ROOT ARCHIVE_DIR OUT_JSON
 """
 import json, os, re, sys, time
 from collections import Counter
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 compare_path, root, arc, out_path = sys.argv[1:5]
 MIME = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.png': 'image/png',
@@ -21,11 +21,24 @@ MIME = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.png'
         '.swf': 'application/x-shockwave-flash', '.mov': 'video/quicktime',
         '.mp3': 'audio/mpeg', '.wav': 'audio/wav'}
 IMPORT = {'only on the server', 'same content archived under another name'}
+MEDIA = {'.jpg', '.jpeg', '.gif', '.png', '.bmp', '.ico', '.swf', '.pdf', '.doc', '.css', '.js'}
 PHP_TAG = re.compile(rb'<\?(php|=|\s)', re.I)
 
 records, skipped = {}, Counter()
+manifest_mimes = {}
+man_path = os.path.join(os.path.dirname(compare_path), 'manifest.json')
+if os.path.exists(man_path):
+    for m in json.load(open(man_path)):
+        if all(c.get('source') != 'server' for c in m['cands']):
+            manifest_mimes['/' + unquote(m['id']).lstrip('/')] = {c['mime'] for c in m['cands']}
 for r in json.load(open(compare_path))['files']:
-    if r['compare'] not in IMPORT:
+    ext0 = os.path.splitext(r['path'])[1].lower()
+    archived_only_html = (r['compare'] == 'archived, but different content' and ext0 in MEDIA and
+                          all(mm.startswith('text/html') for mm in manifest_mimes.get('/' + r['path'], {'?'})))
+    if r['compare'] not in IMPORT and not archived_only_html:
+        continue
+    if any(part.startswith('.') for part in r['path'].split('/')):
+        skipped['dot-path (attacker .logs)'] += 1
         continue
     ext = os.path.splitext(r['path'])[1].lower()
     mime = MIME.get(ext)

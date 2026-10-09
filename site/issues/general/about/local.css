@@ -1,0 +1,107 @@
+.pricetext{
+	position:relative;
+  left:20px;
+	top:100px;
+  font-size: 11px;
+  color: #000000;
+	border:1px;
+	font-weight:100;
+}
+.adtitle{
+	position:relative;
+  left:120px;
+	top:35px;
+  font-size: 18px;
+  color: #4F6A88;
+	border:1px;
+	font-weight:900;
+}
+.shifttext{
+   position:relative;
+   left:30;
+}
+.shifttext2{
+   position:relative;
+   left:68;
+}
+.shifttext3{
+   position:relative;
+   left:13;
+}
+.contentBody
+{
+font-size: 11px;
+color: #000000;
+  font-weight: 900;
+}
+
+.contentcolor{
+color: #4F6A88;
+}
+
+.contentSubHead
+{
+font-size: 11px;
+color: #4F6A88;
+  font-weight: 900;
+}
+
+#polaroidMission {
+	position:relative;
+	left:-10px;
+	top:0px;
+	width:234px;
+	height:323px;
+
+}
+
+#aboutContent
+{
+	position:relative;
+	left:61px;
+	top:0px;
+	width:320px;
+	height:490px;
+	
+
+}
+#thanks{
+	position:relative;
+	left:10px;
+	top:-70px;
+	width:300px;
+}
+#missionTitle {
+	position:relative;
+	left:10px;
+	top:-10px;
+	width:100px;
+	height:28px;
+	color: #4F6A88;
+	font-size: 18px;
+	font-weight: 900;
+}
+
+#email_submit {
+	vertical-align: left;
+	position:relative;
+	left:4px;
+	top: 20px;
+	width:200px;
+	
+}
+.contentBody1 {font-size: 11px;
+color: rgb(0,0,0);
+font-family: Arial, sans-serif;
+}
+.contentSubHead1 {font-size: 12px;
+color: rgb(97, 142, 180);
+font-family: Arial, sans-serif;
+}
+#bla {
+	text-align: left;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 100;
+}

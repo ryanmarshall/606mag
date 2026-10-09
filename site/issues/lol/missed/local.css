@@ -1,0 +1,12 @@
+#image {
+	position: relative;
+	width: 272;
+	text-align: left;
+	display: inline;
+	top: -10px;
+	left: -30px;
+}
+.marg {
+	padding-left: 40px;
+	padding-right: 80px;
+}

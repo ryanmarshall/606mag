@@ -1,0 +1,26 @@
+#email_submit {
+	position: absolute;
+	top: 1570px;
+	left: 120px;
+	width: 220px;
+}
+.dark_back {
+	background-color: #4E6A88;
+}
+.light_back {
+	background-color: #5E90B2;
+}
+#auth {
+	position: relative;
+	width: 160;
+	top: -175px;
+	left: 28px;
+}
+.par_title {
+	color: #5E90B2;
+	text-align: center;
+}
+.border {
+	border: 1px solid #5E90B2;
+}
+.style1 {color: #5B9CC4}

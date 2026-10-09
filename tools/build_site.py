@@ -24,6 +24,7 @@ from urllib.parse import parse_qsl, quote, unquote, urljoin, urlparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cleanup import ENKODER, clean
+from renames import Resolver
 
 man_path, arc, out, report_path = sys.argv[1:5]
 manifest = json.load(open(man_path))
@@ -91,8 +92,11 @@ INTERNAL = re.compile(
     r'^/(admin|simon|site|popupDEV|testimages)(/|$)'          # CMS, unrelated site, dev folders
     r'|^/(test\.htm|template\d*\.html|include\.php|main_include\.php|meta\.php'
     r'|comment\.(php|html)|index\.(new|letter)\.php)$'          # tests, drafts, include output
-    r'|/thumbs\.db$|^/issues/general/New Folder/', re.I)
+    r'|^/(redirect\.php|main_index\.html|issues/general/ad_right\.php)$'  # PHP error dump, host frameset, ad slot
+    r'|/thumbs\.db$|^/issues/general/New Folder/'
+    r'|/\.', re.I)                                              # dot-paths: attacker .logs/
 LISTING_TITLE = re.compile(rb'<title>\s*Index of /', re.I)
+PHP_TAIL = re.compile(rb'<b>\s*(Warning|Fatal error|Notice)\s*</b>|on line', re.I)
 
 def internal(key, info):
     if INTERNAL.search(key[0]):
@@ -166,10 +170,17 @@ for m in manifest:
         if tgt and k not in lookup:
             lookup[k] = tgt
 
+_digests = {k[0]: info['digest'] for k, _, info in entries if not k[1]}
+renamed = Resolver(_digests.keys(), _digests.get)
+
 def resolve(abs_url):
     key = key_of(abs_url)
     if key in lookup:
         return lookup[key]
+    for alt in renamed.alternatives(key[0] + ('?' + '&'.join('%s=%s' % kv for kv in key[1]) if key[1] else '')):
+        if (alt, ()) in lookup:
+            stats['references resolved to renamed/original files'] += 1
+            return lookup[(alt, ())]
     path, pairs = key
     tries = []
     if not path.endswith('/') and '.' not in path.rsplit('/', 1)[-1]:
@@ -281,8 +292,24 @@ def rewrite_tags(doc, page_url, page_out):
 
 BLOCK = re.compile(r'(<(script|style)\b[^>]*>)(.*?)(</\2\s*>)', re.I | re.S)
 
+EXTERNAL = {}
+_ext = os.path.join(os.path.dirname(os.path.abspath(report_path)), 'external_links.json')
+if os.path.exists(_ext):
+    EXTERNAL = json.load(open(_ext))
+DEAD_ANCHOR = re.compile(r'''<a\b[^>]*?\bhref\s*=\s*(["']?)\s*(https?://[^"'\s>]+)\1[^>]*>(.*?)</a\s*>''', re.I | re.S)
+
+def delink_dead(doc):
+    """External links whose site no longer works (tools/check_links.py) keep only their text."""
+    def sub(m):
+        rec = EXTERNAL.get(html.unescape(m.group(2)).strip())
+        if rec is not None and not rec.get('ok'):
+            stats['dead external links de-linked'] += 1
+            return m.group(3)
+        return m.group(0)
+    return DEAD_ANCHOR.sub(sub, doc)
+
 def strip_trackers(doc):
-    return clean(doc, stats)
+    return delink_dead(clean(doc, stats))
 
 def rewrite_html(doc, page_url, page_out):
     base = re.search(r'''<base\s[^>]*href\s*=\s*["']?([^"' >]+)''', doc, re.I)
@@ -290,6 +317,13 @@ def rewrite_html(doc, page_url, page_out):
         page_url = urljoin(page_url, base.group(1))
         doc = re.sub(r'<base\s[^>]*>', '', doc, flags=re.I)
     doc = rewrite_tags(doc, page_url, page_out)
+    # Tolerant second pass: tags with malformed quoting (e.g. alt='"..."...'s...') defeat the
+    # strict tag parser; any reference still pointing at an absolute site path is one it skipped.
+    def leftover(m):
+        kind = 'page' if m.group(1).lower().startswith(('href', 'action')) else 'img'
+        new = rewrite_ref(m.group(3), page_url, page_out, kind)
+        return m.group(0) if new is None else '%s%s%s%s' % (m.group(1), m.group(2), new, m.group(2))
+    doc = re.sub(r'''(\b(?:src|href|background|action)\s*=\s*)(["'])(/[^"'\s>]*)\2''', leftover, doc, flags=re.I)
     def block(m):
         fn = rewrite_js if m.group(2).lower() == 'script' else rewrite_css
         return m.group(1) + fn(m.group(3), page_url, page_out) + m.group(4)
@@ -321,8 +355,10 @@ SUSPICIOUS = [
     ('external script', re.compile(r'''<script[^>]+src\s*=\s*["']?https?://(?!(www\.)?606mag\.com)[^"' >]+''', re.I)),
     ('external iframe', re.compile(r'''<i?frame[^>]+src\s*=\s*["']?https?://(?!(www\.)?606mag\.com)[^"' >]+''', re.I)),
     ('hidden iframe', re.compile(r'''<iframe[^>]+((?<![\w-])width\s*=\s*["']?[01]["'\s>]|(?<![\w-])height\s*=\s*["']?[01]["'\s>]|display\s*:\s*none|visibility\s*:\s*hidden)''', re.I)),
+    ('script-built external script', re.compile(r'''<SCR'\s*\+\s*'IPT|document\.write\s*\(\s*['"]<\s*script[^'"]*src''', re.I)),
     ('eval/unescape', re.compile(r'''eval\s*\(|document\.write\s*\(\s*unescape|String\.fromCharCode''', re.I)),
     ('hidden link block', re.compile(r'''<div[^>]+(display\s*:\s*none|left\s*:\s*-\d{3,}px)[^>]*>(?:(?!</div>).)*?<a\s''', re.I | re.S)),
+    ('hidden link', re.compile(r'''<a\b[^>]*style\s*=\s*["'][^"']*(display\s*:\s*none|visibility\s*:\s*hidden)''', re.I)),
     ('spam keywords', re.compile(r'''\b(viagra|cialis|casino|payday loan|replica watch|porn)\b''', re.I)),
 ]
 security = defaultdict(list)
@@ -361,6 +397,11 @@ for key, op, info in entries:
         open(dest, 'w', encoding='utf-8').write(rewrite_css(css, page_url, op))
         stats['stylesheets'] += 1
     else:
+        if data[:2] == b'\xff\xd8':                 # image.php output: PHP warnings appended after the JPEG
+            end = data.rfind(b'\xff\xd9')
+            if end > 0 and PHP_TAIL.search(data[end + 2:]):
+                data = data[:end + 2]
+                stats['php warnings cut from images'] += 1
         open(dest, 'wb').write(data)
         stats['other files'] += 1
 
@@ -443,6 +484,71 @@ code{word-break:break-all;color:#6C7393}</style>
 <script>var u=new URLSearchParams(location.search).get('u');document.getElementById('u').textContent=u||'(unknown)';</script>
 ''')
 
+# ---------------------------------------------------------------- final link verification
+# Every internal link and image must point at a file that was actually produced. What
+# can't (references already broken on the live site: camera filenames never uploaded,
+# uncaptured popups) is neutralized: links keep their words, images show the placeholder.
+OUT = set()
+for dp, _, fs in os.walk(tmp):
+    for f in fs:
+        OUT.add(os.path.relpath(os.path.join(dp, f), tmp).replace(os.sep, '/'))
+V_ANCHOR = re.compile(r'<a\b([^>]*)>(.*?)</a\s*>', re.I | re.S)
+V_IMG = re.compile(r'''(<(?:img|input)\b[^>]*?\bsrc\s*=\s*)(["'])([^"']*)\2''', re.I)
+V_AREA = re.compile(r'<area\b([^>]*)>', re.I)
+V_OPEN_A = re.compile(r'<a\b([^>]*)>', re.I)                      # anchors left unclosed in 2004 HTML
+V_LINK = re.compile(r'''<link\b[^>]*\bhref\s*=\s*["']?([^"'\s>]+)[^>]*>''', re.I)
+V_HREF = re.compile(r'''\bhref\s*=\s*(?:"()([^"]*)"|'()([^']*)'|()([^\s>]+))''', re.I)
+V_POPUP = re.compile(r'''MM_openBrWindow\(\s*['"]([^'"]+)''')
+
+def href_value(m):
+    return next(v for v in (m.group(2), m.group(4), m.group(6)) if v is not None)
+
+def target_ok(ref, page):
+    ref = html.unescape(ref).strip()
+    if not ref or ref.startswith(('#', 'javascript:', 'mailto:', 'http:', 'https:', 'data:', '//')):
+        return True
+    path = posixpath.normpath(posixpath.join(posixpath.dirname(page), ref.split('#')[0].split('?')[0]))
+    return path in OUT or posixpath.join(path, 'index.html') in OUT
+
+def verify(doc, page):
+    def anchor(m):
+        h, pop = V_HREF.search(m.group(1)), V_POPUP.search(m.group(1))
+        if (h and not target_ok(href_value(h), page)) or (pop and not target_ok(pop.group(1), page)):
+            stats['dead internal links de-linked'] += 1
+            return m.group(2)
+        return m.group(0)
+    def img(m):
+        if target_ok(m.group(3), page):
+            return m.group(0)
+        stats['missing images replaced'] += 1
+        return m.group(1) + m.group(2) + posixpath.relpath('_missing.gif', posixpath.dirname(page) or '.') + m.group(2)
+    def link(m):
+        if target_ok(m.group(1), page):
+            return m.group(0)
+        stats['missing stylesheets dropped'] += 1
+        return ''
+    def area(m):
+        h = V_HREF.search(m.group(1))
+        if h and not target_ok(href_value(h), page):
+            stats['dead internal links de-linked'] += 1
+            return ''
+        return m.group(0)
+    def open_a(m):
+        h = V_HREF.search(m.group(1))
+        if h and not target_ok(href_value(h), page):
+            stats['dead internal links de-linked'] += 1
+            return '<a%s>' % (m.group(1)[:h.start()] + m.group(1)[h.end():])
+        return m.group(0)
+    doc = V_OPEN_A.sub(open_a, V_AREA.sub(area, V_ANCHOR.sub(anchor, doc)))
+    return V_LINK.sub(link, V_IMG.sub(img, doc))
+
+for page in sorted(p for p in OUT if p.endswith('.html')):
+    path = os.path.join(tmp, page)
+    doc = open(path, encoding='utf-8').read()
+    new = verify(doc, page)
+    if new != doc:
+        open(path, 'w', encoding='utf-8').write(new)
+
 if os.path.exists(out):
     shutil.rmtree(out)
 os.replace(tmp, out)
@@ -459,6 +565,12 @@ report = {
     'security': {k: v for k, v in security.items()},
 }
 json.dump(report, open(report_path, 'w'), indent=1)
+
+# address map for other tools (the modern site reuses the archive's files):
+# canonical original address (path?sorted-query) -> published path in the archive
+from urllib.parse import urlencode
+site_map = {k[0] + ('?' + urlencode(k[1]) if k[1] else ''): v for k, v in lookup.items()}
+json.dump(site_map, open(os.path.join(os.path.dirname(report_path), 'site_map.json'), 'w'), indent=0, sort_keys=True)
 
 print('built %s' % out)
 for k, v in stats.most_common():
