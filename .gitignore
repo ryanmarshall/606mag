@@ -1,0 +1,26 @@
+# --- Never commit: private or dangerous material -------------------------------
+# DreamHost server copy: contains captured malware samples, the original PHP
+# source (with the old database password) and the database dump (subscriber
+# emails, logins, visitor IPs).
+server-copy/
+
+# Raw captures from the Wayback Machine / Common Crawl (re-downloadable, bulky).
+archive-raw/
+
+# --- Local working data (reproducible from the tools) ----------------------------
+tools/*.json
+!tools/curation.json
+tools/*.jsonl
+tools/*.log
+tools/*.none
+
+# Generated archive mirror: committed later, once privacy rules are applied.
+site/
+site.building/
+
+# Local tooling
+.claude/
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/

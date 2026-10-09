@@ -1,0 +1,14 @@
+[
+ {
+  "id": 1,
+  "name": "images",
+  "modified": "2003-12-29 07:10",
+  "thumbnail": "images.thumb.jpg"
+ },
+ {
+  "id": 2,
+  "name": "postit",
+  "modified": "2003-12-27 22:29",
+  "thumbnail": "postit.thumb.jpg"
+ }
+]
