@@ -1,12 +1,13 @@
 ---
 // Reader comments in the magazine's original comment markup (from the database:
-// genuine comments only, names only).
+// genuine comments only, names only), on every page that showed them. The sign-up,
+// ad and post-a-comment parts of the original block are gone; the header stays even
+// when an article has no comments, as it did.
 import type { Comment } from '../lib/content';
 interface Props { comments: Comment[]; title: string; color: string }
 const { comments, title, color } = Astro.props;
 ---
-{comments.length > 0 && (
-  <Fragment>
+<Fragment>
     <br /><br />
     <table width="640" border="0" cellspacing="5" cellpadding="0" align="center" class="comments-table">
       <tr><td colspan="2" style="font-size: 12px;font-weight: 900">comments: <span style="font-weight:400;font-size:12px;">{title}</span></td></tr>
@@ -26,5 +27,5 @@ const { comments, title, color } = Astro.props;
         </Fragment>
       ))}
     </table>
-  </Fragment>
-)}
+    <br />
+</Fragment>

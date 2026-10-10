@@ -3,7 +3,7 @@
 Shared by build_site.py (archive) and extract_content.py (modern site):
 - image.php?file=X&w=N (thumbnails generated on the fly) -> the original file X
 - popup.php?filename=X&general=G / ?general=G&img=N (gallery popups) -> the gallery photo
-- N.jpg <-> 0N.jpg: the 2010 server copy zero-padded some photo names. A renamed file is
+- N.jpg <-> 0N.jpg (also prefix_N.jpg <-> prefix_0N.jpg): the 2010 server copy zero-padded some photo names. A renamed file is
   used only in a folder where at least one other pair is proven byte-identical
   (and none differs), so a different photo with the same number is never swapped in.
 """
@@ -12,11 +12,11 @@ from urllib.parse import parse_qsl, urlparse
 
 
 def _alt_names(name):
-    m = re.match(r'^(\d+)(.*)$', name)
+    m = re.match(r'^(\D*?)(\d+)(.*)$', name)      # N.jpg and prefix_N.jpg (conv_fash_1.jpg <-> conv_fash_01.jpg)
     if not m:
         return []
-    num, rest = m.groups()
-    return [num.lstrip('0') + rest] if num.startswith('0') and num.strip('0') else ['0' + num + rest]
+    pre, num, rest = m.groups()
+    return [pre + num.lstrip('0') + rest] if num.startswith('0') and num.strip('0') else [pre + '0' + num + rest]
 
 
 class Resolver:

@@ -2,16 +2,26 @@
 import issuesData from '../data/issues.json';
 import articlesData from '../data/articles.json';
 
-export interface Page { path: string; url: string; mainAttrs: string; html: string; css: string }
+export interface Page {
+  path: string; url: string; mainAttrs: string; html: string; css: string;
+  /** the menu's "new comments" box as this page's own capture showed it (null: the issue's) */
+  newComments: string | null;
+  /** whether the original page showed the comments block */
+  comments: boolean;
+  /** article markup that followed the comments block on the original page */
+  tail?: string;
+}
 export interface Comment { date: string; name: string; subject: string; text: string }
 export interface Article {
   id: number; title: string; menuTitle: string; slug: string; issue: number; section: string | null;
   folder: string; issueFolder: string; url: string; blurb: string | null; pageTitle?: string;
   pages: Page[]; comments: Comment[]; views: number;
 }
-export interface Frame { issues: string; nav: string; menu: string; footer: string }
+export interface Frame { issues: string; nav: string; menu: string; footer: string; newComments: string }
+/** Where the issue menu's "new comments" box goes (tools/extract_content.py). */
+export const NEW_COMMENTS_SLOT = '<!--new comments-->';
 export interface Issue {
-  number: number; name: string; folder: string; colorDark: string; colorLight: string; month: string;
+  number: number; name: string; folder: string; colorDark: string; colorLight: string; commentColor: string; month: string;
   url: string; title: string; frame: Frame; themeCss: string; coverAttrs: string; coverHtml: string; coverCss: string;
 }
 

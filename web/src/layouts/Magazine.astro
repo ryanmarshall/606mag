@@ -3,9 +3,11 @@
 // footer come from the issue's own published page, laid out by the original
 // main606.css. Narrower windows get stepped overrides (see the style block).
 // Rendered in the 2004 pages' quirks mode: see src/middleware.ts.
-import { attrs, type Issue } from '../lib/content';
-interface Props { issue: Issue; title: string; mainAttrs: string; pageCss?: string }
-const { issue, title, mainAttrs, pageCss = '' } = Astro.props;
+import { attrs, NEW_COMMENTS_SLOT, type Issue } from '../lib/content';
+interface Props { issue: Issue; title: string; mainAttrs: string; pageCss?: string; newComments?: string | null }
+const { issue, title, mainAttrs, pageCss = '', newComments } = Astro.props;
+// the menu with this page's own "new comments" box (it changed with every visit)
+const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? issue.frame.newComments);
 ---
 <!doctype html>
 <html lang="en">
@@ -57,6 +59,8 @@ const { issue, title, mainAttrs, pageCss = '' } = Astro.props;
         display: block; width: auto !important; max-width: 100%; }
       .main_cell_margin * { position: static !important; max-width: 100%; box-sizing: border-box; }
       .main_cell_margin [style*="width"], .main_cell_margin div { width: auto !important; }
+      /* boxes sized for the 682px layout: let them grow with the reflowed text instead of spilling over */
+      .main_cell_margin *:not(img) { height: auto !important; }
       #footer { width: auto; }
     }
   </style>
@@ -75,16 +79,16 @@ const { issue, title, mainAttrs, pageCss = '' } = Astro.props;
   <div id="content">
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="110" align="left" valign="top" class="submenu_maincell">
+        <td {...attrs('width="110" align="left" valign="top"')} class="submenu_maincell">
           <button class="menu-toggle" type="button" aria-expanded="false"
                   onclick="var c=this.parentNode;c.classList.toggle('open');this.setAttribute('aria-expanded',c.classList.contains('open'))">issue {issue.number} contents</button>
-          <Fragment set:html={issue.frame.menu} />
+          <Fragment set:html={menu} />
         </td>
         <td {...attrs(mainAttrs)}>
           <slot />
           <Fragment set:html={issue.frame.footer} />
         </td>
-        <td width="180" align="center" valign="top" class="ad-column">&nbsp;</td>
+        <td {...attrs('width="180" align="center" valign="top"')} class="ad-column">&nbsp;</td>
       </tr>
     </table>
     <br />

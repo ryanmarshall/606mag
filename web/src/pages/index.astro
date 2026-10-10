@@ -2,7 +2,7 @@
 // The front door: the site's final front page (the staff's farewell letter and the
 // twelve 2004 covers), in its original markup so it lays out exactly as it did.
 // Only the addresses are new; phones get a stacked layout (below 800px).
-import { issues } from '../lib/content';
+import { attrs, issues } from '../lib/content';  // attrs(): the 2004 HTML attributes, untyped
 const L = '/archive/images/last_images/';
 // cover image, alt text, rollover month image name (the original named December "dev"), month art width
 const covers: [string, string, number, number][] = [
@@ -44,7 +44,7 @@ function MM_swapImage(){var i,j=0,x,a=arguments;document.MM_sr=[];for(i=0;i<(a.l
 </style>
 </head>
 <body onload={`MM_preloadImages(${covers.map(([, m]) => `'${L}${monthFile(m)}x.gif'`).join(',')})`}>
-<div align="center" class="door-space">
+<div {...attrs('align="center"')} class="door-space">
   <p>    <br>
     <br>
     <br>
@@ -54,23 +54,23 @@ function MM_swapImage(){var i,j=0,x,a=arguments;document.MM_sr=[];for(i=0;i<(a.l
 
 <table border="0" align="center" cellpadding="5" cellspacing="0" class="door">
   <tr>
-    <td width="390" align="left"><img class="letter" src={L + 'letter.gif'} width="364" height="456"
+    <td {...attrs('width="390" align="left"')}><img class="letter" src={L + 'letter.gif'} width="364" height="456"
       alt="Handwritten letter: 'Dear Mr Vernon: We accept the fact that we had to sacrifice a whole year on the web for whatever it is we did wrong... Sincerely Yours, Staff of Sixosix Magazine'"></td>
     <td valign="top"><br>
       <table border="0" align="center" cellpadding="1" cellspacing="0" class="covers">
         {rows.map(row => (
           <tr>
             {row.map(({ c: [alt, m, , h], n }) => (
-              <td><a href={issues[n].url}><img src={`${L}${n + 1}x.gif`} alt={alt} name={`issue${n + 1}`} width="112" height={h} border="0" id={`issue${n + 1}`}
+              <td><a href={issues[n].url}><img src={`${L}${n + 1}x.gif`} alt={alt} {...attrs(`name="issue${n + 1}" border="0"`)} width="112" height={h} id={`issue${n + 1}`}
                 onmouseover={`MM_swapImage('${m}','','${L}${monthFile(m)}x.gif',1)`} onmouseout="MM_swapImgRestore()"></a></td>
             ))}
           </tr>
         ))}
-        <tr align="center">
-          <td colspan="3">{covers.slice(0, 7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} name={m} width={w} height="15" id={m} alt="" />)}<br>
-          {covers.slice(7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} name={m} width={w} height="15" id={m} alt="" />)}<img src={L + '2004.gif'} width="31" height="15" alt="2004"></td>
+        <tr {...attrs('align="center"')}>
+          <td colspan="3">{covers.slice(0, 7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} {...attrs(`name="${m}"`)} width={w} height="15" id={m} alt="" />)}<br>
+          {covers.slice(7).map(([, m, w]) => <img src={`${L}${monthFile(m)}.gif`} {...attrs(`name="${m}"`)} width={w} height="15" id={m} alt="" />)}<img src={L + '2004.gif'} width="31" height="15" alt="2004"></td>
         </tr>
-        <tr align="left" valign="top">
+        <tr {...attrs('align="left" valign="top"')}>
           <td colspan="3"><br>
               <img src={L + 'logo.gif'} width="153" height="24" alt="sixosix"></td>
         </tr>

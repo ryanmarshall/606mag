@@ -101,6 +101,8 @@ PHP_TAIL = re.compile(rb'<b>\s*(Warning|Fatal error|Notice)\s*</b>|on line', re.
 def internal(key, info):
     if INTERNAL.search(key[0]):
         return True
+    if key[0] == '/main.php' and ('general', 'email') in key[1]:   # the newsletter sign-up's reply page
+        return True
     if info['mime'].startswith('text/html'):
         with open(os.path.join(blobs, info['digest']), 'rb') as fh:
             return bool(LISTING_TITLE.search(fh.read(2048)))

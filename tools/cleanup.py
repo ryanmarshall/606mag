@@ -39,6 +39,16 @@ QA_FORM = re.compile(r'<span[^>]*>\s*add\s*</span>\s*<span[^>]*>\s*your\s*</span
                      r'\s*(?:<br\s*/?>)?\s*<form\b[^>]*>\s*<table\b(?:(?!</table).)*?name="comment"(?:(?!</table).)*?</table\s*>',
                      re.I | re.S)
 
+# Newsletter sign-up boxes (removed at the owner's request; the list is long gone). Three shapes:
+# the sign-up row heading every comments table, which comes with a colour bar and the (emptied)
+# ad row before "comments:"; the "join the sixosix newsletter" boxes (div#email_submit*); and
+# any innermost table row that holds the sign-up text with its email field (covers, front pages).
+NEWSLETTER_ROWS = re.compile(r'<form name="email"(?:(?!</form).)*</form\s*>\s*<tr>\s*<td colspan="2" style="background-color:[^"]*'
+                             r'height:\s*5px;?"\s*>\s*</td>\s*</tr>\s*<tr>\s*<td[^>]*>\s*ad\s*</td>(?:(?!<tr\b).)*', re.I | re.S)
+NEWSLETTER_BOX = re.compile(r'<div\b[^>]*\bid="email_submit\d*"[^>]*>(?:(?!</div).)*</div\s*>', re.I | re.S)
+NEWSLETTER_ROW = re.compile(r'<tr\b[^>]*>(?:(?!<tr\b|</tr).)*?(?:newsletter_header\.gif|newsletter(?:(?!<tr\b|</tr).)*?<input\b)'
+                            r'(?:(?!<tr\b|</tr).)*</tr\s*>', re.I | re.S)
+
 # PHP error output captured with pages (2004-2010): it names server paths and accounts.
 PHP_ERROR = re.compile(r'(?:<br\s*/?>\s*)?<b>\s*(?:Warning|Fatal error|Parse error|Notice|Deprecated)\s*</b>\s*:'
                        r'[^\n]*?on line\s*<b>\s*\d+\s*</b>(?:\s*<br\s*/?>)?', re.I)
@@ -70,6 +80,11 @@ def clean(doc, stats):
     stats['comment forms removed'] += n
     doc, n = QA_FORM.subn('', doc)
     stats['comment forms removed'] += n
+    n = 0
+    for rx in (NEWSLETTER_ROWS, NEWSLETTER_BOX, NEWSLETTER_ROW):
+        doc, k = rx.subn('', doc)
+        n += k
+    stats['newsletter sign-ups removed'] += n
     doc, n = PHP_ERROR.subn('', doc)
     stats['php error messages removed'] += n
     doc, n = OFFSITE_IMG.subn('', doc)

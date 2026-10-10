@@ -21,7 +21,8 @@ Usage: extract_content.py PROJECT_DIR OUT_DIR
 import html, json, os, re, sqlite3, sys, unicodedata
 from collections import Counter
 from datetime import datetime, timezone
-from urllib.parse import parse_qsl, unquote, urlencode, urljoin, urlparse
+from zoneinfo import ZoneInfo
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urljoin, urlparse
 
 project, out_dir = sys.argv[1:3]
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -185,6 +186,9 @@ def link_target(raw, base, where):
         return raw
     absu = urljoin(base, raw)
     p = urlparse(absu)
+    if p.scheme not in ('http', 'https'):                     # e.g. href="define:%20ironic" (dead in 2004)
+        log.setdefault('de-linked non-web scheme', set()).add('%s: %s' % (where, raw))
+        return None
     if not is_own(p.hostname):
         if 'cafeshops.com' in (p.hostname or ''):
             return None                                       # the dead CafePress shop
@@ -196,8 +200,11 @@ def link_target(raw, base, where):
             log['de-linked dead external'].add('%s (%s)' % (absu, rec.get('why')))
             return None
         return raw
-    q = dict(parse_qsl(p.query.replace('&amp;', '&')))
+    q = dict(parse_qsl(p.query.replace('&amp;', '&'), keep_blank_values=True))
     q.pop('PHPSESSID', None)
+    # a blank value only means something for song= and stop= (those blank pages were published
+    # and differ from the page without them); elsewhere it equals the bare page
+    q = {k: v for k, v in q.items() if v != '' or k in ('song', 'stop')}
     if 'pahe' in q:                                           # the magazine's typo: pahe= for page=
         q['page'] = q.pop('pahe')
         log['link fixes'].append('%s: pahe= -> page=' % where)
@@ -218,6 +225,11 @@ def link_target(raw, base, where):
     hit = site_map.get(canon(urlunsplit_query(p, q)))
     if hit:
         return '/archive/' + hit
+    gen = articles.get(int(q['id'])) if (p.path.endswith('main.php') or p.path in ('', '/')) and q.get('id', '').isdigit() else None
+    if gen and gen['issueFolder'] == 'general':               # a general article (e.g. garden of eden): its section page
+        hit = site_map.get('/main.php?general=%s' % gen['folder'])
+        if hit:
+            return '/archive/' + hit
     log['de-linked internal'].add(canon(absu))
     return None
 
@@ -261,6 +273,13 @@ def rewrite(fragment, base, where):
                 if hit:
                     log.setdefault('thumbnails linked to full-size photo', []).append(where + ' -> ' + full)
                     return '<a%s>%s</a>' % (attrs[:h.start()] + 'href="/archive/%s"' % hit + attrs[h.end():], inner)
+            target = html.unescape(h.group(2)).strip()
+            pu = urlparse(urljoin(base, target))
+            if target and pu.scheme in ('http', 'https') and is_own(pu.hostname):
+                # a dead link to the magazine's own site keeps its link look and opens the archive's
+                # "not archived" notice, as the archive does (dead external links are de-linked)
+                log.setdefault('dead own-site links to the not-archived notice', set()).add(where)
+                return '<a%s>%s</a>' % (attrs[:h.start()] + 'href="/archive/_missing.html?u=%s"' % quote(urljoin(base, target), safe='') + attrs[h.end():], inner)
             return inner                                          # de-link, keep the words
         return '<a%s>%s</a>' % (attrs[:h.start()] + 'href="%s"' % html.escape(new, quote=True) + attrs[h.end():], inner)
     def area(m):
@@ -281,6 +300,13 @@ def rewrite(fragment, base, where):
 
 # ------------------------------------------------------------------ cutting a published page apart
 MAIN_TD = re.compile(r'<td\b([^>]*class="main_cell_margin"[^>]*)>', re.I)
+# The menu's "new comments" box (the five latest comments on the whole site) was generated on
+# every request: each page keeps the box its own capture shows. The rest of a captured menu is
+# always its issue's menu (only the "ISSUE N" label varied, taken from the visitor's session).
+NEW_COMMENTS = re.compile(r'<span class="submenu_title"[^>]*>\s*new comments\s*</span>\s*<table\b.*?</table\s*>', re.I | re.S)
+NEW_COMMENTS_SLOT = '<!--new comments-->'
+# end of the comments block: its last divider row, or the header bar when there were no comments
+COMMENTS_END = re.compile(r'(?:font-size:\s*3px;?"\s*>\s*&nbsp;\s*</td>|height:\s*5px;?"\s*>\s*</td>)\s*</tr>\s*</table\s*>', re.I)
 
 def parts(doc):
     """issues box, masthead, menu, content cell (attrs + html), footer, title, page css href."""
@@ -291,11 +317,20 @@ def parts(doc):
     foot = re.search(r'<div id="footer">.*?</div>.*?</div>', doc[td.end():], re.S)
     end = td.end() + foot.start() if foot else len(doc)
     form = doc.find('<form name="email"', td.end(), end)
+    tail = ''
     if form > 0:
+        last = None
+        for last in COMMENTS_END.finditer(doc, form, end):
+            pass
+        if last:   # markup the article continued with after the comments block (issue 2 asphalt, page 2)
+            es = doc.find('<div id="email_submit"', last.end(), end)
+            t = clean(doc[last.end():es if es > 0 else end], Counter())
+            if re.sub(r'<(?!img\b)[^>]*>|&nbsp;|\s', '', re.sub(r'<!--.*?-->', '', t, flags=re.S)):
+                tail = t.strip()
         end = doc.rfind('<table', td.end(), form)
     content = doc[td.end():end].strip()
-    while content[-4:].lower() == '<br>':                     # trailing spacer breaks
-        content = content[:-4].rstrip()
+    if form > 0:          # the comments block opens with <br><br> (Comments.astro adds it back);
+        content = re.sub(r'<br>\s*<br>$', '', content, flags=re.I).rstrip()   # any more are the article's
     title = re.search(r'<title>(.*?)</title>', doc, re.S | re.I)
     css = re.search(r'<link href="(issues/[^"]+/local\.css)"[^>]*>\s*<script', doc) or \
           [m for m in re.finditer(r'<link href="(issues/[^"]+/[^"/]+/local\.css)"', doc)]
@@ -305,7 +340,7 @@ def parts(doc):
             'mainAttrs': td.group(1), 'content': clean(content, stats),
             'footer': clean(foot.group(0), stats) if foot else '',
             'title': html.unescape(re.sub(r'\s+', ' ', title.group(1))).strip() if title else '',
-            'pageCss': page_css}
+            'pageCss': page_css, 'tail': tail, 'comments': form > 0}
 
 def css_text(href, base):
     """Content of a page stylesheet (its archived copy), links rewritten."""
@@ -351,6 +386,11 @@ for n, iss in issues.items():
     nav = SHOP_CELL.sub('', p['nav'])
     iss['frame'] = {k: rewrite(v, MAIN, iss['url']) for k, v in
                     (('issues', p['issues']), ('nav', nav), ('menu', p['menu']), ('footer', p['footer']))}
+    box = NEW_COMMENTS.search(iss['frame']['menu'])
+    if not box:
+        sys.exit('issue %d: menu has no "new comments" box' % n)
+    iss['frame']['newComments'] = box.group(0)
+    iss['frame']['menu'] = iss['frame']['menu'][:box.start()] + NEW_COMMENTS_SLOT + iss['frame']['menu'][box.end():]
     theme = re.search(r'<style[^>]*>(.*?)</style>', doc, re.S | re.I)
     iss['themeCss'] = CSS_URL.sub(lambda m: 'url("%s")' % asset(m.group(2), MAIN),
                                   theme.group(1).replace('<!--', '').replace('-->', '').replace('?>', '')) if theme else ''
@@ -519,6 +559,8 @@ for a in articles.values():
                     a['url'] + variant_path(vkey) + ' <- ' + variant_path(views[0]))
 
 EMPTY_PAGE = re.compile(r'&nbsp;|\s')
+COMMENT_COLOR = re.compile(r'<span style="color: (#[0-9A-Fa-f]{6});">subject</span>')
+comment_colors = {n: Counter() for n in issues}
 for a in articles.values():
     kept = []
     for vkey in sorted(a['variants'], key=variant_order):
@@ -526,7 +568,8 @@ for a in articles.values():
         where = a['url'] + variant_path(vkey)
         CURRENT.clear()
         CURRENT.update(dict(vkey))
-        swap = view = None
+        swap = view = new_comments = None
+        shows_comments, tail = None, ''
         if isinstance(ident, tuple) and ident[0] == 'view':     # a gallery view rebuilt from its page
             _, ident, vpage, k, n = ident
             view = (vpage, k, n)
@@ -538,7 +581,7 @@ for a in articles.values():
                 body = rewrite(sp[0], SERVER_BASE(a), where)
                 kept.append({'path': variant_path(vkey), 'url': where,
                              'mainAttrs': 'valign="top" width="682" class="main_cell_margin"',
-                             'html': swap_view(body, a, vpage, k, n), 'css': sp[1]})
+                             'html': swap_view(body, a, vpage, k, n), 'css': sp[1], 'newComments': None, 'comments': None})
                 log.setdefault('gallery views rebuilt', []).append(where)
                 continue
         elif isinstance(ident, tuple):                    # a view rebuilt from a sibling
@@ -557,6 +600,15 @@ for a in articles.values():
             p = parts(doc)
             CURRENT['_article'] = a; CURRENT['_page'] = dict(vkey).get('page', 'index')
             body, css, attrs = rewrite(p['content'], MAIN, where), css_text(p['pageCss'], MAIN), p['mainAttrs']
+            shows_comments = p['comments']
+            if a['issue'] in comment_colors:
+                comment_colors[a['issue']].update(COMMENT_COLOR.findall(doc))
+            if p['tail']:
+                CURRENT.update(dict(vkey)); CURRENT['_article'] = a; CURRENT['_page'] = dict(vkey).get('page', 'index')
+                tail = rewrite(p['tail'], MAIN, where)
+            box = NEW_COMMENTS.search(p['menu'])
+            CURRENT.clear()                                   # menu links take no page context (as in the issue menus)
+            new_comments = rewrite(box.group(0), MAIN, where) if box else None
             if view:
                 body = swap_view(body, a, view[0], view[1], view[2])
                 log.setdefault('gallery views rebuilt', []).append(where)
@@ -573,18 +625,35 @@ for a in articles.values():
         if not EMPTY_PAGE.sub('', re.sub(r'<(?!img\b)[^>]*>', '', body)).strip():
             log.setdefault('pages with no content (PHP errors only)', []).append(where)
             continue
-        kept.append({'path': variant_path(vkey), 'url': where, 'mainAttrs': attrs, 'html': body, 'css': css})
+        rec = {'path': variant_path(vkey), 'url': where, 'mainAttrs': attrs, 'html': body, 'css': css,
+               'newComments': new_comments, 'comments': shows_comments}
+        if tail:
+            rec['tail'] = tail
+        kept.append(rec)
+    # pages with no capture (server copy) show the comments block as the article's captured pages did
+    shown = [pg['comments'] for pg in kept if pg['comments'] is not None]
+    for pg in kept:
+        if pg['comments'] is None:
+            pg['comments'] = any(shown) if shown else pg['path'] == ''
     a['pages'] = kept
 
+# the comment colour each issue was published with (issues 1 and 2 differ from the database colour)
+for n, iss in issues.items():
+    top = comment_colors[n].most_common(1)
+    iss['commentColor'] = top[0][0] if top else iss['colorLight']
+    if iss['commentColor'] != iss['colorLight']:
+        log.setdefault('comment colour as published (differs from the database)', []).append('%d: %s' % (n, iss['commentColor']))
+
 # ------------------------------------------------------------------ comments, views
+CHICAGO = ZoneInfo('America/Chicago')     # the published dates match Chicago time on 682 of 684 checkable comments
 for aid, ts, name, link_, subject, text in db.execute(
         'SELECT article_id, insert_date, name, link, subject, comment FROM comments ORDER BY insert_date'):
     when = datetime.fromtimestamp(int(ts), timezone.utc)
     name, subject, text = unq(name), unq(subject), unq(text)
     if aid in articles and keep_comment(when, name, text, subject, link_ or ''):
-        safe = html.escape(scrub(re.sub(r'<[^>]+>', ' ', text))).strip()
+        safe = html.escape(scrub(re.sub(r'<[^>]+>', ' ', text)))   # line breaks kept exactly (shown with nl2br)
         articles[aid]['comments'].append({
-            'date': when.strftime('%m.%d.%Y'),
+            'date': when.astimezone(CHICAGO).strftime('%m.%d.%Y'),   # shown in the server's (Chicago) time, as published
             'name': html.unescape(names_only(name)).strip() or 'anonymous',
             'subject': scrub(html.unescape(subject)).strip(),
             'text': safe})
