@@ -31,7 +31,8 @@ function MM_swapImgRestore(){var i,x,a=document.MM_sr;for(i=0;a&&i<a.length&&(x=
 function MM_findObj(n,d){var x;if(!d)d=document;if(!(x=d[n])&&d.all)x=d.all[n];if(!x&&d.getElementById)x=d.getElementById(n);for(var i=0;!x&&d.forms&&i<d.forms.length;i++)x=d.forms[i][n];return x;}
 function MM_swapImage(){var i,j=0,x,a=arguments;document.MM_sr=[];for(i=0;i<(a.length-2);i+=3)if((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x;if(!x.oSrc)x.oSrc=x.src;x.src=a[i+2];}}
 </script>
-<style>
+<style is:global>
+  /* global: Astro's scoping would miss the <tbody> the browser inserts (the covers vanished on phones) */
   @media (max-width: 799px) {
     .door-space p { margin: 0; }
     .door-space br { display: none; }
