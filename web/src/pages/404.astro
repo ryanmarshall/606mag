@@ -2,11 +2,13 @@
 // Old 606mag.com links (main.php?id=…, issue_id, index.vN.php, any old file address) are
 // translated here: GitHub Pages serves this page for every unknown address. Works under
 // ryanmarshall.github.io/606mag/ and under 606mag.com/.
+import HeadTags from '../components/HeadTags.astro';
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <HeadTags pageView={false} />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>sixosix magazine chicago</title>
   <style>
@@ -44,8 +46,15 @@
       pairs.sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0; });
       var get = function (k) { for (var i = 0; i < pairs.length; i++) if (pairs[i][0] === k) return pairs[i][1]; return null; };
       var query = pairs.map(function (p) { return enc(p[0]) + '=' + enc(p[1]); }).join('&');
-      var go = function (target) { location.replace(base + target + location.hash); };
+      // the page a visitor is sent on to reports their real referrer (components/HeadTags.astro)
+      var go = function (target) {
+        // a note from the front door ("<time> <referrer>") is kept if fresh, else this visit's own referrer
+        try { var v = sessionStorage.getItem('606.ref'); v = v && Date.now() - parseInt(v, 10) < 30000 ? Date.now() + v.slice(v.indexOf(' ')) : Date.now() + ' ' + document.referrer; sessionStorage.setItem('606.ref', v); } catch (e) {}
+        location.replace(base + target + location.hash);
+      };
       var notFound = function () {
+        if (window.gtag) gtag('event', 'page_view', { page_title: 'not found' });   // dead old links show up in Analytics
+        try { sessionStorage.removeItem('606.ref'); } catch (e) {}
         document.getElementById('moving').style.display = 'none';
         document.getElementById('notfound').style.display = 'block';
       };

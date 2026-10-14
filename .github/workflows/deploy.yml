@@ -1,6 +1,7 @@
-# Builds the modern site (web/), adds the cleaned original under /archive (site/),
-# makes every link page-relative so it works at ryanmarshall.github.io/606mag/ and at
-# 606mag.com/, checks every internal link and image, and publishes to GitHub Pages.
+# Builds the modern site (web/), adds the cleaned original under /archive (site/) with the
+# site's analytics tags, writes the sitemap, makes every link page-relative so it works at
+# ryanmarshall.github.io/606mag/ and at 606mag.com/, checks every internal link and image,
+# and publishes to GitHub Pages.
 name: Deploy to GitHub Pages
 
 on:
@@ -36,6 +37,10 @@ jobs:
         run: |
           rm -rf web/dist/archive
           cp -R site web/dist/archive
+      - name: Give the archive the site's Google tags and canonical links
+        run: python3 tools/inject_archive_tags.py web/dist https://606mag.com
+      - name: Write the sitemap
+        run: python3 tools/make_sitemap.py web/dist https://606mag.com
       - name: Make links page-relative
         run: python3 tools/relativize_dist.py web/dist
       - name: Check every internal link and image

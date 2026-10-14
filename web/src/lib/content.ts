@@ -29,6 +29,13 @@ export const issues = issuesData as Issue[];
 export const articles = articlesData as Article[];
 export const issueByNumber = new Map(issues.map((i) => [i.number, i]));
 
+const OLD_PRIVACY = 'href="/archive/main/general-footer_page-privacy.html"';
+/** The issue's footer, its "privacy policy" link opening the current policy (the 2004 one stays in the archive). */
+export function footerOf(issue: Issue): string {
+  if (!issue.frame.footer.includes(OLD_PRIVACY)) throw new Error(`issue ${issue.number}: the footer's privacy link moved`);
+  return issue.frame.footer.replace(OLD_PRIVACY, 'href="/privacy/"');
+}
+
 /** Attributes of the original content cell, as a props object for Astro. */
 export function attrs(raw: string): Record<string, string> {
   const out: Record<string, string> = {};

@@ -3,6 +3,8 @@
 // twelve 2004 covers), in its original markup so it lays out exactly as it did.
 // Only the addresses are new; phones get a stacked layout (below 800px).
 import { attrs, issues } from '../lib/content';  // attrs(): the 2004 HTML attributes, untyped
+import HeadTags from '../components/HeadTags.astro';
+import { ADSENSE_CLIENT } from '../config';
 const L = '/archive/images/last_images/';
 // cover image, alt text, rollover month image name (the original named December "dev"), month art width
 const covers: [string, string, number, number][] = [
@@ -18,12 +20,19 @@ const rows = [0, 3, 6, 9].map(i => covers.slice(i, i + 3).map((c, j) => ({ c, n:
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<HeadTags />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+{ADSENSE_CLIENT && <meta name="google-adsense-account" content={ADSENSE_CLIENT} />}
 <title>Sixosix Magazine : 606 : chicago : Final Issue</title>
 <script is:inline>
 // Old links like 606mag.com/?id=60 land here (the front page exists, so the 404 page never
-// runs). Hand any query to the old-link redirect page via an address that doesn't exist.
-if (location.search) location.replace('index.php' + location.search + location.hash);
+// runs). Hand any query to the old-link redirect page via an address that doesn't exist,
+// keeping the visitor's real referrer for the page they end up on (components/HeadTags.astro).
+// Campaign tags alone (?utm_…, ?fbclid=…) aren't an old link.
+if (location.search.slice(1).split('&').some(function (q) { return q && !/^(utm_\w+|fbclid|gclid|gbraid|wbraid|msclkid|_gl)(=|$)/i.test(q); })) {
+  try { sessionStorage.setItem('606.ref', Date.now() + ' ' + document.referrer); } catch (e) {}
+  location.replace('index.php' + location.search + location.hash);
+}
 </script>
 <script is:inline>
 function MM_preloadImages(){var d=document;if(d.images){if(!d.MM_p)d.MM_p=[];var i,j=d.MM_p.length,a=arguments;for(i=0;i<a.length;i++)if(a[i].indexOf('#')!=0){d.MM_p[j]=new Image;d.MM_p[j++].src=a[i];}}}

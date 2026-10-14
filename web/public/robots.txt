@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /archive/_missing.html
+
+Sitemap: https://606mag.com/sitemap.xml

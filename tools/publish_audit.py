@@ -28,7 +28,8 @@ IPV4 = re.compile(rb'(?<![\d.])(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2
 PRIVATE = re.compile(rb'server-copy/extracted|sixosix\.sql|606mag-vault/|\bcandid\b|archive-raw/_blobs/[A-Z2-7]{32}')
 MALWARE = re.compile(rb'(eval|assert)\s*\(\s*(base64_decode|gzinflate|str_rot13)|FilesMan|hacked\s+by|'
                      rb'(\$\w+\s*\[\s*\d+\s*\]\s*\.\s*){8,}', re.I)
-ALLOWED_EMAILS = {b'noreply@anthropic.com'}
+ALLOWED_EMAILS = {b'noreply@anthropic.com',
+                  b'rmarsh000@gmail.com'}      # the owner's contact address on the privacy page (by choice)
 # the pipeline's own scripts legitimately contain detection signatures and local paths
 RULE_FILES = re.compile(r'^tools/[^/]+\.(py|sh)$')
 

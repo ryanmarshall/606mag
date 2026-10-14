@@ -1,0 +1,28 @@
+{
+  "_about": "Pages that never show the right-hand Google ads (an article's address covers all its pages): adult or very profane content, which Google's publisher policies restrict. Reasons are for the record. Ads show only on issue covers and article pages, at 976px and wider, once web/src/config.ts has the AdSense IDs.",
+  "noAds": [
+    {"url": "/issues/4/to-be-a-suicidegirl/", "why": "SuicideGirls feature: adult pin-up brand, burlesque"},
+    {"url": "/issues/12/lucha-va-voom/", "why": "burlesque show; heavy profanity and slurs in the text"},
+    {"url": "/issues/10/club-606/", "why": "strip club"},
+    {"url": "/issues/9/intersection-section/", "why": "sex acts, topless clubs, hookers"},
+    {"url": "/issues/3/intersection-section/", "why": "topless bars, nudity"},
+    {"url": "/issues/3/asphalt/", "why": "topless, thongs"},
+    {"url": "/issues/9/choose-your-own/", "why": "pornography and escorts in the story"},
+    {"url": "/issues/7/missed-connections/", "why": "bondage, pornography"},
+    {"url": "/issues/5/vaginal-architecture/", "why": "sexual anatomy throughout"},
+    {"url": "/issues/2/movies/", "why": "erotic-thriller review; a slur"},
+    {"url": "/issues/8/fcc/", "why": "broadcast-indecency piece quoting the strongest words"},
+    {"url": "/issues/8/the-allure-of-gorey/", "why": "reader comments with the c-word and heavy profanity"},
+    {"url": "/issues/9/mix-tape/", "why": "heavy profanity"},
+    {"url": "/issues/3/byob/", "why": "heavy profanity in the reader comments"},
+    {"url": "/issues/3/st-pats/", "why": "slurs"},
+    {"url": "/issues/8/threads/", "why": "a slur"},
+    {"url": "/issues/12/mix-tape/", "why": "a slur"},
+    {"url": "/issues/6/new-to-you/", "why": "fashion shoot with underwear"},
+    {"url": "/issues/7/salvaged/", "why": "fashion shoot with lingerie"},
+    {"url": "/issues/12/victorian-error/", "why": "fashion shoot with lingerie"},
+    {"url": "/issues/9/morning-after/", "why": "fashion shoot in underwear on a bed, suggestive poses"},
+    {"url": "/issues/12/", "why": "cover shows a lingerie photo from victorian-error"},
+    {"url": "/issues/8/mix-tape/", "why": "album cover with nudity"}
+  ]
+}

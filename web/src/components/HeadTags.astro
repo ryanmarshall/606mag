@@ -1,0 +1,39 @@
+---
+// Google's tags for every tracked page: Consent Mode v2 defaults, Google Analytics 4, and
+// Google's consent message (AdSense "Privacy & messaging"). Renders nothing while config.ts
+// is empty. Fenced with <!--606:tags--> so CI copies these exact bytes into the /archive
+// pages (tools/inject_archive_tags.py): every URL in it stays absolute https.
+import { GA4_ID, PUB_ID } from '../config';
+interface Props {
+  /** false on the old-link page: it sends its own "not found" view, or forwards the visit */
+  pageView?: boolean;
+}
+const { pageView = true } = Astro.props;
+// EEA, UK and Switzerland: nothing is stored until the visitor answers Google's consent message
+// ("advanced" consent mode: Analytics sends cookieless pings meanwhile). Elsewhere: allowed.
+const CONSENT_REGIONS = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+  'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'];
+const setup = [
+  'window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}',
+  `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(CONSENT_REGIONS)},wait_for_update:500});`,
+  "gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});",
+  "gtag('set','ads_data_redaction',true);",
+];
+if (GA4_ID) {
+  // A front-page visit that only forwards an old ?query link isn't a view (campaign tags alone
+  // don't make it one). The old-link pages leave "<time> <referrer>" in sessionStorage (606.ref)
+  // so the page the visitor lands on can report the real referrer; trusted for 30 seconds.
+  setup.push("gtag('js',new Date());",
+    `(function(){var v=${pageView}&&!(/^\\/(606mag\\/)?$/.test(location.pathname)&&location.search.slice(1).split('&').some(function(q){return q&&!/^(utm_\\w+|fbclid|gclid|gbraid|wbraid|msclkid|_gl)(=|$)/i.test(q);})),p={send_page_view:v},r=null;` +
+    "if(v){try{r=sessionStorage.getItem('606.ref');sessionStorage.removeItem('606.ref');}catch(e){}if(r&&Date.now()-parseInt(r,10)<30000)p.page_referrer=r.slice(r.indexOf(' ')+1);}" +
+    `gtag('config','${GA4_ID}',p);})();`);
+}
+const FC_PRESENT = "(function(){function signalGooglefcPresent(){if(!window.frames['googlefcPresent']){if(document.body){var f=document.createElement('iframe');" +
+  "f.style='width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';f.style.display='none';f.name='googlefcPresent';" +
+  "document.body.appendChild(f);}else{setTimeout(signalGooglefcPresent,0);}}}signalGooglefcPresent();})();";
+const block = !(GA4_ID || PUB_ID) ? '' : '<!--606:tags--><script>' + setup.join('') + '</script>'
+  + (GA4_ID ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script>` : '')
+  + (PUB_ID ? `<script async src="https://fundingchoicesmessages.google.com/i/${PUB_ID}?ers=1"></script><script>${FC_PRESENT}</script>` : '')
+  + '<!--/606:tags-->';
+---
+<Fragment set:html={block} />

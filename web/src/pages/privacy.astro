@@ -1,0 +1,68 @@
+---
+// The current privacy policy, in the magazine's own frame (issue 12, the last) and the 2004
+// policy page's layout. What it says follows config.ts: the analytics and advertising sections
+// appear only once those Google tags are switched on. The footer's "privacy policy" link opens
+// this page (lib/content.ts footerOf); the 2004 Icarus Media policy stays in the archive.
+import Magazine from '../layouts/Magazine.astro';
+import { issueByNumber } from '../lib/content';
+import { ADSENSE_CLIENT, CONTACT_EMAIL, GA4_ID, POLICY_UPDATED, PUB_ID, US_STATES_MESSAGE } from '../config';
+const issue = issueByNumber.get(12)!;
+const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
+const ext = (href: string, text: string) => `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+// reopens Google's consent message (AdSense Privacy & messaging) so a visitor can change their choice
+const SETTINGS = `<a href="#" onclick="window.googlefc=window.googlefc||{};googlefc.callbackQueue=googlefc.callbackQueue||[];googlefc.callbackQueue.push(function(){googlefc.showRevocationMessage();});return false;">privacy and cookie settings</a>`;
+const sections: [string, string][] = [
+  ['who we are', `606mag.com is the archive of sixosix magazine, a Chicago web magazine published in 2004 and kept online
+    as it was. It is maintained by Ryan Marshall. Questions or requests about this policy or anything on the site: ${mail}.`],
+  ['what you give us', `Nothing. The site has no accounts, sign-ups, comment forms or newsletter; there is nothing to fill in.
+    The reader comments shown under articles were posted in 2004–2006 and are shown with the name the reader gave
+    (email addresses and links removed). If one of them is yours and you would like it taken down, write to ${mail}.`],
+];
+if (GA4_ID) sections.push(['visitor statistics', `We use ${ext('https://marketingplatform.google.com/about/analytics/', 'Google Analytics')}
+    to count visits: which pages are read, how visitors arrive (for example a search or a link from another site), their
+    approximate location (country or city, from the internet address, which Google Analytics doesn't store) and the kind of device and
+    browser. It sets cookies named <i>_ga</i> and <i>_ga_…</i> to tell repeat visits apart. Google keeps the visit-by-visit
+    records for two months; after that only overall totals remain. We don't use any of it to identify anyone. When you follow
+    an old 2004-style link, your browser keeps a note of the page you came from for a few seconds (in session storage, not a
+    cookie) so the page you are sent on to can count where the visit came from. You can turn Google Analytics off in your
+    browser with Google's ${ext('https://tools.google.com/dlpage/gaoptout', 'opt-out add-on')}. More about
+    ${ext('https://policies.google.com/technologies/partner-sites', 'how Google uses information from sites or apps that use its services')}.`]);
+if (ADSENSE_CLIENT) sections.push(['advertising', `Some pages show ads from Google AdSense in the right-hand column, where the
+    magazine ran its ads in 2004. Google and other ad companies may place and read cookies in your browser, and use web beacons
+    and your internet address, to collect information as a result of showing ads here. Third-party vendors, including Google,
+    use cookies to serve ads based on a visitor's prior visits to this website or other websites. Google's use of advertising
+    cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the internet.
+    Besides Google, ads may come from other ad networks that Google certifies for AdSense
+    (${ext('https://support.google.com/adsense/answer/94149', "Google's list of certified vendors")}).
+    You can opt out of personalized advertising in
+    ${ext('https://myadcenter.google.com/', "Google's My Ad Center")}, and out of other vendors' use of cookies for personalized
+    advertising at ${ext('https://www.aboutads.info/choices/', 'aboutads.info')} (or
+    ${ext('https://www.youronlinechoices.eu/', 'youronlinechoices.eu')} in Europe). More about
+    ${ext('https://policies.google.com/technologies/partner-sites', 'how Google uses information from sites that use its services')}.`]);
+const gaPings = 'Google Analytics only sends anonymous, cookie-free counts';
+const dnt = " The site doesn't respond to browsers' Do Not Track signals; use the choices described here instead.";
+if (PUB_ID) sections.push(['your choices', `Visitors in the European Economic Area, the United Kingdom and
+    Switzerland are asked first, through Google's consent message. Until you choose, no cookies are set:
+    ${GA4_ID ? gaPings + ', and ' : ''}no personalized ads are shown. You can change your answer at any time in the ${SETTINGS}.
+    ${US_STATES_MESSAGE ? `Where US state privacy laws apply, Google's message also offers a "do not sell or share my personal
+    information" choice.` : ''} You can also block or delete cookies in your browser.${dnt}`]);
+else if (GA4_ID) sections.push(['your choices', `For visitors in the European Economic Area, the United Kingdom and
+    Switzerland no cookies are set: ${gaPings}. You can also block or delete cookies in your browser.${dnt}`]);
+else sections.push(['cookies', 'This site sets no cookies and runs no visitor statistics or ads.']);
+sections.push(
+  ['hosting', `The site is hosted on GitHub Pages, which may log visitors' internet addresses for security; see the
+    ${ext('https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement', 'GitHub privacy statement')}.`],
+  ['children', 'The site is not directed at children under 13, and we do not knowingly collect information from them.'],
+  ['changes', `If this policy changes, the new version will be posted here with its date. Last updated ${POLICY_UPDATED}.`],
+  ['the 2004 policy', `The magazine's original privacy policy from 2004 is kept, as a historical document, in the
+    <a href="/archive/main/general-footer_page-privacy.html">archive</a>. It no longer applies.`],
+);
+const body = '<table width="668" border="0" cellpadding="0" cellspacing="0" class="back"><tr><td align="center" valign="top">'
+  + '<table cellpadding="0" cellspacing="0" class="bodytext"><tr><td class="left_margin"><p><span class="style6">privacy policy</span><br><br>'
+  + sections.map(([h, t]) => `<b>${h}</b><br>${t.replace(/\s+/g, ' ').trim()}<br><br>`).join('')
+  + '</p></td></tr></table><p>&nbsp;</p></td></tr></table>';
+---
+<Magazine issue={issue} title="sixosix magazine chicago • 606mag.com • privacy policy"
+          mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
+  <Fragment set:html={body} />
+</Magazine>

@@ -3,9 +3,17 @@
 // footer come from the issue's own published page, laid out by the original
 // main606.css. Narrower windows get stepped overrides (see the style block).
 // Rendered in the 2004 pages' quirks mode: see src/middleware.ts.
-import { attrs, NEW_COMMENTS_SLOT, type Issue } from '../lib/content';
-interface Props { issue: Issue; title: string; mainAttrs: string; pageCss?: string; newComments?: string | null }
-const { issue, title, mainAttrs, pageCss = '', newComments } = Astro.props;
+import { attrs, footerOf, NEW_COMMENTS_SLOT, type Issue } from '../lib/content';
+import HeadTags from '../components/HeadTags.astro';
+import AdRight from '../components/AdRight.astro';
+interface Props {
+  issue: Issue; title: string; mainAttrs: string; pageCss?: string; newComments?: string | null;
+  /** the 2004 right-hand ad column (lib/ads.ts decides which pages) */
+  ads?: boolean;
+}
+const { issue, title, mainAttrs, pageCss = '', newComments, ads = false } = Astro.props;
+// the column exists only where the original layout fits: hidden under 976px, like the ad cell
+const HIDE_ADS = '<style>@media (max-width: 975px) { #ad_right { display: none; } }</style>';
 // the menu with this page's own "new comments" box (it changed with every visit)
 const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? issue.frame.newComments);
 ---
@@ -13,11 +21,13 @@ const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? is
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <HeadTags />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <link href="/archive/main606.css" rel="stylesheet" type="text/css" />
   <style is:global set:html={issue.themeCss}></style>
   <style is:global set:html={pageCss}></style>
+  {ads && <Fragment set:html={HIDE_ADS} />}
   <style is:global>
     /* The original is a fixed 976px layout; it is left exactly as it was whenever it fits.
        Narrower windows change only what no longer fits, in steps: */
@@ -121,7 +131,7 @@ const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? is
 </head>
 <body>
   <Fragment set:html={issue.frame.issues} />
-  <Fragment set:html={issue.frame.nav} />
+  <Fragment set:html={issue.frame.nav} />{ads && <AdRight />}
   <div id="content">
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -132,7 +142,7 @@ const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? is
         </td>
         <td {...attrs(mainAttrs)}>
           <slot />
-          <Fragment set:html={issue.frame.footer} />
+          <Fragment set:html={footerOf(issue)} />
         </td>
         <td {...attrs('width="180" align="center" valign="top"')} class="ad-column">&nbsp;</td>
       </tr>

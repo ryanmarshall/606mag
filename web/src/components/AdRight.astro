@@ -1,0 +1,18 @@
+---
+// The 2004 right-hand ad column, as published: a div that the original main606.css places
+// (#ad_right: left 796px, top 79px, 179px wide, over the empty third column) between the
+// masthead and the page, holding two of Google's 160x600 units. Desktop only: the layout
+// hides it under 976px, and Google's script is requested only while it shows (a unit pushed
+// while display:none fails with availableWidth=0, and phones never download ad code).
+import { attrs } from '../lib/content';
+import { ADSENSE_CLIENT, ADSENSE_SLOT, ADTEST } from '../config';
+const LOADER = `(function(){var narrow=window.matchMedia('(max-width: 975px)');
+function load(){if(narrow.matches)return;
+if(narrow.removeEventListener)narrow.removeEventListener('change',load);else narrow.removeListener(load);
+var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';
+s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}';document.head.appendChild(s);
+var q=window.adsbygoogle=window.adsbygoogle||[];document.querySelectorAll('#ad_right ins.adsbygoogle').forEach(function(){q.push({});});}
+if(narrow.addEventListener)narrow.addEventListener('change',load);else narrow.addListener(load);load();})();`;
+const unit = `<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="${ADSENSE_CLIENT}" data-ad-slot="${ADSENSE_SLOT}"${ADTEST ? ' data-adtest="on"' : ''}></ins>`;
+---
+<div id="ad_right" {...attrs('align="center"')}><Fragment set:html={unit + '<br><br>' + unit} /><script is:inline set:html={LOADER} /></div>
