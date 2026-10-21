@@ -11,6 +11,7 @@ rebuilt site's Google tags, and point archive copies of rebuilt pages at the reb
   readers' Sad Libs results (main/...adj1-...), the photo popups (popup/) and the bare bodies of
   the 2004 section pages (issues/general/*/index.html; their full pages are main/general-*.html). They stay online; robots.txt doesn't block them.
 - <html lang="en"> where the 2004 page had no language (it changes nothing on screen).
+- "about this archive" leads the footer menu, as on the rebuilt pages (web/src/pages/about.astro).
 - The RSS feed (rss.xml, behind every page's RSS button) links its items to the rebuilt
   articles instead of the dead 2004 main.php?id=N addresses.
 - The footer's "privacy policy" link opens the current policy (/privacy/), as on the rebuilt
@@ -31,7 +32,8 @@ repo_site = os.path.realpath(os.path.join(os.path.dirname(os.path.abspath(__file
 if os.path.islink(archive) or os.path.realpath(archive) == repo_site:
     sys.exit('inject_archive_tags: %s is (a link to) site/ itself; run it on a build copy only' % archive)
 
-FENCE = re.compile(r'<!--606:(tags|canonical|robots|note)-->.*?<!--/606:\1-->', re.S)
+FENCE = re.compile(r'<!--606:(tags|canonical|robots|note|about)-->.*?<!--/606:\1-->', re.S)
+MENU = '<div id="footer_menu">'
 HTML_TAG = re.compile(r'<html\b(?![^>]*\blang\s*=)', re.I)
 NOINDEX = re.compile(r'^(main/[^/]*adj1-[^/]*|popup/[^/]*)\.html$')      # Sad Libs results (some named for the reader), popups
 OLD_POLICY = 'main/general-footer_page-privacy.html'
@@ -84,7 +86,7 @@ for f, url in bodies.items():
 # bodies of the 2004 site's own section pages, whose full page is archive/main/general-*.html
 GENERAL_BODY = re.compile(r'^issues/general/[^/]+/index\.html$')
 
-tagged = linked = hidden = skipped = changed = 0
+tagged = linked = hidden = skipped = changed = abouts = 0
 for dp, dirs, files in os.walk(archive):
     dirs.sort()
     for name in sorted(files):
@@ -114,6 +116,10 @@ for dp, dirs, files in os.walk(archive):
             new = new[:first.start()] + '<html lang="en"' + new[first.start() + 5:]
         elif not first and re.match(r'<!doctype html>', new, re.I):  # pages generated without an <html> tag
             new = new[:15] + '<html lang="en">' + new[15:]
+        if MENU in new:                       # the footer menu's first link: what this site is
+            to_about = posixpath.relpath('about', posixpath.dirname('archive/' + rel)) + '/'
+            new = new.replace(MENU, MENU + '<!--606:about--><a href="%s">about this archive</a>      |      <!--/606:about-->' % to_about, 1)
+            abouts += 1
         if rel == OLD_POLICY:
             if new.count(NOTE_AT) != 1:
                 sys.exit('inject_archive_tags: %s changed; place the 2004-policy note by hand' % rel)
@@ -144,5 +150,5 @@ if os.path.exists(feed_path):
             fh.write(new)
         changed += 1
 print('rss.xml: %d links open the rebuilt site' % fixed)
-print('archive pages: %d with the Google tags, %d with a canonical link, %d not for search results, '
-      '%d fragments skipped, %d files changed' % (tagged, linked, hidden, skipped, changed))
+print('archive pages: %d with the Google tags, %d with a canonical link, %d not for search results, %d with the '
+      'about link, %d fragments skipped, %d files changed' % (tagged, linked, hidden, abouts, skipped, changed))

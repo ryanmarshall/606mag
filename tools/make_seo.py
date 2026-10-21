@@ -417,6 +417,13 @@ pages['/'] = {
                    'and humor. all twelve 2004 issues, kept as they were published.',
     **{k: front[k] for k in ('image', 'imageWidth', 'imageHeight', 'imageAlt')},
 }
+pages['/about/'] = {
+    'name': 'about this archive',
+    'title': 'about this archive | %s | 606mag.com' % BRAND,
+    'description': '606mag.com is the archive of sixosix, a chicago web magazine published monthly in 2004, restored '
+                   'in 2026 from the wayback machine and the magazine\'s own database.',
+    **{k: front[k] for k in ('image', 'imageWidth', 'imageHeight', 'imageAlt')},
+}
 pages['/privacy/'] = {
     'name': 'privacy policy',
     'title': 'privacy policy | %s | 606mag.com' % BRAND,

@@ -123,6 +123,19 @@ export function articleSeo(article: Article, page: Page): Seo {
   return { ...p, url: page.url, type: 'article', jsonLd };
 }
 
+/** The page that says what this site is (pages/about.astro). */
+export function aboutSeo(): Seo {
+  const p = pageSeo('/about/');
+  return {
+    ...p, url: '/about/', type: 'website',
+    jsonLd: [
+      { '@type': 'AboutPage', '@id': `${SITE}/about/`, url: `${SITE}/about/`, name: p.name ?? p.title,
+        description: p.description, inLanguage: 'en', about: { '@id': MAGAZINE }, isPartOf: { '@id': `${SITE}/#website` } },
+      crumbs([['sixosix magazine', '/'], ['about this archive', '/about/']]),
+    ],
+  };
+}
+
 export function plainSeo(url: string): Seo {
   return { ...pageSeo(url), url, type: 'website', jsonLd: [] };
 }

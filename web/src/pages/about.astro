@@ -1,0 +1,37 @@
+---
+// What this site is: the archive of sixosix (2004) and how it was restored in 2026. In the
+// magazine's own frame (issue 12, the last) and the privacy page's layout; every footer's
+// first link opens it (lib/content.ts footerOf, tools/inject_archive_tags.py for /archive).
+import Magazine from '../layouts/Magazine.astro';
+import { issueByNumber } from '../lib/content';
+import { aboutSeo } from '../lib/seo';
+import { CONTACT_EMAIL } from '../config';
+const issue = issueByNumber.get(12)!;
+const seo = aboutSeo();
+const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
+const ext = (href: string, text: string) => `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+const sections: [string, string][] = [
+  ['sixosix', `606mag.com is the archive of sixosix, a Chicago web magazine published monthly from January to
+    December 2004 by Icarus Media LLC: art, music, nightlife, photo essays, humor and reader Q&amp;A.
+    "your city. your stories." All twelve issues are here, starting with <a href="/issues/1/">issue 1</a>.`],
+  ['what happened', `The magazine stopped after its twelfth issue. The site stayed up for years, broke in a 2010
+    server move, was later hacked, and went dark.`],
+  ['the restoration', `In 2026 it was restored from the Internet Archive's
+    ${ext('https://web.archive.org/web/2004*/606mag.com', 'Wayback Machine')}, Common Crawl and the magazine's own
+    server and database. Every issue is shown as it was published in 2004, with a few changes: comment and sign-up
+    forms are gone, reader comments show names only, old addresses lead to the restored pages, and pictures have
+    descriptions for screen readers. The original 2004 pages are kept unchanged in the
+    <a href="/archive/index.html">archive</a>.`],
+  ['the work is theirs', `The words and pictures belong to their 2004 writers and photographers. If something here
+    is yours and you'd like it credited or taken down, or you have pages or photos that are missing, write to ${mail}.`],
+  ['how to cite', 'sixosix magazine, issue N, Month 2004. 606mag.com'],
+];
+const body = '<table width="668" border="0" cellpadding="0" cellspacing="0" class="back"><tr><td align="center" valign="top">'
+  + '<table cellpadding="0" cellspacing="0" class="bodytext"><tr><td class="left_margin"><p><span class="style6">about this archive</span><br><br>'
+  + sections.map(([h, t]) => `<b>${h}</b><br>${t.replace(/\s+/g, ' ').trim()}<br><br>`).join('')
+  + '</p></td></tr></table><p>&nbsp;</p></td></tr></table>';
+---
+<Magazine issue={issue} title={seo.title} seo={seo}
+          mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
+  <Fragment set:html={body} />
+</Magazine>
