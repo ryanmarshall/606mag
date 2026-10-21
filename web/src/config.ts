@@ -19,7 +19,7 @@ const env = import.meta.env;
 const pick = (v: unknown, fallback: string): string => (typeof v === 'string' ? v.trim() : fallback);
 
 /** Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX' */
-export const GA4_ID = pick(env.PUBLIC_GA4_ID, '');
+export const GA4_ID = pick(env.PUBLIC_GA4_ID, 'G-ZVKBSPGJ08');
 /** AdSense publisher ID, e.g. 'ca-pub-0123456789012345' */
 export const ADSENSE_CLIENT = pick(env.PUBLIC_ADSENSE_CLIENT, 'ca-pub-9710988980113135');
 /** the 160x600 display unit's ID (data-ad-slot); both units in the column use it */

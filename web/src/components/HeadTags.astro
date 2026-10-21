@@ -23,8 +23,9 @@ if (GA4_ID) {
   // A front-page visit that only forwards an old ?query link isn't a view (campaign tags alone
   // don't make it one). The old-link pages leave "<time> <referrer>" in sessionStorage (606.ref)
   // so the page the visitor lands on can report the real referrer; trusted for 30 seconds.
+  // Only the real site counts: local builds and test servers load the tag but send nothing.
   setup.push("gtag('js',new Date());",
-    `(function(){var v=${pageView}&&!(/^\\/(606mag\\/)?$/.test(location.pathname)&&location.search.slice(1).split('&').some(function(q){return q&&!/^(utm_\\w+|fbclid|gclid|gbraid|wbraid|msclkid|_gl)(=|$)/i.test(q);})),p={send_page_view:v},r=null;` +
+    `(function(){if(location.hostname!=='606mag.com')return;var v=${pageView}&&!(/^\\/(606mag\\/)?$/.test(location.pathname)&&location.search.slice(1).split('&').some(function(q){return q&&!/^(utm_\\w+|fbclid|gclid|gbraid|wbraid|msclkid|_gl)(=|$)/i.test(q);})),p={send_page_view:v},r=null;` +
     "if(v){try{r=sessionStorage.getItem('606.ref');sessionStorage.removeItem('606.ref');}catch(e){}if(r&&Date.now()-parseInt(r,10)<30000)p.page_referrer=r.slice(r.indexOf(' ')+1);}" +
     `gtag('config','${GA4_ID}',p);})();`);
 }
