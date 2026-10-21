@@ -2,7 +2,9 @@
 """Give the images of a build their alt text: what lettering images say, what photos show,
 and an empty alt for decoration (tools/image_alt.json, written by describing every image the
 site shows). Applies to the rebuilt pages and the archive pages alike, wherever the
-same image file appears; images without an entry are left as they are.
+same image file appears; images without an entry are left as they are. The articles' photos
+use their alt text in context (tools/image_alt_context.json, from tools/make_seo.py): the
+article, its credits and, for the lead photo, its summary, then what the picture shows.
 
 Run on the build output before relativize_dist.py (rebuilt pages still use /archive/... paths;
 archive pages use paths relative to themselves). Line endings are kept.
@@ -15,6 +17,10 @@ from urllib.parse import unquote
 dist = sys.argv[1].rstrip('/')
 here = os.path.dirname(os.path.abspath(__file__))
 images = json.load(open(os.path.join(here, 'image_alt.json'), encoding='utf-8'))['images']
+# the articles' photos in context: which article, by whom, what it's about (tools/make_seo.py)
+for key, alt in json.load(open(os.path.join(here, 'image_alt_context.json'), encoding='utf-8'))['images'].items():
+    if key in images:
+        images[key] = dict(images[key], alt=alt)
 
 IMG = re.compile(r'<img\b[^>]*>', re.I)
 SRC = re.compile(r'''\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.I)

@@ -18,7 +18,7 @@ interface PageSeo {
 interface Credit { role: string; name: string }
 const data = seoData as unknown as {
   pages: Record<string, PageSeo>;
-  articles: Record<string, { credits: Credit[]; teaser: string }>;
+  articles: Record<string, { name: string; credits: Credit[]; teaser: string }>;
   people: Record<string, { name: string; age: number; jobTitle: string }[]>;
 };
 
@@ -76,7 +76,8 @@ export function issueSeo(issue: Issue, parts: Article[]): Seo {
         name: `sixosix magazine, ${issueName(issue)}`, issueNumber: String(issue.number), datePublished: month(issue),
         inLanguage: 'en', isPartOf: { '@id': MAGAZINE }, publisher: { '@id': ORG },
         ...(p.image ? { image: abs(p.image) } : {}),
-        hasPart: parts.map((a) => ({ '@type': 'Article', '@id': `${SITE}${a.url}#article`, headline: a.title, url: SITE + a.url })) },
+        hasPart: parts.filter((a) => !data.pages[a.url]?.canonical)
+          .map((a) => ({ '@type': 'Article', '@id': `${SITE}${a.url}#article`, headline: nameOf(a), url: SITE + a.url })) },
       crumbs([['sixosix magazine', '/'], [issueName(issue), issue.url]]),
     ],
   };
@@ -93,7 +94,7 @@ export function articleSeo(article: Article, page: Page): Seo {
   const p = pageSeo(page.url);
   const credits = data.articles[String(article.id)]?.credits ?? [];
   const id = `${SITE}${article.url}#article`;
-  const trail: [string, string][] = [['sixosix magazine', '/'], [issueName(issue), issue.url], [article.title, article.url]];
+  const trail: [string, string][] = [['sixosix magazine', '/'], [issueName(issue), issue.url], [nameOf(article), article.url]];
   const jsonLd: object[] = [];
   if (page.url === article.url) {
     const first = pageSeo(article.url);
@@ -102,7 +103,7 @@ export function articleSeo(article: Article, page: Page): Seo {
     const editors = credits.filter((c) => EDITOR.test(c.role)).map(person);
     const others = credits.filter((c) => !AUTHOR.test(c.role) && !EDITOR.test(c.role)).map(person);
     jsonLd.push({
-      '@type': 'Article', '@id': id, url: SITE + article.url, headline: article.title.slice(0, 110),
+      '@type': 'Article', '@id': id, url: SITE + article.url, headline: nameOf(article).slice(0, 110),
       description: first.description, datePublished: month(issue), inLanguage: 'en',
       ...(article.section ? { articleSection: article.section } : {}),
       ...(authors.length ? { author: authors } : {}),
@@ -134,6 +135,36 @@ export function aboutSeo(): Seo {
       crumbs([['sixosix magazine', '/'], ['about this archive', '/about/']]),
     ],
   };
+}
+
+/** Every article, issue by issue (pages/articles.astro). */
+export function articlesSeo(): Seo {
+  const p = pageSeo('/articles/');
+  return {
+    ...p, url: '/articles/', type: 'website',
+    jsonLd: [
+      { '@type': 'CollectionPage', '@id': `${SITE}/articles/`, url: `${SITE}/articles/`, name: p.name ?? p.title,
+        description: p.description, inLanguage: 'en', about: { '@id': MAGAZINE }, isPartOf: { '@id': `${SITE}/#website` } },
+      crumbs([['sixosix magazine', '/'], ['all articles', '/articles/']]),
+    ],
+  };
+}
+
+/** An article's byline as one phrase ("words by tom hardman, photos by douglas fogelson"). */
+export function creditsOf(id: number): string {
+  const credits = data.articles[String(id)]?.credits ?? [];
+  const roles = [...new Set(credits.map((c) => c.role))];
+  return roles.map((r) => `${r === 'by' ? 'by' : `${r} by`} ${credits.filter((c) => c.role === r).map((c) => c.name).join(' and ')}`).join(', ');
+}
+
+/** An article's name as its issue menu shows it (tools/make_seo.py display_name). */
+export function nameOf(article: Article): string {
+  return data.articles[String(article.id)]?.name ?? article.title;
+}
+
+/** The first copy of a page published twice (its canonical address), else the page itself. */
+export function firstCopyOf(url: string): string {
+  return data.pages[url]?.canonical ?? url;
 }
 
 export function plainSeo(url: string): Seo {

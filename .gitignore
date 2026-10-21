@@ -11,6 +11,7 @@ archive-raw/
 tools/*.json
 !tools/curation.json
 !tools/image_alt.json
+!tools/image_alt_context.json
 tools/*.jsonl
 tools/*.log
 tools/*.none

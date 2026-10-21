@@ -11,7 +11,7 @@ const LIMITED_QUIRKS = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitiona
 export const onRequest = defineMiddleware(async (context, next) => {
   const response = await next();
   const path = context.url.pathname.replace(/^\/606mag(?=\/)/, '');
-  const doctype = path === '/' ? LIMITED_QUIRKS : path.startsWith('/issues/') || path === '/privacy/' || path === '/about/' ? QUIRKS : null;
+  const doctype = path === '/' ? LIMITED_QUIRKS : path.startsWith('/issues/') || path === '/privacy/' || path === '/about/' || path === '/articles/' ? QUIRKS : null;
   if (!doctype || !(response.headers.get('content-type') ?? '').includes('text/html')) return response;
   const html = (await response.text()).replace(/^\s*<!doctype html>/i, doctype);
   return new Response(html, { status: response.status, statusText: response.statusText, headers: response.headers });

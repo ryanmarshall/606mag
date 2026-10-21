@@ -14,6 +14,11 @@ Pages published twice (a gallery's opening page and its "photo 1", the same phot
 addresses, one article issued twice) name the first copy as canonical, so the copies don't
 compete in search.
 
+It also writes tools/image_alt_context.json: alt text for the articles' photos that says which
+article each is from, by whom and (for the lead photo) what the article is about, followed by
+what the picture shows. tools/apply_alt_text.py and tools/make_sitemap.py prefer it over the
+plain description in tools/image_alt.json.
+
 Rerun after changing the content or tools/image_alt.json:  python3 tools/make_seo.py
 """
 import html, json, os, re, struct, sys
@@ -143,7 +148,8 @@ def joined(*parts):
         out += p
     return out
 
-TITLES = {a['title'].lower() for a in articles} | {(a['section'] or '').lower() for a in articles} - {''}
+TITLES = ({a['title'].lower() for a in articles} | {(a.get('menuTitle') or '').lower() for a in articles}
+          | {(a['section'] or '').lower() for a in articles}) - {''}
 
 def clean_alt(alt, own_title=''):
     """Alt text fit for a snippet: no site watermarks or cover credits, no copyright line, and no
@@ -153,6 +159,19 @@ def clean_alt(alt, own_title=''):
     if len(parts) > 1 and parts[0].strip().lower() in TITLES and parts[0].strip().lower() != own_title.lower():
         parts = parts[1:]
     return lower_shouting(tidy(' — '.join(parts)))
+
+def display_name(a):
+    """The article's name as its issue menu shows it (what readers click), unless the menu cut it
+    short ('crap, scraps and...'); a redundant 'feature - ' prefix goes. Spelling variants of
+    one name ('St Pats' / "st pat's") keep the one in the magazine's lowercase style."""
+    menu, title = (a.get('menuTitle') or '').strip(), a['title'].strip()
+    if not menu or menu.endswith(('...', '…')):
+        name = title
+    elif re.sub(r'\W', '', menu.lower()) == re.sub(r'\W', '', title.lower()):
+        name = min(menu, title, key=lambda x: sum(c.isupper() for c in x))
+    else:
+        name = menu
+    return re.sub(r'(?i)^(feature|fashion)\s+-\s+', '', name)
 
 # --- credits -------------------------------------------------------------------------------
 ROLE = (r'(?:words|text|story|interview|written|novella|photos?|photographs|photography|pictures|illustrations?'
@@ -338,11 +357,15 @@ for a in built:
 for a in built:
     issue = issues[a['issue']]
     month = issue['month'].lower()
+    a = dict(a, title=display_name(a))            # the menu's name throughout (titles, labels)
     creds = article_credits(a)
     dek = teaser(a)
     first_srcs = set(images(a['pages'][0]['html']))
     first_pic = preview(images(a['pages'][0]['html'])) or issue_pic[a['issue']]
-    arts[a['id']] = {'credits': [{'role': r, 'name': n} for r, n in creds], 'teaser': dek}
+    first_body = text_of(a['pages'][0]['html'])
+    summary = joined(dek, sentences(first_body) if len(first_body) > 60 else '')
+    arts[a['id']] = {'name': a['title'], 'credits': [{'role': r, 'name': n} for r, n in creds], 'teaser': dek,
+                     'summary': clip(summary, 120) if len(summary) >= 40 else ''}
     # photo pages numbered by the photo they show
     order = []
     for p in a['pages']:
@@ -398,8 +421,8 @@ for n, issue in issues.items():
     for sec in issue.get('sections', []):
         for aid in sec.get('articles', []):
             a = next((x for x in articles if x['id'] == aid), None)
-            if a and a['title'] not in names:
-                names.append(a['title'])
+            if a and display_name(a) not in names:
+                names.append(display_name(a))
     rec = {'name': 'issue %d: %s' % (n, issue['name']),
            'title': 'issue %d: %s | %s, %s' % (n, issue['name'], BRAND, month),
            'description': clip('issue %d of sixosix, a chicago web magazine, %s. in this issue: %s.' % (n, month, ', '.join(names)), DESC_MAX)}
@@ -422,6 +445,13 @@ pages['/about/'] = {
     'title': 'about this archive | %s | 606mag.com' % BRAND,
     'description': '606mag.com is the archive of sixosix, a chicago web magazine published monthly in 2004, restored '
                    'in 2026 from the wayback machine and the magazine\'s own database.',
+    **{k: front[k] for k in ('image', 'imageWidth', 'imageHeight', 'imageAlt')},
+}
+pages['/articles/'] = {
+    'name': 'all articles',
+    'title': 'all articles, issue by issue | %s | 606mag.com' % BRAND,
+    'description': 'every article from the twelve 2004 issues of sixosix, a chicago web magazine, with its writers '
+                   'and photographers: features, photo essays, regulars and more.',
     **{k: front[k] for k in ('image', 'imageWidth', 'imageHeight', 'imageAlt')},
 }
 pages['/privacy/'] = {
@@ -467,6 +497,75 @@ for a in built:
         else:
             rec['description'] = clip('30 under 30: ' + '; '.join('%s, %d, %s' % (x['name'], x['age'], x['jobTitle']) for x in here) + '.', DESC_MAX)
 
+# --- photo alt text in context ---------------------------------------------------------------
+# Each article's photos say which article they're from and who made them; the lead photo also
+# says what the article is about. The description of the picture itself follows ("photo: ...").
+def as_tail(alt):
+    alt = clean_alt(alt)
+    return alt[:1].lower() + alt[1:] if alt[:1].isupper() and not alt[:2].isupper() else alt
+
+context = {}
+for a in built:
+    if a['url'] in canonical:
+        continue                                   # an article published twice: its first copy speaks
+    info = arts[a['id']]
+    name, creds, summary = info['name'], [(c['role'], c['name']) for c in info['credits']], info['summary']
+    folder = 'issues/%s/%s/' % (a['issueFolder'], a['folder'])
+    lead = main_photo(images(a['pages'][0]['html']))
+    lead_key = lead[0][len('/archive/'):] if lead else None
+    order = []
+    for p in a['pages']:
+        if 'img-' in p['path']:
+            mp = main_photo(images(p['html']))
+            if mp and mp[0] not in order:
+                order.append(mp[0])
+    for p in a['pages']:
+        for src in images(p['html']):
+            key = src[len('/archive/'):] if src.startswith('/archive/') else None
+            if not key or not key.startswith(folder) or key in context:
+                continue
+            alt, kind = alt_of(src)
+            if kind not in ('photo', 'mixed') or not alt:
+                continue
+            word = 'photo' if kind == 'photo' else 'picture'
+            if key == lead_key:
+                head = name + (', ' + all_credits(creds) if creds else '')
+                text = joined(head + (': ' + summary if summary else ''), '%s: %s' % (word, as_tail(alt)))
+            else:
+                where = name + (', photo %d of %d' % (order.index(src) + 1, len(order)) if src in order and len(order) > 1 else '')
+                pcred = credit_line(creds, 'photo')
+                text = '%s%s: %s' % (where, ', ' + pcred if pcred else '', as_tail(alt))
+            context[key] = clip(text, 280)
+
+# 30 under 30: each portrait names its person, as its caption image does
+for i, person in enumerate(people, 1):
+    key = 'issues/wigu/under30/images/30_%02d.gif' % i
+    alt = alt_of('/archive/' + key)[0]
+    if alt:
+        context[key] = clip('30 under 30: %s, %d, %s, april 2004. photo: %s' % (person['name'], person['age'], person['jobTitle'], as_tail(alt)), 280)
+
+# issue covers: a picture that links to an article says which one
+LINK = re.compile(r'<a\b[^>]*\bhref="([^"]+)"[^>]*>(.*?)</a>', re.S | re.I)
+by_url = {a['url']: a for a in built}
+for n, issue in issues.items():
+    for href, inner in LINK.findall(issue['coverHtml']):
+        a = by_url.get(canonical.get(href, href))
+        if not a:
+            continue
+        info = arts[a['id']]
+        head = info['name'] + (', ' + credit_line([(c['role'], c['name']) for c in info['credits']]) if info['credits'] else '')
+        for src in images(inner):
+            key = src[len('/archive/'):] if src.startswith('/archive/') else None
+            alt, kind = alt_of(src)
+            if key and kind in ('photo', 'mixed') and alt and key not in context:
+                context[key] = clip('%s: %s' % (head, as_tail(alt)), 280)
+
+# link previews describe their picture the same way
+for rec in pages.values():
+    k = rec.get('image', '')[len('/archive/'):]
+    if k in context:
+        rec['imageAlt'] = context[k]
+
 # every page that is no copy has its own title: a clash gets a readable qualifier, never an address
 seen = {}
 for url, rec in pages.items():
@@ -484,6 +583,14 @@ out = {'_about': 'Generated by tools/make_seo.py; read by web/src/lib/seo.ts. Se
 with open(os.path.join(DATA, 'seo.json'), 'w', encoding='utf-8') as fh:
     json.dump(out, fh, indent=1, ensure_ascii=False)
     fh.write('\n')
+
+with open(os.path.join(ROOT, 'tools', 'image_alt_context.json'), 'w', encoding='utf-8') as fh:
+    json.dump({'_about': 'Generated by tools/make_seo.py: alt text for the articles\' photos with their article, credits '
+                         'and (lead photo) summary, ahead of the picture\'s description from tools/image_alt.json. '
+                         'Used by tools/apply_alt_text.py and tools/make_sitemap.py. Edit the script, not this file.',
+               'images': dict(sorted(context.items()))}, fh, indent=1, ensure_ascii=False)
+    fh.write('\n')
+print('photo alt text in context: %d photos' % len(context))
 
 own = [r['title'] for r in pages.values() if 'canonical' not in r]
 print('seo: %d pages (%d copies pointing at their original), %d distinct titles, %d with a picture, '

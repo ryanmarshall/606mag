@@ -1,0 +1,32 @@
+---
+// Every article, issue by issue: the twelve issues in order, each issue's sections as its menu
+// lists them, every article linked with its byline. Built from the data, so it can't drift.
+// In the magazine's own frame (issue 12, the last), laid out like the about and privacy pages;
+// the about page links here.
+import Magazine from '../layouts/Magazine.astro';
+import { articles, issues, issueByNumber } from '../lib/content';
+import { articlesSeo, creditsOf, firstCopyOf, nameOf } from '../lib/seo';
+const issue = issueByNumber.get(12)!;
+const seo = articlesSeo();
+const byId = new Map(articles.map((a) => [a.id, a]));
+const esc = (s: string) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+const entry = (id: number) => {
+  const a = byId.get(id)!;
+  const byline = creditsOf(id);
+  return `<a href="${firstCopyOf(a.url)}">${esc(nameOf(a))}</a>${byline ? `, ${esc(byline)}` : ''}`;
+};
+const blocks = issues.map((i) => {
+  const lines = i.sections.filter((s) => s.articles.length)
+    .map((s) => `<b>${esc(s.name)}</b>&nbsp; ${s.articles.map(entry).join(' &middot; ')}`);
+  return `<a href="${i.url}"><b>issue ${i.number}: ${esc(i.name)}</b></a> &middot; ${esc(i.month.toLowerCase())}<br>${lines.join('<br>')}<br><br>`;
+});
+const body = '<table width="668" border="0" cellpadding="0" cellspacing="0" class="back"><tr><td align="center" valign="top">'
+  + '<table cellpadding="0" cellspacing="0" class="bodytext"><tr><td class="left_margin"><p><span class="style6">all articles</span><br><br>'
+  + 'Every article from the twelve issues of 2004, issue by issue, as each issue&rsquo;s menu lists them.<br><br>'
+  + blocks.join('')
+  + '</p></td></tr></table><p>&nbsp;</p></td></tr></table>';
+---
+<Magazine issue={issue} title={seo.title} seo={seo}
+          mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
+  <Fragment set:html={body} />
+</Magazine>

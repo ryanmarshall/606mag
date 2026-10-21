@@ -23,6 +23,8 @@ export const NEW_COMMENTS_SLOT = '<!--new comments-->';
 export interface Issue {
   number: number; name: string; folder: string; colorDark: string; colorLight: string; commentColor: string; month: string;
   url: string; title: string; frame: Frame; themeCss: string; coverAttrs: string; coverHtml: string; coverCss: string;
+  /** the issue menu's sections, in order, with their articles' ids */
+  sections: { name: string; articles: number[] }[];
 }
 
 export const issues = issuesData as Issue[];

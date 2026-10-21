@@ -4,7 +4,8 @@ except the old-link pages (404 and the /main.php/-style redirects), the "not arc
 include fragments, and archive pages that name a rebuilt page as canonical or ask not to be
 indexed (tools/inject_archive_tags.py). Each page also lists its photos (images
 tools/image_alt.json describes as photos or pictures with words) with their descriptions as
-title and caption, so they can appear in image search.
+title and caption (the articles' photos in context: tools/image_alt_context.json), so they can
+appear in image search.
 
 <lastmod> is the date the pages last really changed (LASTMOD below: the 2026 restoration,
 when every page got its search tags and the "about this archive" link), never the build date;
@@ -26,12 +27,15 @@ CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 OLD_LINK = re.compile(r'^(main|index|index\.v\d+)\.php/index\.html$')      # pages/[old]: redirects only
 PAGE = re.compile(r'<head\b|^<!doctype html', re.I)
 IMG_SRC = re.compile(r'''<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.I)
-alt_map = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'image_alt.json'), encoding='utf-8'))['images']
+HERE = os.path.dirname(os.path.abspath(__file__))
+alt_map = json.load(open(os.path.join(HERE, 'image_alt.json'), encoding='utf-8'))['images']
+# the articles' photos in context (tools/make_seo.py): their article, credits and summary
+context = json.load(open(os.path.join(HERE, 'image_alt_context.json'), encoding='utf-8'))['images']
 
 def priority(path):
     if path == '':
         return '1.0'
-    if path == 'about/' or re.fullmatch(r'issues/\d+/', path):
+    if path in ('about/', 'articles/') or re.fullmatch(r'issues/\d+/', path):
         return '0.8'
     if re.fullmatch(r'issues/\d+/[^/]+/', path):
         return '0.6'
@@ -40,9 +44,10 @@ def priority(path):
     return '0.2' if path == 'privacy/' else '0.3'
 
 def image_entry(url, alt):
-    """<image:image> with the photo's description as title (its first part) and caption."""
+    """<image:image> with the photo's description as caption, and as title its article and
+    credits (photos in context, "speed dating, words by ...: ...") or its first part."""
     alt = re.sub(r'\s+', ' ', alt).strip()
-    title = alt.split(' — ')[0][:100]
+    title = (alt.split(': ')[0] if ': ' in alt[:120] else alt.split(' — ')[0])[:100]
     return ('<image:image><image:loc>%s</image:loc>' % escape(url)
             + ('<image:title>%s</image:title><image:caption>%s</image:caption>' % (escape(title), escape(alt)) if alt else '')
             + '</image:image>')
@@ -86,7 +91,7 @@ with open(os.path.join(dist, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
              ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n')
     fh.writelines('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>yearly</changefreq><priority>%s</priority>%s</url>\n'
                   % (escape(u), LASTMOD, priority(u[len(site_url) + 1:]),
-                     ''.join(image_entry(i, alt_map.get(unquote(i[len(site_url + '/archive/'):]), {}).get('alt', '')) for i in imgs))
+                     ''.join(image_entry(i, context.get(unquote(i[len(site_url + '/archive/'):])) or alt_map.get(unquote(i[len(site_url + '/archive/'):]), {}).get('alt', '')) for i in imgs))
                   for u, imgs in urls)
     fh.write('</urlset>\n')
 print('sitemap: %d addresses, %d photos' % (len(urls), sum(len(i) for _, i in urls)))
