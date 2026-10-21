@@ -10,6 +10,7 @@ archive-raw/
 # --- Local working data (reproducible from the tools) ----------------------------
 tools/*.json
 !tools/curation.json
+!tools/image_alt.json
 tools/*.jsonl
 tools/*.log
 tools/*.none

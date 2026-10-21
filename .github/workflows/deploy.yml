@@ -39,6 +39,8 @@ jobs:
           cp -R site web/dist/archive
       - name: Give the archive the site's Google tags and canonical links
         run: python3 tools/inject_archive_tags.py web/dist https://606mag.com
+      - name: Give every image its alt text
+        run: python3 tools/apply_alt_text.py web/dist
       - name: Write the sitemap
         run: python3 tools/make_sitemap.py web/dist https://606mag.com
       - name: Make links page-relative
