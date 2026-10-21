@@ -1,0 +1,29 @@
+---
+// Search and link-preview tags for one page (lib/seo.ts): description, canonical address,
+// Open Graph and Twitter cards, and schema.org JSON-LD. Head only: nothing on the page changes.
+import { SITE, absoluteUrl, jsonLdText, type Seo } from '../lib/seo';
+interface Props { seo: Seo }
+const { seo } = Astro.props;
+// a page published twice points search engines at its first copy
+const url = SITE + (seo.canonical ?? seo.url);
+const image = seo.image ? absoluteUrl(seo.image) : null;
+// a wide picture fills a large card; small 2004 photos make a neat square one
+const card = seo.imageWidth && seo.imageWidth >= 600 ? 'summary_large_image' : 'summary';
+---
+<meta name="description" content={seo.description} />
+<link rel="canonical" href={url} />
+<meta property="og:site_name" content="sixosix magazine" />
+<meta property="og:type" content={seo.type} />
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.description} />
+<meta property="og:url" content={url} />
+<meta property="og:locale" content="en_US" />
+{image && <meta property="og:image" content={image} />}
+{image && seo.imageWidth && <meta property="og:image:width" content={String(seo.imageWidth)} />}
+{image && seo.imageHeight && <meta property="og:image:height" content={String(seo.imageHeight)} />}
+{image && seo.imageAlt && <meta property="og:image:alt" content={seo.imageAlt} />}
+<meta name="twitter:card" content={image ? card : 'summary'} />
+<meta name="twitter:title" content={seo.title} />
+<meta name="twitter:description" content={seo.description} />
+{image && <meta name="twitter:image" content={image} />}
+{seo.jsonLd.length > 0 && <script type="application/ld+json" set:html={jsonLdText(seo.jsonLd)} />}

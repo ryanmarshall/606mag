@@ -3,6 +3,7 @@ import Magazine from '../../../../layouts/Magazine.astro';
 import Comments from '../../../../components/Comments.astro';
 import { articles, issueByNumber, type Article, type Page } from '../../../../lib/content';
 import { showAds } from '../../../../lib/ads';
+import { articleSeo } from '../../../../lib/seo';
 export function getStaticPaths() {
   return articles
     .filter((a) => issueByNumber.has(a.issue))
@@ -13,9 +14,10 @@ export function getStaticPaths() {
 }
 const { article, page } = Astro.props as { article: Article; page: Page };
 const issue = issueByNumber.get(article.issue)!;
+const seo = articleSeo(article, page);
 ---
-<Magazine issue={issue} title={article.pageTitle ?? issue.title} mainAttrs={page.mainAttrs} pageCss={page.css} newComments={page.newComments}
-          ads={showAds(page.url, article.url)}>
+<Magazine issue={issue} title={seo.title} mainAttrs={page.mainAttrs} pageCss={page.css} newComments={page.newComments}
+          ads={showAds(page.url, article.url)} seo={seo}>
   <Fragment set:html={page.html} />
   {page.comments && <Comments comments={article.comments} title={article.title} color={issue.commentColor ?? issue.colorLight} />}
   {page.tail && <Fragment set:html={page.tail} />}

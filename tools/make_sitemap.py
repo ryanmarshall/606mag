@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Write DIST/sitemap.xml for search engines: every page of the build (rebuilt and archive)
-except the old-link page, the "not archived" notice, include fragments, and archive copies
-that name a rebuilt page as canonical (tools/inject_archive_tags.py). Each page also lists
-its photos (images tools/image_alt.json describes as photos or pictures with words), so
-they can appear in image search. No <lastmod>: the pages are from 2004 and a build date
+except the old-link pages (404 and the /main.php/-style redirects), the "not archived" notice,
+include fragments, and archive pages that name a rebuilt page as canonical or ask not to be
+indexed (tools/inject_archive_tags.py). Each page also lists its photos (images
+tools/image_alt.json describes as photos or pictures with words), so they can appear in
+image search. No <lastmod>: the pages are from 2004 and a build date
 would be false. Run before relativize_dist.py (rebuilt pages still use /archive/... paths).
 
 Usage: make_sitemap.py DIST_DIR SITE_URL
@@ -14,6 +15,9 @@ from xml.sax.saxutils import escape
 
 dist, site_url = sys.argv[1].rstrip('/'), sys.argv[2].rstrip('/')
 SKIP = {'404.html', 'archive/_missing.html'}
+NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="noindex', re.I)
+CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
+OLD_LINK = re.compile(r'^(main|index|index\.v\d+)\.php/index\.html$')      # pages/[old]: redirects only
 PAGE = re.compile(r'<head\b|^<!doctype html', re.I)
 IMG_SRC = re.compile(r'''<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.I)
 alt_map = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'image_alt.json'), encoding='utf-8'))['images']
@@ -43,9 +47,12 @@ for dp, dirs, files in os.walk(dist):
         if rel in SKIP:
             continue
         doc = open(os.path.join(dp, name), encoding='utf-8', errors='replace').read()
-        if not PAGE.search(doc[:6000]) or 'rel="canonical"' in doc[:6000]:
-            continue
+        head = doc[:6000]
         path = rel[:-len('index.html')] if name == 'index.html' else rel
+        canon = CANONICAL.search(head)
+        if (not PAGE.search(head) or NOINDEX.search(head) or OLD_LINK.match(rel)
+                or (canon and canon.group(1) != site_url + '/' + path)):      # a copy of another page
+            continue
         urls.append((site_url + '/' + quote(path), [site_url + '/archive/' + quote(p) for p in photos(doc, posixpath.dirname(rel))]))
 if len(urls) > 50000:
     sys.exit('make_sitemap: %d addresses is over the 50,000 a sitemap may hold' % len(urls))

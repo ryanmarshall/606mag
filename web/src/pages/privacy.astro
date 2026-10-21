@@ -5,6 +5,7 @@
 // this page (lib/content.ts footerOf); the 2004 Icarus Media policy stays in the archive.
 import Magazine from '../layouts/Magazine.astro';
 import { issueByNumber } from '../lib/content';
+import { plainSeo } from '../lib/seo';
 import { ADSENSE_CLIENT, CONTACT_EMAIL, GA4_ID, POLICY_UPDATED, PUB_ID, US_STATES_MESSAGE } from '../config';
 const issue = issueByNumber.get(12)!;
 const mail = `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>`;
@@ -58,12 +59,13 @@ sections.push(
   ['the 2004 policy', `The magazine's original privacy policy from 2004 is kept, as a historical document, in the
     <a href="/archive/main/general-footer_page-privacy.html">archive</a>. It no longer applies.`],
 );
+const seo = plainSeo('/privacy/');
 const body = '<table width="668" border="0" cellpadding="0" cellspacing="0" class="back"><tr><td align="center" valign="top">'
   + '<table cellpadding="0" cellspacing="0" class="bodytext"><tr><td class="left_margin"><p><span class="style6">privacy policy</span><br><br>'
   + sections.map(([h, t]) => `<b>${h}</b><br>${t.replace(/\s+/g, ' ').trim()}<br><br>`).join('')
   + '</p></td></tr></table><p>&nbsp;</p></td></tr></table>';
 ---
-<Magazine issue={issue} title="sixosix magazine chicago • 606mag.com • privacy policy"
+<Magazine issue={issue} title={seo.title} seo={seo}
           mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
   <Fragment set:html={body} />
 </Magazine>

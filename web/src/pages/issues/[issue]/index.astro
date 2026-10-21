@@ -1,12 +1,14 @@
 ---
 import Magazine from '../../../layouts/Magazine.astro';
-import { issues, type Issue } from '../../../lib/content';
+import { articles, issues, type Issue } from '../../../lib/content';
+import { issueSeo } from '../../../lib/seo';
 import { showAds } from '../../../lib/ads';
 export function getStaticPaths() {
   return issues.map((issue) => ({ params: { issue: String(issue.number) }, props: { issue } }));
 }
 const { issue } = Astro.props as { issue: Issue };
+const seo = issueSeo(issue, articles.filter((a) => a.issue === issue.number));
 ---
-<Magazine issue={issue} title={issue.title} mainAttrs={issue.coverAttrs} pageCss={issue.coverCss} ads={showAds(issue.url)}>
+<Magazine issue={issue} title={seo.title} mainAttrs={issue.coverAttrs} pageCss={issue.coverCss} ads={showAds(issue.url)} seo={seo}>
   <Fragment set:html={issue.coverHtml} />
 </Magazine>

@@ -6,12 +6,16 @@
 import { attrs, footerOf, NEW_COMMENTS_SLOT, type Issue } from '../lib/content';
 import HeadTags from '../components/HeadTags.astro';
 import AdRight from '../components/AdRight.astro';
+import SeoTags from '../components/Seo.astro';
+import type { Seo } from '../lib/seo';
 interface Props {
   issue: Issue; title: string; mainAttrs: string; pageCss?: string; newComments?: string | null;
   /** the 2004 right-hand ad column (lib/ads.ts decides which pages) */
   ads?: boolean;
+  /** search and link-preview tags (lib/seo.ts); head only */
+  seo?: Seo;
 }
-const { issue, title, mainAttrs, pageCss = '', newComments, ads = false } = Astro.props;
+const { issue, title, mainAttrs, pageCss = '', newComments, ads = false, seo } = Astro.props;
 // the column exists only where the original layout fits: hidden under 976px, like the ad cell
 const HIDE_ADS = '<style>@media (max-width: 975px) { #ad_right { display: none; } }</style>';
 // the menu with this page's own "new comments" box (it changed with every visit)
@@ -24,6 +28,7 @@ const menu = issue.frame.menu.replace(NEW_COMMENTS_SLOT, () => newComments ?? is
   <HeadTags />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
+  {seo && <SeoTags seo={seo} />}
   <link href="/archive/main606.css" rel="stylesheet" type="text/css" />
   <style is:global set:html={issue.themeCss}></style>
   <style is:global set:html={pageCss}></style>

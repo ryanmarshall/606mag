@@ -4,6 +4,8 @@
 // Only the addresses are new; phones get a stacked layout (below 800px).
 import { attrs, issues } from '../lib/content';  // attrs(): the 2004 HTML attributes, untyped
 import HeadTags from '../components/HeadTags.astro';
+import SeoTags from '../components/Seo.astro';
+import { frontSeo } from '../lib/seo';
 import { ADSENSE_CLIENT } from '../config';
 const L = '/archive/images/last_images/';
 // cover image, alt text, rollover month image name (the original named December "dev"), month art width
@@ -14,6 +16,7 @@ const covers: [string, string, number, number][] = [
   ['ISSUE 10 Oct', 'oct', 55, 72], ['ISSUE  11 Nov', 'nov', 68, 72], ['ISSUE 12 Dec', 'dev', 70, 72],
 ].map(([alt, m, w, h], n) => [alt as string, m as string, w as number, h as number]);
 const monthFile = (m: string) => (m === 'dev' ? 'dec' : m);
+const seo = frontSeo();
 const rows = [0, 3, 6, 9].map(i => covers.slice(i, i + 3).map((c, j) => ({ c, n: i + j })));
 ---
 <!doctype html>
@@ -23,7 +26,8 @@ const rows = [0, 3, 6, 9].map(i => covers.slice(i, i + 3).map((c, j) => ({ c, n:
 <HeadTags />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 {ADSENSE_CLIENT && <meta name="google-adsense-account" content={ADSENSE_CLIENT} />}
-<title>Sixosix Magazine : 606 : chicago : Final Issue</title>
+<title>{seo.title}</title>
+<SeoTags seo={seo} />
 <script is:inline>
 // Old links like 606mag.com/?id=60 land here (the front page exists, so the 404 page never
 // runs). Hand any query to the old-link redirect page via an address that doesn't exist,

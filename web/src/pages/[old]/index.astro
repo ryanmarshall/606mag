@@ -1,0 +1,13 @@
+---
+// The 2004 site's entry points, so their old links answer 200 and redirect (GitHub Pages sends
+// /main.php?id=60 to /main.php/?id=60, query kept): search engines follow these, while a 404
+// page's redirect counts for nothing. Same page as the 404 one (components/OldLinks.astro).
+import OldLinks from '../../components/OldLinks.astro';
+import redirects from '../../../public/redirects.json';
+export function getStaticPaths() {
+  return ['main.php', 'index.php', ...Object.keys(redirects.issues).map((n) => `index.v${n}.php`)]
+    .map((old) => ({ params: { old } }));
+}
+---
+<!doctype html>
+<OldLinks />
