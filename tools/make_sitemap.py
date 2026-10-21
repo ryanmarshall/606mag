@@ -3,9 +3,14 @@
 except the old-link pages (404 and the /main.php/-style redirects), the "not archived" notice,
 include fragments, and archive pages that name a rebuilt page as canonical or ask not to be
 indexed (tools/inject_archive_tags.py). Each page also lists its photos (images
-tools/image_alt.json describes as photos or pictures with words), so they can appear in
-image search. No <lastmod>: the pages are from 2004 and a build date
-would be false. Run before relativize_dist.py (rebuilt pages still use /archive/... paths).
+tools/image_alt.json describes as photos or pictures with words) with their descriptions as
+title and caption, so they can appear in image search.
+
+<lastmod> is the date the pages last really changed (LASTMOD below: the 2026 restoration,
+when every page got its search tags and the "about this archive" link), never the build date;
+change it only when the pages themselves change. <priority> ranks the front page, the issues
+and the about page above articles, articles above their sub-pages, and the 2004 archive last.
+Run before relativize_dist.py (rebuilt pages still use /archive/... paths).
 
 Usage: make_sitemap.py DIST_DIR SITE_URL
 """
@@ -15,12 +20,32 @@ from xml.sax.saxutils import escape
 
 dist, site_url = sys.argv[1].rstrip('/'), sys.argv[2].rstrip('/')
 SKIP = {'404.html', 'archive/_missing.html'}
+LASTMOD = '2026-10-21'          # the last real change to the pages (see above)
 NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="noindex', re.I)
 CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 OLD_LINK = re.compile(r'^(main|index|index\.v\d+)\.php/index\.html$')      # pages/[old]: redirects only
 PAGE = re.compile(r'<head\b|^<!doctype html', re.I)
 IMG_SRC = re.compile(r'''<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.I)
 alt_map = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'image_alt.json'), encoding='utf-8'))['images']
+
+def priority(path):
+    if path == '':
+        return '1.0'
+    if path == 'about/' or re.fullmatch(r'issues/\d+/', path):
+        return '0.8'
+    if re.fullmatch(r'issues/\d+/[^/]+/', path):
+        return '0.6'
+    if path.startswith('issues/'):
+        return '0.4'
+    return '0.2' if path == 'privacy/' else '0.3'
+
+def image_entry(url, alt):
+    """<image:image> with the photo's description as title (its first part) and caption."""
+    alt = re.sub(r'\s+', ' ', alt).strip()
+    title = alt.split(' — ')[0][:100]
+    return ('<image:image><image:loc>%s</image:loc>' % escape(url)
+            + ('<image:title>%s</image:title><image:caption>%s</image:caption>' % (escape(title), escape(alt)) if alt else '')
+            + '</image:image>')
 
 def photos(doc, page_dir):
     """Archive paths of the photos a page shows, in order, once each."""
@@ -59,7 +84,9 @@ if len(urls) > 50000:
 with open(os.path.join(dist, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
     fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
              ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n')
-    fh.writelines('<url><loc>%s</loc>%s</url>\n' % (escape(u), ''.join(
-        '<image:image><image:loc>%s</image:loc></image:image>' % escape(i) for i in imgs)) for u, imgs in urls)
+    fh.writelines('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>yearly</changefreq><priority>%s</priority>%s</url>\n'
+                  % (escape(u), LASTMOD, priority(u[len(site_url) + 1:]),
+                     ''.join(image_entry(i, alt_map.get(unquote(i[len(site_url + '/archive/'):]), {}).get('alt', '')) for i in imgs))
+                  for u, imgs in urls)
     fh.write('</urlset>\n')
 print('sitemap: %d addresses, %d photos' % (len(urls), sum(len(i) for _, i in urls)))
