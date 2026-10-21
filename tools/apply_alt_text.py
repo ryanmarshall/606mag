@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Give the images of a build their alt text: what lettering images say, what photos show,
 and an empty alt for decoration (tools/image_alt.json, written by describing every image the
-rebuilt pages use). Applies to the rebuilt pages and the archive pages alike, wherever the
+site shows). Applies to the rebuilt pages and the archive pages alike, wherever the
 same image file appears; images without an entry are left as they are.
 
 Run on the build output before relativize_dist.py (rebuilt pages still use /archive/... paths;

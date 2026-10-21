@@ -1,17 +1,249 @@
 {
- "_about": "Alt text for every image the rebuilt pages use, keyed by path in the archive (site/): lettering transcribed, photos described, decoration empty. Applied to the build by tools/apply_alt_text.py.",
+ "_about": "Alt text for every image the site shows (rebuilt pages and the archive), keyed by path in the archive (site/): lettering transcribed, photos described, decoration empty. Applied to the build by tools/apply_alt_text.py.",
  "images": {
   "_missing.gif": {
    "alt": "",
    "kind": "decorative"
   },
+  "image/file-issues-general-prom-images-1.jpg_w-100.jpg": {
+   "alt": "Guests in formal clothes mingling in a dim hall with arched windows",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-11.jpg_w-100.jpg": {
+   "alt": "Band playing on a stage under pink lights with a crowd watching",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-12.jpg_w-100.jpg": {
+   "alt": "Woman in an orange dress and man in a dark suit sitting close together",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-13.jpg_w-100.jpg": {
+   "alt": "Person in a pink bunny costume holding up a camera",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-14.jpg_w-100.jpg": {
+   "alt": "Man and woman talking, with a person in a pink bunny costume at right",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-15.jpg_w-100.jpg": {
+   "alt": "Man in a light blue suit and patterned shirt raising one hand, with other guests beside him",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-16.jpg_w-100.jpg": {
+   "alt": "Woman and a man in a light blue suit at a party, holding up a hanging strand",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-17.jpg_w-100.jpg": {
+   "alt": "Person bending over a glowing orange light in a dark room",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-2.jpg_w-100.jpg": {
+   "alt": "Person in a pink bunny costume sitting on a blue blanket",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-2.jpg_w-310.jpg": {
+   "alt": "Person in a pink bunny costume lounging on a blue blanket among white pillows",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-20.jpg_w-100.jpg": {
+   "alt": "Woman holding a puff of white cotton candy up to a man in a white fuzzy jacket",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-21.jpg_w-100.jpg": {
+   "alt": "Man in a white shirt with a red sash holding a drink",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-22.jpg_w-100.jpg": {
+   "alt": "People seen from behind in a dark room beside a glowing orange flame",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-24.jpg_w-100.jpg": {
+   "alt": "Woman in dark clothes and a man in a pale jacket side by side in a dim room",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-26.jpg_w-100.jpg": {
+   "alt": "Woman in a white dress seen from behind, with a red ribbon down her back",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-27.jpg_w-100.jpg": {
+   "alt": "Two musicians on a stage in red and orange light, one playing guitar",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-28.jpg_w-100.jpg": {
+   "alt": "Smiling man with glasses and long hair in a tan jacket and striped tie",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-3.jpg_w-100.jpg": {
+   "alt": "Guests in a ballroom lit pink and red, a person in a red dress seen from behind at center",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-30.jpg_w-100.jpg": {
+   "alt": "Smiling woman in a yellow patterned top",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-31.jpg_w-100.jpg": {
+   "alt": "Person with dark shoulder-length hair in dark clothing in a dim room",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-32.jpg_w-100.jpg": {
+   "alt": "Woman in a dark jacket and green clothing sitting beside a large fuzzy orange-brown stuffed animal",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-33.jpg_w-100.jpg": {
+   "alt": "Person with dark hair in a dark shiny jacket holding a cup, beside a glowing red-pink shape",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-35.jpg_w-100.jpg": {
+   "alt": "Red-haired woman in a black top beside a man in a dark shirt and pink tie giving a thumbs up",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-36.jpg_w-100.jpg": {
+   "alt": "Person in a pink bunny costume next to a stack of chairs",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-4.jpg_w-100.jpg": {
+   "alt": "Crowd of guests in a dimly lit room with pink light",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-6.jpg_w-100.jpg": {
+   "alt": "Couple dancing, one in a white cap and one in a red shirt",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-7.jpg_w-100.jpg": {
+   "alt": "Man in a plaid jacket standing in a crowded room",
+   "kind": "photo"
+  },
+  "image/file-issues-general-prom-images-8.jpg_w-100.jpg": {
+   "alt": "Woman in a pink dress beside a man in a dark jacket at a party",
+   "kind": "photo"
+  },
+  "images/last_images/10x.gif": {
+   "alt": "issue 10, October: red skirt with a SIXOSIX belt",
+   "kind": "ui"
+  },
+  "images/last_images/11x.gif": {
+   "alt": "issue 11, November: black and white cat looming over a miniature street scene with a toy bus and tiny figures",
+   "kind": "ui"
+  },
+  "images/last_images/12x.gif": {
+   "alt": "issue 12, December: ribbed tan oval object with an orange center on a black background",
+   "kind": "ui"
+  },
+  "images/last_images/1x.gif": {
+   "alt": "issue 1, January: shadowy figure with a hand raised to the face",
+   "kind": "ui"
+  },
+  "images/last_images/2004.gif": {
+   "alt": "2004",
+   "kind": "text"
+  },
+  "images/last_images/2x.gif": {
+   "alt": "issue 2, February: person tasting from a spoon behind a large wooden bowl",
+   "kind": "ui"
+  },
+  "images/last_images/3x.gif": {
+   "alt": "issue 3, March: man in a dark coat on a city street",
+   "kind": "ui"
+  },
+  "images/last_images/4x.gif": {
+   "alt": "issue 4, April: toddler in a white knit hat and coat outdoors",
+   "kind": "ui"
+  },
+  "images/last_images/5x.gif": {
+   "alt": "issue 5, May: hand holding a small tower model before the Chicago skyline",
+   "kind": "ui"
+  },
+  "images/last_images/6x.gif": {
+   "alt": "issue 6, June: person seen from above facing a teal wall, with a lamp and an old computer on a desk",
+   "kind": "ui"
+  },
+  "images/last_images/7x.gif": {
+   "alt": "issue 7, July: man seen from behind holding up a large open newspaper on a busy street",
+   "kind": "ui"
+  },
+  "images/last_images/8x.gif": {
+   "alt": "issue 8, August: dark stairwell seen from above",
+   "kind": "ui"
+  },
+  "images/last_images/9x.gif": {
+   "alt": "issue 9, September: seated woman and a man with a raised hand seen from behind",
+   "kind": "ui"
+  },
+  "images/last_images/april.gif": {
+   "alt": "april",
+   "kind": "text"
+  },
+  "images/last_images/aug.gif": {
+   "alt": "august",
+   "kind": "text"
+  },
+  "images/last_images/dec.gif": {
+   "alt": "december",
+   "kind": "text"
+  },
+  "images/last_images/feb.gif": {
+   "alt": "february",
+   "kind": "text"
+  },
+  "images/last_images/jan.gif": {
+   "alt": "january",
+   "kind": "text"
+  },
+  "images/last_images/july.gif": {
+   "alt": "july",
+   "kind": "text"
+  },
+  "images/last_images/june.gif": {
+   "alt": "june",
+   "kind": "text"
+  },
+  "images/last_images/letter.gif": {
+   "alt": "Letter to Mr Vernon from Sixosix Magazine staff: we are all a photographer, a writer, an illustrator and a coffee addict",
+   "kind": "text"
+  },
+  "images/last_images/logo.gif": {
+   "alt": "SIXOSIX",
+   "kind": "text"
+  },
+  "images/last_images/march.gif": {
+   "alt": "march",
+   "kind": "text"
+  },
+  "images/last_images/may.gif": {
+   "alt": "may",
+   "kind": "text"
+  },
+  "images/last_images/nov.gif": {
+   "alt": "november",
+   "kind": "text"
+  },
+  "images/last_images/oct.gif": {
+   "alt": "october",
+   "kind": "text"
+  },
+  "images/last_images/sept.gif": {
+   "alt": "september",
+   "kind": "text"
+  },
   "images/left.gif": {
    "alt": "",
    "kind": "decorative"
   },
+  "images/line.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "images/pdf.gif": {
+   "alt": "PDF",
+   "kind": "ui"
+  },
   "images/right.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "images/word.gif": {
+   "alt": "Word document",
+   "kind": "ui"
   },
   "issues/arch/artifacts/images/CSAA_P1img.jpg": {
    "alt": "crap, scraps and artifacts — heap of discarded wooden and metal chairs",
@@ -409,6 +641,18 @@
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets.",
    "kind": "text"
   },
+  "issues/arch/images/4walls_cvr1.jpg": {
+   "alt": "issue 5 may 2004 — the house that doesn't exist, uptown theater, downtown girl, crap, scraps and artifacts, unbuilt chicago",
+   "kind": "mixed"
+  },
+  "issues/arch/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/arch/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/arch/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -416,6 +660,10 @@
   "issues/arch/images/header_left.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "issues/arch/images/leave.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/arch/images/logo.gif": {
    "alt": "sixosix",
@@ -1180,6 +1428,18 @@
   "issues/bestof/hopscotch/images/summery.gif": {
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets…",
    "kind": "text"
+  },
+  "issues/bestof/images/BOcvrIMG.jpg": {
+   "alt": "© 2004 s. polach | 606mag.com — giant cat looms over a tabletop street of tiny people, a bus and a taxi, sixosix sign behind",
+   "kind": "mixed"
+  },
+  "issues/bestof/images/cover_foot.gif": {
+   "alt": "november 2004 — talk derby to me, giving thanks with arts and crafts, passage, the ad mile, the best failure, third coast",
+   "kind": "text"
+  },
+  "issues/bestof/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
   },
   "issues/bestof/images/header_deviders.gif": {
    "alt": "",
@@ -1965,6 +2225,10 @@
    "alt": "glassblowing photo 9",
    "kind": "ui"
   },
+  "issues/boiling/glass/images/10a.gif": {
+   "alt": "glassblowing photo 10",
+   "kind": "ui"
+  },
   "issues/boiling/glass/images/10b.gif": {
    "alt": "glassblowing photo 10",
    "kind": "ui"
@@ -2037,6 +2301,10 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/boiling/glass/images/9a.gif": {
+   "alt": "glassblowing photo 9",
+   "kind": "ui"
+  },
   "issues/boiling/glass/images/9b.gif": {
    "alt": "",
    "kind": "decorative"
@@ -2089,6 +2357,18 @@
    "alt": "no organized thought patterns = — woman with smudged makeup beside a tiled wall covered in handwritten equations",
    "kind": "mixed"
   },
+  "issues/boiling/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/boiling/images/cvr_mn_pc.jpg": {
+   "alt": "issue 2 — astigmatic history, kiss me i'm misanthropic, choose your own divorce, letting off some steam, pow! boiling water!",
+   "kind": "mixed"
+  },
+  "issues/boiling/images/entr.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/boiling/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -2100,6 +2380,10 @@
   "issues/boiling/images/logo.gif": {
    "alt": "sixosix",
    "kind": "text"
+  },
+  "issues/boiling/images/lve.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/boiling/images/submenu_top.gif": {
    "alt": "",
@@ -2149,6 +2433,10 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/boiling/index/images/chse_hdr.jpg": {
+   "alt": "Cropped strip of an old map labeled HOT and HIGH, with green-outlined red shapes and a black line drawing of figures",
+   "kind": "photo"
+  },
   "issues/boiling/index/images/chse_hdrf.gif": {
    "alt": "feature : choose your own divorce — remember choose-your-own-adventure books? do it again, like an adult",
    "kind": "text"
@@ -2156,6 +2444,10 @@
   "issues/boiling/index/images/east_hdr.gif": {
    "alt": "feature : astigmatic history — maybe the eastland capsized in the chicago river, maybe it didn't",
    "kind": "text"
+  },
+  "issues/boiling/index/images/est_hdr.jpg": {
+   "alt": "Cropped strip of a pile of movie cases, including Apocalypse Now and Seven",
+   "kind": "photo"
   },
   "issues/boiling/index/images/fash_T.jpg": {
    "alt": "Blue-lit person in a red hat bent over a table",
@@ -2180,6 +2472,22 @@
   "issues/boiling/index/images/mrsh_T.jpg": {
    "alt": "Man with dark hair and glasses in a dark shirt, bottles behind him",
    "kind": "photo"
+  },
+  "issues/boiling/index/images/shr_hdr.jpg": {
+   "alt": "Dark, blurry cropped strip of glass bottles, a dark jar, a red object and a small gadget with a white panel",
+   "kind": "photo"
+  },
+  "issues/boiling/index/images/squiq_1.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/boiling/index/images/squiq_2.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/boiling/index/images/squiq_3.gif": {
+   "alt": "",
+   "kind": "decorative"
   },
   "issues/boiling/index/images/stm_T.jpg": {
    "alt": "Tall industrial flare stack burning with a bright flame against a brown night sky",
@@ -2745,6 +3053,18 @@
    "alt": "traveling chicago",
    "kind": "text"
   },
+  "issues/conventions/images/conv_cvr.jpg": {
+   "alt": "issue 3 march 2004 — about face, traveling chicago, don't talk to strangers, agent 006, THONG — man adjusting his tie",
+   "kind": "mixed"
+  },
+  "issues/conventions/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/conventions/images/entr.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/conventions/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -2752,6 +3072,10 @@
   "issues/conventions/images/header_left.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "issues/conventions/images/leave.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/conventions/images/logo.gif": {
    "alt": "sixosix",
@@ -2785,11 +3109,19 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/conventions/index/images/bx_3.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
   "issues/conventions/index/images/bx_4.gif": {
    "alt": "",
    "kind": "decorative"
   },
   "issues/conventions/index/images/bx_5.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/conventions/index/images/bx_6.gif": {
    "alt": "",
    "kind": "decorative"
   },
@@ -3045,6 +3377,10 @@
    "alt": "tech — words by michael tolva",
    "kind": "text"
   },
+  "issues/conventions/tech/images/header_tech.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
   "issues/conventions/tech/images/header_tech.jpg": {
    "alt": "Close-up of a white clock face with black hands and blurred numerals",
    "kind": "photo"
@@ -3092,6 +3428,10 @@
   "issues/gaudy/bytheway/images/10x.jpg": {
    "alt": "Maggie — Awkward Test: during your most awkward phase, just how awkward were you? Checklist with 5 items ticked",
    "kind": "mixed"
+  },
+  "issues/gaudy/bytheway/images/1x.gif": {
+   "alt": "Awkward Test — during your most awkward phase, just how awkward were you? Marked checklist from braces to foot in mouth",
+   "kind": "text"
   },
   "issues/gaudy/bytheway/images/1x.jpg": {
    "alt": "Kaki — Awkward Test: during your most awkward phase, just how awkward were you? 10 of 15 items crossed out",
@@ -3316,6 +3656,18 @@
   "issues/gaudy/hopscotch/images/summery.gif": {
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets...",
    "kind": "text"
+  },
+  "issues/gaudy/images/cover_foot.gif": {
+   "alt": "october 2004 — pimp your ride (if you have one), a case study in nightmares, the brutalists, your address as burlesque club",
+   "kind": "text"
+  },
+  "issues/gaudy/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
+  "issues/gaudy/images/gadiCVRimg.jpg": {
+   "alt": "SIXOSIX — rhinestone belt buckle on a white belt over a red skirt and light blue top with painted birds",
+   "kind": "mixed"
   },
   "issues/gaudy/images/header_deviders.gif": {
    "alt": "",
@@ -3901,6 +4253,1602 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/general/about/images/6060_staff.jpg": {
+   "alt": "Staff group photo: nine numbered people stand in a row, one shirt reads WE ARE THE COMPANY",
+   "kind": "mixed"
+  },
+  "issues/general/about/images/K_bremyr.jpg": {
+   "alt": "Close-up of a woman with long dark hair in profile, looking down and to the side",
+   "kind": "photo"
+  },
+  "issues/general/about/images/Karl_M.jpg": {
+   "alt": "Black-and-white line drawing of two large concentric circles with the number 90 in a small oval beside them",
+   "kind": "photo"
+  },
+  "issues/general/about/images/M_Morrison.jpg": {
+   "alt": "Smiling woman with chin-length brown hair against a dark patterned background",
+   "kind": "photo"
+  },
+  "issues/general/about/images/adamX.jpg": {
+   "alt": "Man with curly reddish hair in profile, a small black object by his head",
+   "kind": "photo"
+  },
+  "issues/general/about/images/alison.jpg": {
+   "alt": "CHICAGO — blue word set in a faded collage of place names",
+   "kind": "mixed"
+  },
+  "issues/general/about/images/andy.jpg": {
+   "alt": "Grinning man with dark hair in a brown collared jacket, pointing toward the camera",
+   "kind": "photo"
+  },
+  "issues/general/about/images/coffe_pola.jpg": {
+   "alt": "Polaroid of a kitchen counter with two coffee makers, a red canister and a small bowl",
+   "kind": "photo"
+  },
+  "issues/general/about/images/coins.jpg": {
+   "alt": "Tilted polaroid of a small pile of coins on a pale surface",
+   "kind": "photo"
+  },
+  "issues/general/about/images/helen_B.jpg": {
+   "alt": "Close-up of a woman's nose and lips in red lipstick",
+   "kind": "photo"
+  },
+  "issues/general/about/images/joe_G.jpg": {
+   "alt": "Wrestler in a red mask lifting another masked wrestler in white and yellow overhead",
+   "kind": "photo"
+  },
+  "issues/general/about/images/logo.gif": {
+   "alt": "sixosix staff",
+   "kind": "text"
+  },
+  "issues/general/about/images/polaroidMission.jpg": {
+   "alt": "Polaroid of a woman in sunglasses with a cigarette, dark scarf and a raised handgun",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/IMG_9418.jpg": {
+   "alt": "Woman in a black top paints another woman's face; a red shape is painted on her chest and a bystander watches",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/IMG_9448.jpg": {
+   "alt": "Guests playing Twister on a large mat at a party, a crowd watching behind and balloons hanging overhead",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/IMG_9457.jpg": {
+   "alt": "Woman in a pink top and a man in a plaid shirt crouch together on a Twister mat, party crowd behind them",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/IMG_9458.jpg": {
+   "alt": "Party guests crowded onto a Twister mat, one person painted blue-green, red balloons at right",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/IMG_9500.jpg": {
+   "alt": "Two women hold a Twister game board, one in blue-green body paint, party guests behind them",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9248.jpg": {
+   "alt": "Person in blue-green body paint, a shirtless man and another person in dark clothes beside a brick wall",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9249.jpg": {
+   "alt": "Man in a dark jacket and a woman in black stand close together on a blue floor",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9254.jpg": {
+   "alt": "Man in a cowboy hat, sunglasses, red bandana and pale green jacket",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9258.jpg": {
+   "alt": "Three silhouetted people in a dim room with a blue glow near the floor",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9261.jpg": {
+   "alt": "Woman with a red flower in her hair works on a shirtless seated man at a table with a red cloth",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9269.jpg": {
+   "alt": "People seated against a gray wall in a dim room with red light at the left edge",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9274.jpg": {
+   "alt": "Red-lit hall with glowing round lights and silhouetted people walking",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9276.jpg": {
+   "alt": "Backlit crowd silhouetted under a bright light and an arch of dark balloons",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9279.jpg": {
+   "alt": "People in dark clothes standing and sitting in a red-lit room",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9282.jpg": {
+   "alt": "Person with a green-painted torso stands in warm orange light, another person in dark clothes beside them",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9292.jpg": {
+   "alt": "Guests chatting in a dim room, a man in a pale green suit and cowboy hat at right",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9293.jpg": {
+   "alt": "Man in a pale green suit and cowboy hat kicking a leg up while guests watch",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9294.jpg": {
+   "alt": "Person in a big white fluffy wig faces a woman in a brown coat at a party",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9296.jpg": {
+   "alt": "Person in a white wig and hat leans toward a smiling woman in a brown coat",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9297.jpg": {
+   "alt": "Party guests standing and talking; a seated woman in red skirt and striped stockings at left",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9298.jpg": {
+   "alt": "Crowd of party guests with a woman in a green top in the foreground at right",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9299.jpg": {
+   "alt": "Blonde woman and a young man in a dark jacket with a red collar pose together",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9300.jpg": {
+   "alt": "Two women in dark outfits posing together at a party with balloons overhead",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9304.jpg": {
+   "alt": "Man in a white shirt leaning in close to another man at a party",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9305.jpg": {
+   "alt": "Two men standing close together at a party with colored balloons behind them",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9317.jpg": {
+   "alt": "Performer in a blue feathered headdress and costume among a crowd",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9323.jpg": {
+   "alt": "Close-up of a dancer in a blue beaded carnaval costume",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9326.jpg": {
+   "alt": "Dancer in a blue beaded costume with fringe, seen from behind",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9327.jpg": {
+   "alt": "Dancer in a beaded costume with silver fringe beside pink feathers",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9329.jpg": {
+   "alt": "Dancer in a beaded costume and blue feathers seen from behind, with a person in white pants",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9333.jpg": {
+   "alt": "Woman in a red dress and purple tights walking between crowds on both sides",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9339.jpg": {
+   "alt": "Dark room with an orange glow at left and a teal-green lit backdrop",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9343.jpg": {
+   "alt": "Woman in a red top, gray skirt and red tights walking between spectators before a blue backdrop",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9346.jpg": {
+   "alt": "Man in a red jacket and jeans standing above a crowd, with a blue balloon in the foreground",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9367.jpg": {
+   "alt": "Woman in a black dress standing before a blue backdrop with partygoers beside her",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9373.jpg": {
+   "alt": "Woman in a red top beside a man in a blue shirt at a party",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9382.jpg": {
+   "alt": "Woman in shiny red pants and a red cap posing before a crowd",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9384.jpg": {
+   "alt": "Woman in a black dress walking through a crowd",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9398.jpg": {
+   "alt": "Woman in a red jumpsuit beside a woman in a pale pink dress",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9416.jpg": {
+   "alt": "Person seated in warm orange light in front of lit windows",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9418.jpg": {
+   "alt": "Woman with an updo and a red flower reaches toward another woman's face as a third person watches",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9420.jpg": {
+   "alt": "Dark stage with a person in an orange top, a crouching figure, and a person in blue holding a white round object",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9428.jpg": {
+   "alt": "Two people in dim stage lighting, one in light clothing",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9430.jpg": {
+   "alt": "Blonde performer in profile in warm stage light",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9431.jpg": {
+   "alt": "Blonde performer backlit by a bright glow",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9436.jpg": {
+   "alt": "Performer in a hat and small costume standing in dark stage light",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9438.jpg": {
+   "alt": "Performer in profile with a green-lit face and orange-lit hair against a dark background",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9443.jpg": {
+   "alt": "Performer in profile with one arm bent behind the head, lit in blue and orange",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9447.jpg": {
+   "alt": "People playing Twister on a colored-dot mat as a crowd watches",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9448.jpg": {
+   "alt": "Players sprawled across a Twister mat, a man in a gray shirt at right, crowd behind",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9450.jpg": {
+   "alt": "Players crouched on a Twister mat among onlookers",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9454.jpg": {
+   "alt": "Player in gray pants stretched across a Twister mat, balloons nearby and onlookers behind",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9455.jpg": {
+   "alt": "Man in a white shirt standing beside a Twister mat as others play",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9457.jpg": {
+   "alt": "Woman with long hair seated on the floor among a group of people",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9458.jpg": {
+   "alt": "Man in a striped jacket near red balloons at a party",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9465.jpg": {
+   "alt": "Smiling man in a dark jacket beside a woman in black",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9466.jpg": {
+   "alt": "Man in a dark jacket holding a cup and looking upward",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9468.jpg": {
+   "alt": "Person bending over a Twister mat with a red balloon nearby",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9477.jpg": {
+   "alt": "Players kneeling on a Twister mat with a red balloon at right",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9489.jpg": {
+   "alt": "Woman in a green striped top leaning over a Twister mat",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/Thumbs/IMG_9500.jpg": {
+   "alt": "Woman in a green top holding a paper sign beside a person in gray-green body paint, onlookers behind",
+   "kind": "photo"
+  },
+  "issues/general/carnaval/images/index.jpg": {
+   "alt": "Dancer in a blue beaded costume with silver bead fringe, a smiling person in the background",
+   "kind": "photo"
+  },
+  "issues/general/contact/images/contact.jpg": {
+   "alt": "Instant photo in purple light of a blue cell phone among small figurines, long brown strands at right",
+   "kind": "photo"
+  },
+  "issues/general/events/images/events.jpg": {
+   "alt": "Instant photo of a person in a cap holding bubble wrap over their face in a shower",
+   "kind": "photo"
+  },
+  "issues/general/events/images/prom.gif": {
+   "alt": "PROM — JUST LIKE HEAVEN — pink winged bunny on a cloud in a light-blue sky with rays",
+   "kind": "mixed"
+  },
+  "issues/general/events/images/thumbs/1.gif": {
+   "alt": "Three people in white seated at left; a man in tan trousers holding papers stands at right",
+   "kind": "photo"
+  },
+  "issues/general/events/images/thumbs/2.gif": {
+   "alt": "Dancer in a blue beaded costume with silver bead fringe, seen from behind, a smiling person at right",
+   "kind": "photo"
+  },
+  "issues/general/events/images/thumbs/3.gif": {
+   "alt": "Performer in a red two-piece costume and red garters against a black background",
+   "kind": "photo"
+  },
+  "issues/general/events/images/thumbs/4.gif": {
+   "alt": "Close-up of a man with glasses and dark hair",
+   "kind": "photo"
+  },
+  "issues/general/events/images/thumbs/MNpgTHMB.jpg": {
+   "alt": "Woman in a lime-green dress with a bright glow at her feet",
+   "kind": "photo"
+  },
+  "issues/general/events/images/thumbs/prom_thumb.jpg": {
+   "alt": "Person in a pink bunny costume with long floppy ears seated on a blue blanket",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/10a.jpg": {
+   "alt": "Girl in a red dress running across a lawn as adults stand nearby",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/11a.jpg": {
+   "alt": "Guests mingling under a tent at dusk with purple lens flares",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/12a.jpg": {
+   "alt": "Guests standing and seated on a leafy patio under a large umbrella",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/13a.jpg": {
+   "alt": "Guests mingling under candle chandeliers, seen over a man's shoulder",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/14a.jpg": {
+   "alt": "Blurred performers in white tops and pink skirts moving across a raised stage under a tent",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/15a.jpg": {
+   "alt": "Blurred dancers in pink skirts under a tent with branch chandeliers",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/16a.jpg": {
+   "alt": "Group of dancers in pink skirts and floral tops with raised arms",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/17a.jpg": {
+   "alt": "Man in shorts and a blonde woman standing close on a stage, audience behind",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/18a.jpg": {
+   "alt": "Man and woman with painted skin standing hand in hand on a stage",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/19a.jpg": {
+   "alt": "Blonde model in a pale pink gown on a stage under a tent",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/1a.jpg": {
+   "alt": "Guests chatting near an iron gate and ivy wall in dim blue light",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/20a.jpg": {
+   "alt": "Runway model in a yellow strapless dress with a long orange ribbon, hand on hip, under branch chandeliers",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/21a.jpg": {
+   "alt": "Male runway model in a yellow t-shirt with a red graphic and light jeans, head tilted up",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/22a.jpg": {
+   "alt": "Runway model in a green patterned sleeveless dress with a long white sash",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/23a.jpg": {
+   "alt": "Runway model in a loose blue top and white pants standing in a spotlight",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/24a.jpg": {
+   "alt": "Runway model in a white top and denim shorts holding a long ribbon, polka-dot backdrop behind",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/25a.jpg": {
+   "alt": "Legs of a runway model in silver high heels and a fringed skirt on a glittery stage",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/26a.jpg": {
+   "alt": "Blonde runway model in a fitted pink dress with a ruffled shoulder",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/27a.jpg": {
+   "alt": "Red-haired runway model in a flowing green and white dress",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/28a.jpg": {
+   "alt": "Runway model in a green patterned dress with hands on hips and a long strap down her side",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/29a.jpg": {
+   "alt": "Runway model in a teal wrap top and a pale ruffled skirt",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/2a.jpg": {
+   "alt": "akira — black banner on a white tent in an ivy-lined courtyard, a man in a gray t-shirt at left",
+   "kind": "mixed"
+  },
+  "issues/general/gardenofeden/images/31a.jpg": {
+   "alt": "Runway model in a bright green jacket and jeans carrying a white handbag",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/32a.jpg": {
+   "alt": "Runway model seen from behind wearing large white angel wings and a white dress",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/33a.jpg": {
+   "alt": "Two body-painted models on stage, the woman raising one arm and holding a small dark object",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/34a.jpg": {
+   "alt": "Body-painted man standing behind a body-painted woman who holds a hand to her mouth on stage",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/35a.jpg": {
+   "alt": "Body-painted man covering his face with one hand while a woman stands beside him on stage",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/36a.jpg": {
+   "alt": "Blonde runway model in a black top and light jeans, hand at her waist",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/37a.jpg": {
+   "alt": "Runway model in a green halter top and orange skirt, audience seated beside the stage",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/38a.jpg": {
+   "alt": "Runway model in a striped wide-brim hat, denim top and white pants holding the hat brim",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/39a.jpg": {
+   "alt": "Runway model in a green knotted top and yellow skirt with hands on hips",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/3a.jpg": {
+   "alt": "SIXOSIX — banner on a white event tent, with a rack of clothes in the tent beside it",
+   "kind": "mixed"
+  },
+  "issues/general/gardenofeden/images/40a.jpg": {
+   "alt": "Blonde runway model in a black sheer dress with a red ruffled hem and a red ribbon at the neck",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/4a.jpg": {
+   "alt": "People gathered and talking on a stage behind rows of black chairs in a white tent",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/6a.jpg": {
+   "alt": "Colorful t-shirts hanging on a clothing rack, with a pile of pink shirts at right",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/7a.jpg": {
+   "alt": "People around a draped table with a laptop and papers, on a black-and-white checkered floor",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/8a.jpg": {
+   "alt": "Crowd of people around display tables in a large hall with a black-and-white checkered floor",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/9a.jpg": {
+   "alt": "DJ in headphones and an orange t-shirt at a mixing table inside a white tent",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/intro_PIC.jpg": {
+   "alt": "Runway model in a short green dress with long ribbons hanging at her sides",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_10sm.jpg": {
+   "alt": "photo 10 — guests mingling on a lawn at an outdoor event",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_11sm.jpg": {
+   "alt": "photo 11 — blurry crowd of guests under tents at dusk with bright lights",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_12sm.jpg": {
+   "alt": "photo 12 — man with folded arms in front of guests seated under a patio umbrella",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_13sm.jpg": {
+   "alt": "photo 13 — guests in a hall, a woman in a teal top and blue skirt at right",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_14sm.jpg": {
+   "alt": "photo 14 — models walking together on the runway",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_15sm.jpg": {
+   "alt": "photo 15 — blurred models in pink outfits moving on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_16sm.jpg": {
+   "alt": "photo 16 — models on stage with arms raised",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_17sm.jpg": {
+   "alt": "photo 17 — two body-painted models close together on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_18sm.jpg": {
+   "alt": "photo 18 — body-painted man and woman standing on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_19sm.jpg": {
+   "alt": "photo 19 — blonde woman in a pink dress on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_1sm.jpg": {
+   "alt": "photo 1 — guests talking near a black iron gate, a man in a green shirt",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_20sm.jpg": {
+   "alt": "photo 20 — model in a yellow dress on the runway",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_21sm.jpg": {
+   "alt": "photo 21 — male model in a yellow t-shirt",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_22sm.jpg": {
+   "alt": "photo 22 — model in a green dress",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_23sm.jpg": {
+   "alt": "photo 23 — model in a blue top",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_24sm.jpg": {
+   "alt": "photo 24 — model in a white top and shorts",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_25sm.jpg": {
+   "alt": "photo 25 — model's legs and heels on the runway",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_26sm.jpg": {
+   "alt": "photo 26 — model in a pink dress",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_27sm.jpg": {
+   "alt": "photo 27 — model in a green and white dress",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_28sm.jpg": {
+   "alt": "photo 28 — model in a green dress",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_29sm.jpg": {
+   "alt": "photo 29 — model in a teal top and skirt",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_2sm.jpg": {
+   "alt": "photo 2 — akira banner on a white tent",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_30sm.jpg": {
+   "alt": "photo 30 — model in a green dress with ribbons",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_31sm.jpg": {
+   "alt": "photo 31 — model in a green jacket with a white handbag",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_32sm.jpg": {
+   "alt": "photo 32 — model in angel wings seen from behind",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_33sm.jpg": {
+   "alt": "photo 33 — two body-painted models on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_34sm.jpg": {
+   "alt": "photo 34 — body-painted man and woman on stage",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_35sm.jpg": {
+   "alt": "photo 35 — body-painted man covering his face",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_36sm.jpg": {
+   "alt": "photo 36 — model in a black top and jeans",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_37sm.jpg": {
+   "alt": "photo 37 — model in a green top and orange skirt",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_38sm.jpg": {
+   "alt": "photo 38 — model in a hat and white pants",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_39sm.jpg": {
+   "alt": "photo 39 — model in a green top and yellow skirt",
+   "kind": "ui"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_3sm.jpg": {
+   "alt": "SIXOSIX — sign on a white tent at an outdoor event",
+   "kind": "mixed"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_40sm.jpg": {
+   "alt": "Woman in a short black dress with a red hem standing in dim light before a crowd",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_4sm.jpg": {
+   "alt": "Group of people seen from behind, one with an arm raised, beyond rows of black chairs",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_5sm.jpg": {
+   "alt": "Hands arranging small red and white appetizers on a plate on a white tablecloth",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_6sm.jpg": {
+   "alt": "Rack of colorful t-shirts on hangers",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_7sm.jpg": {
+   "alt": "People gathered around a round table with a white cloth on a checkered floor",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_8sm.jpg": {
+   "alt": "Crowd of people mingling on a black-and-white checkered floor",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/garden_9sm.jpg": {
+   "alt": "Man in an orange shirt at a table, with people and arched windows behind him",
+   "kind": "photo"
+  },
+  "issues/general/gardenofeden/images/thumbs/intro_PIC.jpg": {
+   "alt": "Runway model in a short green dress with long ribbons hanging at her sides",
+   "kind": "photo"
+  },
+  "issues/general/links/images/links_pola.jpg": {
+   "alt": "Polaroid of a small drawn sword-wielding hero on white paper, with two pens at the edges",
+   "kind": "photo"
+  },
+  "issues/general/news/images/news.jpg": {
+   "alt": "Polaroid close-up of a red-tinted eye and face half in shadow",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/01t.jpg": {
+   "alt": "Dim room with long tables covered in white and red tablecloths",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/02t.jpg": {
+   "alt": "Very dark room with two small glowing video screens and a red-lit shape between them",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/03t.jpg": {
+   "alt": "Round red table and a colorful poster in a dim room with large windows",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/05t.jpg": {
+   "alt": "Blurry party shot of a person in a dark top with a red bow, seen from behind",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/06t.jpg": {
+   "alt": "Red-haired woman holding a pink guitar at a crowded party",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/07t.jpg": {
+   "alt": "Woman in a dark halter top holding a pink guitar, with another person holding a green bottle behind her",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/10t.jpg": {
+   "alt": "Two people at a party, one with short blond hair gesturing, another in a yellow top",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/11t.jpg": {
+   "alt": "Man with curly hair and an olive shirt in a crowd, with another person's auburn hair in the foreground",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/12t.jpg": {
+   "alt": "Man with glasses and dark hair looking toward the camera",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/14t.jpg": {
+   "alt": "Crowd of party guests standing in a room, with a woman in a red top",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/15t.jpg": {
+   "alt": "Crowded party seen from behind, a person in a blue top in the foreground and a woman in a red dress at left",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/16t.jpg": {
+   "alt": "Two men, one with glasses, grinning close together in front of a dark background",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/18t.jpg": {
+   "alt": "Several smiling people crowded close together in a close-up group shot",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/19t.jpg": {
+   "alt": "Blurry orange-toned shot of three people close together",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/20t.jpg": {
+   "alt": "Oddities of the world — Alive — Alive — two people with faces through a painted two-headed girl cutout",
+   "kind": "mixed"
+  },
+  "issues/general/newyears/images/22t.jpg": {
+   "alt": "Four people squeezed close together in a laughing group shot",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/sjsp_fce.jpg": {
+   "alt": "Extreme close-up of a man's nose and half-closed eyes",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/top_thumbs/mor_2.jpg": {
+   "alt": "Close-up of a man's face in warm orange light looking at the camera",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/top_thumbs/mor_3.jpg": {
+   "alt": "Man in a brown open jacket and dark printed t-shirt looking down in a brightly lit room",
+   "kind": "photo"
+  },
+  "issues/general/newyears/images/top_thumbs/ne_yrs_hedr.gif": {
+   "alt": "new years — online launch — photos",
+   "kind": "text"
+  },
+  "issues/general/press/images/120x240_606_skyline.gif": {
+   "alt": "Hand holding a miniature skyscraper with the Chicago skyline and lake behind",
+   "kind": "photo"
+  },
+  "issues/general/press/images/120x600_606_skyline.gif": {
+   "alt": "Hand holding a miniature skyscraper with the Chicago skyline and lake behind",
+   "kind": "photo"
+  },
+  "issues/general/press/images/240x55_606_skyline.gif": {
+   "alt": "Skyscraper with twin antennas rising above a hazy skyline",
+   "kind": "photo"
+  },
+  "issues/general/press/images/468x60_606_fash.gif": {
+   "alt": "Person in a blue jacket seated in a green chair, cropped on a dark banner",
+   "kind": "photo"
+  },
+  "issues/general/press/images/468x60_606_mug.gif": {
+   "alt": "Mug with brown liquid splashing out on a white banner",
+   "kind": "photo"
+  },
+  "issues/general/press/images/468x60_606_screamX.gif": {
+   "alt": "Man in a white shirt clutching his head and screaming against a gray background",
+   "kind": "photo"
+  },
+  "issues/general/press/images/press_pola.jpg": {
+   "alt": "Polaroid of a pale suit jacket and striped tie, cropped below the face",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/1.jpg": {
+   "alt": "Just Like Heaven — Class of — prom guests mingling in front of painted cloud signs",
+   "kind": "mixed"
+  },
+  "issues/general/prom/images/10.jpg": {
+   "alt": "Band on a distant stage seen through glowing white balloons and string lights",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/11.jpg": {
+   "alt": "Just Like Heaven — Collaboration — Class of '04 — band on stage above dancing prom guests",
+   "kind": "mixed"
+  },
+  "issues/general/prom/images/12.jpg": {
+   "alt": "Smiling woman in an orange dress and man in a black suit sitting among stuffed animals and a hula hoop",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/13.jpg": {
+   "alt": "Person in a pink bunny costume holding a camera up to their face with one arm raised",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/14.jpg": {
+   "alt": "Woman and man in black talking to a person in a pink bunny costume before a painted cloud backdrop",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/15.jpg": {
+   "alt": "Man in a light blue tuxedo with raised hands beside a Detention sign",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/16.jpg": {
+   "alt": "Man in a light blue tuxedo and glasses while another man ties white cloth to a metal gate",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/17.jpg": {
+   "alt": "Woman in a black top and tulle skirt with painted wings leaning toward a man in sunglasses by a gate",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/18.jpg": {
+   "alt": "Woman in a white dress on a staircase touching the head of a pink bunny costume behind a railing",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/19.jpg": {
+   "alt": "Man with dark eye makeup and spiky hair in a black shirt, smiling at the camera",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/2.jpg": {
+   "alt": "Person in a pink bunny costume lounging on a blue blanket among pillows",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/20.jpg": {
+   "alt": "Woman with wings painted on her back beside a man in a white jacket holding a large white stuffed animal",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/21.jpg": {
+   "alt": "Man in a white shirt and red sash holding a beer bottle in front of a Just Like Heaven backdrop",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/22.jpg": {
+   "alt": "Blindfolded man in a white jacket being wrapped in white cloth beside a woman with painted wings, in red light",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/23.jpg": {
+   "alt": "Blindfolded man in a white jacket with hands behind his back faces a woman in a black top and tulle skirt",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/24.jpg": {
+   "alt": "Woman with painted wings on her back and a laughing blindfolded man in a white jacket behind police tape",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/25.jpg": {
+   "alt": "Two women posing behind a painted cloud backdrop, one in a tiara, as a person in a pink costume watches",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/26.jpg": {
+   "alt": "Woman seen from behind with wings painted on her back and a red sequined cord down her back",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/27.jpg": {
+   "alt": "Band on stage under a Just Like Heaven sign with a guitarist, a keyboardist in glasses and a drummer",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/28.jpg": {
+   "alt": "Laughing man with long hair, tinted glasses and a tan leather jacket holding a beer",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/29.jpg": {
+   "alt": "Woman in a fur-trimmed top pointing past a tall black bottle, beside a woman in a yellow lace dress and white lace gloves",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/3.jpg": {
+   "alt": "Guests dancing in a red-lit ballroom, a woman in a red puff-sleeve dress and a man in a white cap",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/30.jpg": {
+   "alt": "Smiling woman with red lipstick in a yellow lace dress and white lace gloves at a dimly lit dance",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/31.jpg": {
+   "alt": "Smiling woman with curly dark hair in a black jacket seated beside a pair of crutches",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/32.jpg": {
+   "alt": "Woman in black leather jacket and green skirt leaning over a large stuffed lion among plush animals",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/33.jpg": {
+   "alt": "Woman in a black leather jacket holding a book beside a pink paper cloud with the number 7",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/34.jpg": {
+   "alt": "Kisses = 1 ♥ — smiling woman with the words written in red on her chest, one hand raised",
+   "kind": "mixed"
+  },
+  "issues/general/prom/images/35.jpg": {
+   "alt": "Man in glasses giving a thumbs-up and holding a drink beside a red-haired woman in a black halter top",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/36.jpg": {
+   "alt": "Person in a pink bunny costume standing beside stacked folding chairs",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/4.jpg": {
+   "alt": "Guests in black dresses dancing under hanging white paper lanterns, one wearing a pink feathered skirt",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/5.jpg": {
+   "alt": "Woman in a green patterned dress dancing with a laughing person in a bright blue wig",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/6.jpg": {
+   "alt": "Man in a white cap and pink sweater dancing near a man in a red shirt and a woman in a red dress",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/7.jpg": {
+   "alt": "Man in a checked blazer and glasses on a crowded dance floor, with a guest in feathered wings behind him",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/8.jpg": {
+   "alt": "Class of '04 — man in a light blue suit smiles on stage while two men embrace at a microphone",
+   "kind": "mixed"
+  },
+  "issues/general/prom/images/9.jpg": {
+   "alt": "Three men in a pink ruffled shirt, light blue suit and white jacket on stage with drinks and a microphone",
+   "kind": "photo"
+  },
+  "issues/general/prom/images/intro_PIC.jpg": {
+   "alt": "Person in a pink bunny costume with long floppy ears seated on a blue blanket",
+   "kind": "photo"
+  },
+  "issues/general/questions/images/plrd.jpg": {
+   "alt": "Question mark drawn on crumpled lined paper in a white instant-photo frame",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/1.jpg": {
+   "alt": "Pair of red gloves hanging from a wire beside a purple spotlight beam",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/10.jpg": {
+   "alt": "Performers in white lab coats sit on metal shelving while a man at right holds papers and two people watch from above",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/11.jpg": {
+   "alt": "Stacked white boxes inside a white pipe frame on a dark stage as a performer in white points at right",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/12.jpg": {
+   "alt": "Large blue painting of a gridded city and flames hung on a brick wall beside a microphone stand",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/13.jpg": {
+   "alt": "People seated in front of a wall of small colorful artworks and a staircase in a dark theater",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/14.jpg": {
+   "alt": "Blanca — tacos fritos pollos — lounge musica — air conditioned: painted sign of a rider on a rearing white horse",
+   "kind": "mixed"
+  },
+  "issues/general/sketchbook/images/15.jpg": {
+   "alt": "People standing in hazy white light in front of a wall of small colorful artworks, one in a pink cap",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/16.jpg": {
+   "alt": "Dark staircase beside a wall of small colorful square paintings",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/17.jpg": {
+   "alt": "White pipe frame with stacked boxes on a dark stage, audience seated behind and purple light on the floor",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/18.jpg": {
+   "alt": "Tangled loops of glowing blue, green and pink light hanging above a seated audience",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/19.jpg": {
+   "alt": "Wooden chair in the foreground of a dark stage marked with white tape lines, people talking behind it",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/2.jpg": {
+   "alt": "Row of green-lit velvet theater seats in a dark auditorium",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/20.jpg": {
+   "alt": "Three people in white lab coats sit on a bench, one holding a sheet of paper in front of his face",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/21.jpg": {
+   "alt": "Metal scaffold platform with equipment on top and two people in white below, one pointing",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/22.jpg": {
+   "alt": "White tape outlines of rectangles on a dark stage floor, with a performer's legs at the top",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/23.jpg": {
+   "alt": "Man reading from a small book on stage while three people in white lab coats sit behind him",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/24.jpg": {
+   "alt": "Man holding a microphone on a dark stage marked with tape lines, with lab-coated performers seated behind",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/25.jpg": {
+   "alt": "Two people carrying chairs across a dark stage in front of a brick wall and metal scaffolding",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/26.jpg": {
+   "alt": "Audience members watching intently in a dark theater, one holding a folded program",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/27.jpg": {
+   "alt": "Bed with a yellow and maroon striped blanket in front of a stage with a white pipe frame and boxes",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/3.jpg": {
+   "alt": "Man at a red-lit metal platform with a boombox below, audience and colorful framed art behind",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/4.jpg": {
+   "alt": "Roll of toilet paper hanging from a string beside a green spotlight beam",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/5.jpg": {
+   "alt": "Two people embracing in pink and purple light in front of a brick wall, with other guests nearby",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/6.jpg": {
+   "alt": "Man at a small table with a hanging toilet paper roll above, people mingling before colorful paintings",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/7.jpg": {
+   "alt": "Two women in the audience in the foreground, with glowing loops of light overhead and more people seated behind",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/8.jpg": {
+   "alt": "Two men working behind a perforated metal platform lit pink, beneath a projected image of a crowd",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/9.jpg": {
+   "alt": "Button-up shirt hanging on a hanger in the dark under red light",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/1.jpg": {
+   "alt": "photo 1: red gloves hanging under a purple spotlight",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/10.jpg": {
+   "alt": "photo 10: performers in lab coats on metal shelving",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/11.jpg": {
+   "alt": "photo 11: white pipe frame with stacked boxes on a stage",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/12.jpg": {
+   "alt": "photo 12: blue painting on a brick wall",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/13.jpg": {
+   "alt": "photo 13: people seated in front of small colorful artworks",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/14.jpg": {
+   "alt": "photo 14: painted Blanca sign with a white horse on a brick wall",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/15.jpg": {
+   "alt": "photo 15: people standing in hazy light before small artworks",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/16.jpg": {
+   "alt": "photo 16: dark staircase beside colorful square paintings",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/17.jpg": {
+   "alt": "photo 17: white pipe frame and boxes on a stage with purple light",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/18.jpg": {
+   "alt": "photo 18: loops of glowing light above an audience",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/19.jpg": {
+   "alt": "photo 19: wooden chair on a stage with white tape lines",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/2.jpg": {
+   "alt": "photo 2: row of green-lit theater seats",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/20.jpg": {
+   "alt": "photo 20: people in lab coats seated on a bench",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/21.jpg": {
+   "alt": "photo 21: metal scaffold platform with people below",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/22.jpg": {
+   "alt": "photo 22: white tape outlines on a dark stage floor",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/23.jpg": {
+   "alt": "photo 23: man reading on stage with lab-coated performers behind",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/24.jpg": {
+   "alt": "photo 24: man with a microphone on a dark stage",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/25.jpg": {
+   "alt": "photo 25: people carrying chairs across a stage",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/26.jpg": {
+   "alt": "photo 26: audience members watching in a dark theater",
+   "kind": "ui"
+  },
+  "issues/general/sketchbook/images/thumbs/27.jpg": {
+   "alt": "Dim room with a lit window at center, a glowing white frame at left and a warm wooden floor with dark stripes",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/3.jpg": {
+   "alt": "Club interior lit in red and blue, with a glowing square light, framed pictures on the wall and a crowd below",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/4.jpg": {
+   "alt": "Green stage spotlight and a hanging ring in a dark room",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/5.jpg": {
+   "alt": "People standing in a dim room lit by pink light",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/6.jpg": {
+   "alt": "Silhouetted people in a dark room with an orange glow",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/7.jpg": {
+   "alt": "Audience members looking up toward swirling white lines of light overhead",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/8.jpg": {
+   "alt": "Two people behind a wooden booth in pink and purple light, with a painting above",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/9.jpg": {
+   "alt": "Tan jacket hanging in a dark room with a red streak of light at left",
+   "kind": "photo"
+  },
+  "issues/general/sketchbook/images/thumbs/index.jpg": {
+   "alt": "Blanca Lounge Musica Air Conditioned — poster of a figure on a white horse on a brick wall, people below",
+   "kind": "mixed"
+  },
+  "issues/general/submissions/images/type_pola.jpg": {
+   "alt": "Polaroid of a cream-colored vintage typewriter",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/SGflyerjpg.jpg": {
+   "alt": "Suicide Girls Live Burlesque Show — sixosix — flyer with legs in fishnet stockings and white lace-up boots",
+   "kind": "mixed"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_10_T.jpg": {
+   "alt": "Burlesque performer with one arm raised on a stage lit pink and blue",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_11_T.jpg": {
+   "alt": "Two burlesque performers on a blue-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_12_T.jpg": {
+   "alt": "Two performers close together on a blue-lit stage, one reaching an arm toward the other",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_13_T.jpg": {
+   "alt": "Burlesque performer in a dark and red outfit on stage, another performer at left",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_14_T.jpg": {
+   "alt": "Burlesque performer in red, lit by red stage light against a dark background",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_15_T.jpg": {
+   "alt": "Performer with short dark hair in a light top on a purple-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_16_T.jpg": {
+   "alt": "Performer in a magenta top with arms out to the sides, washed out by pink and blue stage light",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_17_T.jpg": {
+   "alt": "Performer with long dark hair and both arms raised overhead on a dark stage with blue lights",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_18_T.jpg": {
+   "alt": "Performer seen from below with both arms raised against purple and blue stage lights",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_19_T.jpg": {
+   "alt": "Performer seen from behind in a short skirt on a blue-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_1_T.jpg": {
+   "alt": "Blue stage lights above the dark silhouette of a performer's head and hair",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_20_T.jpg": {
+   "alt": "Performer in a red outfit standing on a dark stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_21_T.jpg": {
+   "alt": "Two performers close together on a purple-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_22_T.jpg": {
+   "alt": "Two performers in dark shorts standing together under purple and blue stage light, one cropped at the chest",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_23_T.jpg": {
+   "alt": "Performer with dark hair in a white top under purple stage light",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_24_T.jpg": {
+   "alt": "Performer seated in a white outfit against a purple backdrop",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_25_T.jpg": {
+   "alt": "Performer seated in a white outfit with another performer standing behind in dark, purple light",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_26_T.jpg": {
+   "alt": "Two performers on a blue-lit stage, one in white and one leaning back in dark",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_27_T.jpg": {
+   "alt": "Performer in a red dress and red hair on a red-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_28_T.jpg": {
+   "alt": "Performer with short hair in a silver sequined outfit under purple light",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_29_T.jpg": {
+   "alt": "Two performers on a purple and blue lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_2_T.jpg": {
+   "alt": "Two performers leaning together on a blue-lit stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_30_T.jpg": {
+   "alt": "Performer in a long dark skirt, cropped at the chest, with a short-haired person in a cream shirt behind, pink light",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_3_T.jpg": {
+   "alt": "Performer in dark briefs seen from behind against a magenta backdrop",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_4_T.jpg": {
+   "alt": "Close-up of a person's crossed hands and knees, with another person's legs in dark heels",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_6_T.jpg": {
+   "alt": "Two dark-haired women seated side by side, one glancing aside and one looking down, the right one with a tattooed arm",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_7_t.jpg": {
+   "alt": "Yellow-green high-heeled shoes on a person's feet beside a black bag and a red bag on a gray floor",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_8_t.jpg": {
+   "alt": "Three women standing close together, one with red hair in a white top",
+   "kind": "photo"
+  },
+  "issues/general/suicide/images/thumbs/suicide_girls_chicago_9_t.jpg": {
+   "alt": "Performer with short dark hair in a cream corset against a dark background",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/15.jpg": {
+   "alt": "Woman with long dark hair and arm tattoos adjusting her gray top in a dingy storage room",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/17.jpg": {
+   "alt": "Woman in a black outfit balancing on one leg in a cramped backstage closet, others changing nearby",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/18.jpg": {
+   "alt": "Woman in red lingerie and stockings in a cluttered backstage room while another person bends over a bag",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/19.jpg": {
+   "alt": "Women getting ready in a cramped, cluttered backstage closet, seen from above",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/2.jpg": {
+   "alt": "SIXOSIX — banner above a crowded venue entrance table, with Exit, Restrooms and Budweiser signs",
+   "kind": "mixed"
+  },
+  "issues/general/suicide2/images/20.jpg": {
+   "alt": "Group of women posing close together on a red-felt pool table, one holding a pool cue",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/21.jpg": {
+   "alt": "Woman in a red and black ruffled outfit and red gloves peeks around a doorway, another in heels on stairs behind",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/22.jpg": {
+   "alt": "Performer in a polka-dot dress, seen from behind, standing by a gold chair on stage with an audience watching",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/23.jpg": {
+   "alt": "Three performers on stage around a gold chair, with a disco ball overhead and an audience behind",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/24.jpg": {
+   "alt": "Performer with a purple wig spinning a hula hoop on stage while an audience watches",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/25.jpg": {
+   "alt": "Performer standing inside a hula hoop on stage, audience behind and a bright light at left",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/26.jpg": {
+   "alt": "Woman in silver shorts standing between gray stage curtains, with audience faces visible below",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/27.jpg": {
+   "alt": "Three women changing in a cramped backstage room beside a black equipment case",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/28.jpg": {
+   "alt": "Three women getting dressed in a cramped backstage room, one with long dark hair facing the camera",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/3.jpg": {
+   "alt": "Woman with dark hair sitting on a black bench in a bare, grimy room beside a gray couch",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/30.jpg": {
+   "alt": "Smiling woman in a white towel wrap and towel turban holding open a dark curtain",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/31.jpg": {
+   "alt": "Performer in stockings and garters with blond hair flying up, seen from behind on stage, audience at left",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/35.jpg": {
+   "alt": "Tilted shot of a barefoot performer with long dark hair holding a microphone on stage above an audience",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/36.jpg": {
+   "alt": "Audience members crowded against the stage edge, watching a performer in fishnets and lace-up boots at upper right",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/37.jpg": {
+   "alt": "Performer in a red plaid skirt, knee socks and sneakers on stage in front of an audience",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/38.jpg": {
+   "alt": "Performer with a purple wig, pasties and pink underwear holds a lollipop in her mouth on a dark stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/39.jpg": {
+   "alt": "Crowd packed against a stage watching performers in underwear, with whipped cream scattered on the floor",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/4.jpg": {
+   "alt": "Woman sits on a backstage couch reading a newspaper, beside a table with liquor bottles and soda cans",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/40.jpg": {
+   "alt": "Performers streaked with chocolate syrup on stage as the crowd reaches up toward them",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/41.jpg": {
+   "alt": "Syrup-streaked bare legs and feet on a dark floor, with whipped cream cans and a syrup bottle",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/42.jpg": {
+   "alt": "Audience with raised hands faces a dark stage as performers stand at the right edge",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/43.jpg": {
+   "alt": "Two performers covered in chocolate syrup, one seen from behind, with a bearded man and other onlookers nearby",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/44.jpg": {
+   "alt": "Row of performers in underwear covered in chocolate syrup stand on a dark stage",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/45.jpg": {
+   "alt": "Man in an olive cap talks to a syrup-covered performer in a doorway beside a red curtain",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/46.jpg": {
+   "alt": "Backstage, a syrup-streaked performer holds a water bottle and towel while another looks on",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/47.jpg": {
+   "alt": "Syrup-covered performers crowd a restroom around a sink, one leaning over it",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/48.jpg": {
+   "alt": "Smiling man in a gray t-shirt with chocolate syrup smeared over his face",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/6.jpg": {
+   "alt": "Blond woman with bangs and an updo dabs powder from a compact backstage",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/7.jpg": {
+   "alt": "Red-haired woman in a red top and fingerless gloves looks into a compact mirror",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/SG_DD_MN_PIC.jpg": {
+   "alt": "Performer's legs in torn fishnet stockings and black heels on stage, audience behind, teddy bears and blue cloth at left",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/intro.jpg": {
+   "alt": "Performer's legs in torn fishnet stockings and black heels on stage, audience behind, teddy bears and blue cloth at left",
+   "kind": "photo"
+  },
+  "issues/general/suicide2/images/thumbs/10T.jpg": {
+   "alt": "photo 10",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/14T.jpg": {
+   "alt": "photo 14",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/15T.jpg": {
+   "alt": "photo 15",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/17T.jpg": {
+   "alt": "photo 17",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/18T.jpg": {
+   "alt": "photo 18",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/19T.jpg": {
+   "alt": "photo 19",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/1T.jpg": {
+   "alt": "photo 1",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/20T.jpg": {
+   "alt": "photo 20",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/21T.jpg": {
+   "alt": "photo 21",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/22T.jpg": {
+   "alt": "photo 22",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/23T.jpg": {
+   "alt": "photo 23",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/24T.jpg": {
+   "alt": "photo 24",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/25T.jpg": {
+   "alt": "photo 25",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/26T.jpg": {
+   "alt": "photo 26",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/27T.jpg": {
+   "alt": "photo 27",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/28.jpg": {
+   "alt": "photo 28",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/29T.jpg": {
+   "alt": "photo 29",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/2T.jpg": {
+   "alt": "photo 2",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/30T.jpg": {
+   "alt": "photo 30",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/31T.jpg": {
+   "alt": "photo 31",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/32T.jpg": {
+   "alt": "photo 32",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/33T.jpg": {
+   "alt": "photo 33",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/34T.jpg": {
+   "alt": "photo 34",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/35T.jpg": {
+   "alt": "photo 35",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/36T.jpg": {
+   "alt": "photo 36",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/37T.jpg": {
+   "alt": "photo 37",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/38T.jpg": {
+   "alt": "photo 38",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/39T.jpg": {
+   "alt": "photo 39",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/3T.jpg": {
+   "alt": "photo 3",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/40T.jpg": {
+   "alt": "photo 40",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/41T.jpg": {
+   "alt": "photo 41",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/42T.jpg": {
+   "alt": "photo 42",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/43T.jpg": {
+   "alt": "photo 43",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/44T.jpg": {
+   "alt": "photo 44",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/45T.jpg": {
+   "alt": "photo 45",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/46T.jpg": {
+   "alt": "photo 46",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/47T.jpg": {
+   "alt": "photo 47",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/48T.jpg": {
+   "alt": "photo 48",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/4T.jpg": {
+   "alt": "photo 4",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/6T.jpg": {
+   "alt": "photo 6",
+   "kind": "ui"
+  },
+  "issues/general/suicide2/images/thumbs/7T.jpg": {
+   "alt": "photo 7",
+   "kind": "ui"
+  },
+  "issues/general/welikefun/images/dict.jpg": {
+   "alt": "Clickety Clack — Polaroid of an open dictionary with an entry circled and a hand-drawn arrow pointing to it",
+   "kind": "mixed"
+  },
+  "issues/general/welikefun/images/hell.gif": {
+   "alt": "you're going to hell — gray face with X eyes in a square button",
+   "kind": "ui"
+  },
+  "issues/general/welikefun/images/hoot.gif": {
+   "alt": "hootanannyofawingdin — blue face with a small round open mouth in a square button",
+   "kind": "ui"
+  },
+  "issues/general/welikefun/images/sadlibs.gif": {
+   "alt": "sadlibs — gray sad face with a tear in a square button",
+   "kind": "ui"
+  },
+  "issues/general/welikefun/images/scav.gif": {
+   "alt": "web scavenger hunt — drawn face icon",
+   "kind": "ui"
+  },
   "issues/hige/asphalt/images/HIGE_asphlt_P1.jpg": {
    "alt": "Grilled skewers of meat and peppers at a street stand, a man's face at right",
    "kind": "photo"
@@ -4049,6 +5997,30 @@
    "alt": "separation of church on state",
    "kind": "text"
   },
+  "issues/hige/fash_office/images/01T.jpg": {
+   "alt": "photo 1",
+   "kind": "ui"
+  },
+  "issues/hige/fash_office/images/02T.jpg": {
+   "alt": "photo 2",
+   "kind": "ui"
+  },
+  "issues/hige/fash_office/images/03T.jpg": {
+   "alt": "photo 3",
+   "kind": "ui"
+  },
+  "issues/hige/fash_office/images/04T.jpg": {
+   "alt": "photo 4",
+   "kind": "ui"
+  },
+  "issues/hige/fash_office/images/05T.jpg": {
+   "alt": "photo 5",
+   "kind": "ui"
+  },
+  "issues/hige/fash_office/images/06T.jpg": {
+   "alt": "photo 6",
+   "kind": "ui"
+  },
   "issues/hige/fash_office/images/1.jpg": {
    "alt": "Woman in a black-and-white patterned coat leaning back in an office chair in a conference room, seen through glass doors",
    "kind": "photo"
@@ -4181,6 +6153,18 @@
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets...",
    "kind": "text"
   },
+  "issues/hige/images/cover.jpg": {
+   "alt": "sixosix issue 8 august 2004 — one of those countries, public broadcasting, Church on State, allure of Gorey — stairwell",
+   "kind": "mixed"
+  },
+  "issues/hige/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/hige/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/hige/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -4276,6 +6260,10 @@
   "issues/hige/index/images/pto_tmln.jpg": {
    "alt": "Close-up of a person's eye, nose and red lips against pale skin",
    "kind": "photo"
+  },
+  "issues/hige/index/images/side_bar.gif": {
+   "alt": "",
+   "kind": "decorative"
   },
   "issues/hige/index/images/spdat_T.jpg": {
    "alt": "Man in a white polo shirt holding a drink in a dim room",
@@ -5009,6 +6997,18 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/host/images/coverIMG.jpg": {
+   "alt": "SIXOSIX spelled in cheese slices on a platter of crackers and cheese cubes, held by two hands",
+   "kind": "mixed"
+  },
+  "issues/host/images/cover_foot.gif": {
+   "alt": "issue twelve december 2004 — dinner is better with macgyver, a lesson in deference and couture, victorian error, zeitgeist",
+   "kind": "text"
+  },
+  "issues/host/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/host/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -5437,6 +7437,10 @@
    "alt": "photos by helen berkun",
    "kind": "text"
   },
+  "issues/host/party/images/intro.jpg": {
+   "alt": "zeitgeist — three women in red clothes around a table set with red drinks and dishes",
+   "kind": "mixed"
+  },
   "issues/host/sistercity/images/HH_Sis_img.jpg": {
    "alt": "Block of sister city names including Accra, Athens, Dublin, Hamburg, Milan and Warsaw, with CHICAGO highlighted in blue",
    "kind": "mixed"
@@ -5813,6 +7817,18 @@
    "alt": "of coffee cups, tape recorders and record labels — an interview with john hughes iii",
    "kind": "text"
   },
+  "issues/invisible/images/bars.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/invisible/images/coverImage.jpg": {
+   "alt": "sixosix issue 1 — slicker, please skill me, what just happened, sixosix recipes, post it — blurred man shaving his face",
+   "kind": "mixed"
+  },
+  "issues/invisible/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/invisible/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -5820,6 +7836,10 @@
   "issues/invisible/images/header_left.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "issues/invisible/images/leave.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/invisible/images/logo.gif": {
    "alt": "sixosix",
@@ -6289,6 +8309,18 @@
    "alt": "",
    "kind": "decorative"
   },
+  "issues/irreg/images/cover.jpg": {
+   "alt": "sixosix issue 6 june 2004 — politics of public space, new to you, urban gambol, ushering steppenwolf — tally marks on a wall",
+   "kind": "mixed"
+  },
+  "issues/irreg/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/irreg/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/irreg/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -6296,6 +8328,10 @@
   "issues/irreg/images/header_left.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "issues/irreg/images/leave.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/irreg/images/logo.gif": {
    "alt": "sixosix",
@@ -6352,6 +8388,10 @@
   "issues/irreg/index/images/gay_t.jpg": {
    "alt": "Thumbnail of a hand holding a rainbow flag beside a street lamp against a blue sky",
    "kind": "photo"
+  },
+  "issues/irreg/index/images/mvsde_T.jpg": {
+   "alt": "movieside",
+   "kind": "ui"
   },
   "issues/irreg/index/images/news.gif": {
    "alt": "sixosix news and events",
@@ -6921,6 +8961,18 @@
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets...",
    "kind": "text"
   },
+  "issues/lol/images/LOTL_CVR.jpg": {
+   "alt": "issue 7 july 2004 — lost and nearly forgotten, your vintage life, missed connections, salvaged fashion — man holding a map",
+   "kind": "mixed"
+  },
+  "issues/lol/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "issues/lol/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/lol/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -6928,6 +8980,10 @@
   "issues/lol/images/header_left.gif": {
    "alt": "",
    "kind": "decorative"
+  },
+  "issues/lol/images/leave.gif": {
+   "alt": "leave",
+   "kind": "ui"
   },
   "issues/lol/images/logo.gif": {
    "alt": "sixosix",
@@ -7004,6 +9060,10 @@
   "issues/lol/index/images/news.gif": {
    "alt": "sixosix news and events",
    "kind": "text"
+  },
+  "issues/lol/index/images/side_bar.gif": {
+   "alt": "",
+   "kind": "decorative"
   },
   "issues/lol/index/images/tch_T.jpg": {
    "alt": "Underpass with a figure in dark clothing beside the road",
@@ -7609,6 +9669,18 @@
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets...",
    "kind": "text"
   },
+  "issues/thurs/images/TN_CVR.jpg": {
+   "alt": "SMTWFS with Thursday's letter crossed out — woman with a hand mirror on a bench beside a person in a sixosix shirt",
+   "kind": "mixed"
+  },
+  "issues/thurs/images/cover_foot.gif": {
+   "alt": "the morning after, choose your own adventure, things you should do but don't, the brutalists, i want golfing in bars",
+   "kind": "text"
+  },
+  "issues/thurs/images/enter.gif": {
+   "alt": "enter",
+   "kind": "ui"
+  },
   "issues/thurs/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -7645,6 +9717,18 @@
    "alt": "Spiral notebook page with handwritten answers under name and allergies labels",
    "kind": "photo"
   },
+  "issues/thurs/index/images/F_1.jpg": {
+   "alt": "Stylized line drawing of two women in pink and orange tones, one with curly hair",
+   "kind": "photo"
+  },
+  "issues/thurs/index/images/F_2.jpg": {
+   "alt": "Woman's lips and chin above a layered white beaded necklace against a red background",
+   "kind": "photo"
+  },
+  "issues/thurs/index/images/F_3.jpg": {
+   "alt": "27 — choose your own adventure, lettered in vertical orange strips",
+   "kind": "mixed"
+  },
   "issues/thurs/index/images/GT_T.jpg": {
    "alt": "Thumbnail of a tattoo with a banner, an arrow and a red heart",
    "kind": "photo"
@@ -7657,12 +9741,24 @@
    "alt": "it's like miss manners, after a few pulls off some mad dog",
    "kind": "text"
   },
+  "issues/thurs/index/images/feat1_top.gif": {
+   "alt": "feature : things you should do, but don't",
+   "kind": "text"
+  },
   "issues/thurs/index/images/feat2_bottom.gif": {
    "alt": "so you draw a little blood — must haves are must haves, right?",
    "kind": "text"
   },
+  "issues/thurs/index/images/feat2_top.gif": {
+   "alt": "photo : i want",
+   "kind": "text"
+  },
   "issues/thurs/index/images/feat3_bottom.gif": {
    "alt": "it's thursday night... — you choose the story",
+   "kind": "text"
+  },
+  "issues/thurs/index/images/feat3_top.gif": {
+   "alt": "feature : choose your own adventure",
    "kind": "text"
   },
   "issues/thurs/index/images/feature_1.gif": {
@@ -8493,6 +10589,14 @@
    "alt": "The derivation of the word trivia comes from the Latin tri- + via, which means three streets...",
    "kind": "text"
   },
+  "issues/wigu/images/WIGU_cov.jpg": {
+   "alt": "issue 4 april 2004 — 30 under 30, pursuit of hapiness, i wanna be a pirate, april showers, 1 year later — child in pink hat",
+   "kind": "mixed"
+  },
+  "issues/wigu/images/cvr_brs.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
   "issues/wigu/images/header_deviders.gif": {
    "alt": "",
    "kind": "decorative"
@@ -9171,6 +11275,334 @@
   },
   "issues/wigu/under30/images/title.gif": {
    "alt": "thirty under thirty — the new chicago",
+   "kind": "text"
+  },
+  "newsletter/10.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/10.1.04/images/logo.gif": {
+   "alt": "sixosix newsletter 10 01 2004",
+   "kind": "text"
+  },
+  "newsletter/10.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/10.1.04/images/main.jpg": {
+   "alt": "Four numbered photos: a car wheel, a list of park names, a bare foot on a bed, a man watching an ape in an enclosure",
+   "kind": "photo"
+  },
+  "newsletter/10.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/11.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/11.1.04/images/logo.gif": {
+   "alt": "sixosix newsletter 11 01 2004",
+   "kind": "text"
+  },
+  "newsletter/11.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/11.1.04/images/main.gif": {
+   "alt": "Four numbered images: rope and hands, two people on a street, a child's drawing on a globe, a sixosix Threads clothing tag",
+   "kind": "photo"
+  },
+  "newsletter/11.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/12.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/12.1.04/images/logo.gif": {
+   "alt": "sixosix newsletter 12 01 2004",
+   "kind": "text"
+  },
+  "newsletter/12.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/12.1.04/images/main.gif": {
+   "alt": "Four numbered images: white swirls on dark, figure in blue folds, a desk bell with speech bubbles, an orange shape",
+   "kind": "photo"
+  },
+  "newsletter/12.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.1.04/images/carnis_smell.gif": {
+   "alt": "carnaval — buy tickets now",
+   "kind": "text"
+  },
+  "newsletter/3.1.04/images/hat.jpg": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.1.04/images/header.gif": {
+   "alt": "sixosix newsletter 03.01.04 issue 3",
+   "kind": "text"
+  },
+  "newsletter/3.1.04/images/issue3_cvr.jpg": {
+   "alt": "Man in a dark coat adjusting his tie on a city street, a blurred bus behind him",
+   "kind": "photo"
+  },
+  "newsletter/3.1.04/images/lunch.jpg": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.1.04/images/mug.jpg": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.17.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.17.04/images/header.gif": {
+   "alt": "sixosix newsletter 03.18.04 issue 3",
+   "kind": "text"
+  },
+  "newsletter/3.17.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.17.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/3.17.04/images/pics.jpg": {
+   "alt": "Strip of five party photos: dancers in costume, a couple, a man in a cowboy hat, body-painted people",
+   "kind": "photo"
+  },
+  "newsletter/3.17.04/images/scetchbook.gif": {
+   "alt": "sketchbook — collaboraction presents sketchbook",
+   "kind": "text"
+  },
+  "newsletter/3.9.04/images/carnaval.gif": {
+   "alt": "carnaval 03.13.04 MCA warehouse — dancers, bikini models, percussionists, body painting, fashion show, DJ julio bishop",
+   "kind": "text"
+  },
+  "newsletter/3.9.04/images/carnis_smell.gif": {
+   "alt": "carnaval — buy tickets now",
+   "kind": "text"
+  },
+  "newsletter/4.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/4.1.04/images/header.gif": {
+   "alt": "sixosix newsletter 04.01.04 issue 4",
+   "kind": "text"
+  },
+  "newsletter/4.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/4.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/4.1.04/images/scetchbook.gif": {
+   "alt": "sketchbook — collaboraction presents sketchbook",
+   "kind": "text"
+  },
+  "newsletter/4.1.04/images/thunder.gif": {
+   "alt": "ThunderDance Thursday — at the bottom lounge",
+   "kind": "text"
+  },
+  "newsletter/4.1.04/images/tp_img.jpg": {
+   "alt": "Close-up of a toddler in a pink knit hat, cropped as a narrow banner",
+   "kind": "photo"
+  },
+  "newsletter/5.2.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/5.2.04/images/header.gif": {
+   "alt": "sixosix newsletter 05.01.04 issue 5",
+   "kind": "text"
+  },
+  "newsletter/5.2.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/5.2.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/5.2.04/images/point.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "newsletter/5.2.04/images/thunder.gif": {
+   "alt": "ThunderDance Thursday — at the bottom lounge",
+   "kind": "text"
+  },
+  "newsletter/5.2.04/images/tp_img.jpg": {
+   "alt": "Tall dark skyscraper with two antennas against a hazy city skyline",
+   "kind": "photo"
+  },
+  "newsletter/6.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.1.04/images/header.gif": {
+   "alt": "sixosix newsletter 06.01.04 issue 6",
+   "kind": "text"
+  },
+  "newsletter/6.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.1.04/images/point.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "newsletter/6.1.04/images/tp_img.jpg": {
+   "alt": "Tally marks on a teal wall, a hand reaching up, and an old computer and keyboard on a desk",
+   "kind": "photo"
+  },
+  "newsletter/6.11.04/images/event.gif": {
+   "alt": "Legs in gold high heels walking a glittery runway",
+   "kind": "photo"
+  },
+  "newsletter/6.11.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.11.04/images/header.gif": {
+   "alt": "sixosix newsletter 06.15.04 issue 6",
+   "kind": "text"
+  },
+  "newsletter/6.11.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.11.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/6.11.04/images/prom.gif": {
+   "alt": "PROM — just like heaven — pink winged bunny resting on a cloud with sunrays",
+   "kind": "mixed"
+  },
+  "newsletter/6.11.04/images/tp_img.jpg": {
+   "alt": "Tally marks on a teal wall, a hand reaching up, and an old computer and keyboard on a desk",
+   "kind": "photo"
+  },
+  "newsletter/7.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/7.1.04/images/header.gif": {
+   "alt": "sixosix newsletter 07.01.04 issue 7",
+   "kind": "text"
+  },
+  "newsletter/7.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/7.1.04/images/moonshine.gif": {
+   "alt": "see blurry — hand-drawn glass jar",
+   "kind": "mixed"
+  },
+  "newsletter/7.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/7.1.04/images/suicide.gif": {
+   "alt": "SUICIDE GIRLS LIVE BURLESQUE SHOW — ad with a cropped photo of a woman in dark clothing, SG logo, suicidegirls.com",
+   "kind": "mixed"
+  },
+  "newsletter/7.1.04/images/tp_img.jpg": {
+   "alt": "Person in a black T-shirt seen from behind, holding up a large unfolded map",
+   "kind": "photo"
+  },
+  "newsletter/8.18.04/images/Moonshine_final.gif": {
+   "alt": "see blurry — hand-drawn jar above the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/8.2.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/8.2.04/images/logo.gif": {
+   "alt": "sixosix newsletter 08.02.04 issue 8",
+   "kind": "text"
+  },
+  "newsletter/8.2.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/8.2.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/8.2.04/images/tp_img.jpg": {
+   "alt": "Dark view looking down a stairwell with railings, a person at the left edge",
+   "kind": "photo"
+  },
+  "newsletter/9.1.04/images/hat.gif": {
+   "alt": "sexytime. — black and white trucker hat with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/9.1.04/images/logo.gif": {
+   "alt": "sixosix newsletter 09.01.04 issue 9",
+   "kind": "text"
+  },
+  "newsletter/9.1.04/images/lunch.gif": {
+   "alt": "lunchtime. — silver lunch box with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/9.1.04/images/mug.gif": {
+   "alt": "coffeetime. — silver travel mug with the sixosix logo",
+   "kind": "mixed"
+  },
+  "newsletter/9.1.04/images/nwsltr_IMG.jpg": {
+   "alt": "Strip of three views: a dark-haired woman looking aside, a dark-haired person from behind, and a raised hand",
+   "kind": "photo"
+  },
+  "newsletter/openhouse/images/box.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "newsletter/openhouse/images/cards_szd3.806.jpg": {
+   "alt": "Man in a brown suit sitting on the floor surrounded by flying papers and cards",
+   "kind": "photo"
+  },
+  "newsletter/openhouse/images/feathers_lg.jpg": {
+   "alt": "Person in a white feathered headdress and short pale blue dress standing in an ornate hall with staircases",
+   "kind": "photo"
+  },
+  "newsletter/openhouse/images/illustrate.jpg": {
+   "alt": "IL 49336 SELL BY JAN 1 — drawing of two people leaning over a table with red and green items, on a red background",
+   "kind": "mixed"
+  },
+  "newsletter/openhouse/images/logo.gif": {
+   "alt": "",
+   "kind": "decorative"
+  },
+  "newsletter/openhouse/images/protest2.jpg": {
+   "alt": "Black-and-white photo of a line of helmeted, uniformed officers along a street, a man in a long coat at right",
+   "kind": "photo"
+  },
+  "newsletter/openhouse/images/title.gif": {
+   "alt": "SIXOSIX CREATIVE OPEN HOUSE 06.04.04",
+   "kind": "text"
+  },
+  "newsletter/openhouse/images/title2.gif": {
+   "alt": "WE ARE LOOKING FOR YOU",
    "kind": "text"
   }
  }
