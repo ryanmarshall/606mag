@@ -21,7 +21,7 @@ const pick = (v: unknown, fallback: string): string => (typeof v === 'string' ? 
 /** Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX' */
 export const GA4_ID = pick(env.PUBLIC_GA4_ID, '');
 /** AdSense publisher ID, e.g. 'ca-pub-0123456789012345' */
-export const ADSENSE_CLIENT = pick(env.PUBLIC_ADSENSE_CLIENT, '');
+export const ADSENSE_CLIENT = pick(env.PUBLIC_ADSENSE_CLIENT, 'ca-pub-9710988980113135');
 /** the 160x600 display unit's ID (data-ad-slot); both units in the column use it */
 export const ADSENSE_SLOT = pick(env.PUBLIC_ADSENSE_SLOT, '');
 /** data-adtest="on": test ads that earn nothing, for checking a build */
@@ -29,7 +29,7 @@ export const ADTEST = env.PUBLIC_ADTEST === 'on';
 /** the site owner's address, shown on the privacy page */
 export const CONTACT_EMAIL = 'rmarsh000@gmail.com';
 /** the privacy page's "Last updated" date */
-export const POLICY_UPDATED = 'October 14, 2026';
+export const POLICY_UPDATED = 'October 21, 2026';
 /** true only once a US state regulations message is published in AdSense Privacy & messaging */
 export const US_STATES_MESSAGE = false;
 
