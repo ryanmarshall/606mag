@@ -23,7 +23,7 @@ export const GA4_ID = pick(env.PUBLIC_GA4_ID, '');
 /** AdSense publisher ID, e.g. 'ca-pub-0123456789012345' */
 export const ADSENSE_CLIENT = pick(env.PUBLIC_ADSENSE_CLIENT, 'ca-pub-9710988980113135');
 /** the 160x600 display unit's ID (data-ad-slot); both units in the column use it */
-export const ADSENSE_SLOT = pick(env.PUBLIC_ADSENSE_SLOT, '');
+export const ADSENSE_SLOT = pick(env.PUBLIC_ADSENSE_SLOT, '7717182726');
 /** data-adtest="on": test ads that earn nothing, for checking a build */
 export const ADTEST = env.PUBLIC_ADTEST === 'on';
 /** the site owner's address, shown on the privacy page */
