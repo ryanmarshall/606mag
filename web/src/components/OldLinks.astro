@@ -4,7 +4,12 @@
 // unknown address, and also at /main.php/, /index.php/ and /index.vN.php/ (pages/[old]/), so
 // the most common old links get a normal answer that search engines follow, not a 404.
 // Works under ryanmarshall.github.io/606mag/ and under 606mag.com/.
+// Article and issue links (main.php?id=…, issue_id, index.vN.php) resolve from a 22 KB map
+// carried in the page, so the redirect fires at once (search engines snapshot slow redirects
+// as near-empty "soft 404" pages); only other old addresses fetch the full map (redirects.json).
 import HeadTags from './HeadTags.astro';
+import redirects from '../../public/redirects.json';
+const quick = JSON.stringify({ articles: redirects.articles, issues: redirects.issues }).replaceAll('<', '\\u003c');
 ---
 <html lang="en">
 <head>
@@ -25,6 +30,7 @@ import HeadTags from './HeadTags.astro';
     <p>that page isn&rsquo;t here anymore.</p>
     <p><a id="home" href="/">sixosix magazine &rarr;</a></p>
   </div>
+  <script type="application/json" id="old-links" set:html={quick} />
   <script is:inline>
     (function () {
       var path = location.pathname;
@@ -55,13 +61,16 @@ import HeadTags from './HeadTags.astro';
       };
       var notFound = function () {
         if (window.gtag) gtag('event', 'page_view', { page_title: 'not found' });   // dead old links show up in Analytics
+        // not a page to index (it answers 200 at /main.php/ and the like)
+        var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex'; document.head.appendChild(m);
         try { sessionStorage.removeItem('606.ref'); } catch (e) {}
         document.getElementById('moving').style.display = 'none';
         document.getElementById('notfound').style.display = 'block';
       };
-      fetch(base + 'redirects.json').then(function (r) { return r.json(); }).then(function (map) {
-        // own entries only (an address like ?id=constructor must not match a built-in name)
-        var own = function (o, k) { return k !== null && Object.prototype.hasOwnProperty.call(o, k) ? o[k] : undefined; };
+      // own entries only (an address like ?id=constructor must not match a built-in name)
+      var own = function (o, k) { return k !== null && o && Object.prototype.hasOwnProperty.call(o, k) ? o[k] : undefined; };
+      // false: the address needs the full map (map.archive), fetched below
+      var route = function (map) {
         var file = rest.replace(/\/+$/, '');
         var cover = /^index\.v(\d+)\.php$/.exec(file);
         if (cover && own(map.issues, cover[1])) return go(own(map.issues, cover[1]));
@@ -76,6 +85,7 @@ import HeadTags from './HeadTags.astro';
           }
           if (own(map.issues, issue)) return go(own(map.issues, issue));
           if (!query) return go('');
+          if (!map.archive) return false;
           // a section page: the exact page, its old root-alias form, else the section's index
           // (alias entries that point at the homepage don't count as a match)
           var gen = get('general');
@@ -89,10 +99,16 @@ import HeadTags from './HeadTags.astro';
           }
           return go('');
         }
+        if (!map.archive) return false;
         var hit = own(map.archive, '/' + rest + (query ? '?' + query : '')) || own(map.archive, '/' + rest);
         if (hit) return go('archive/' + hit);
         notFound();
-      }).catch(notFound);
+      };
+      var quick = {};
+      try { quick = JSON.parse(document.getElementById('old-links').textContent); } catch (e) {}
+      if (route(quick) === false) {
+        fetch(base + 'redirects.json').then(function (r) { return r.json(); }).then(route).catch(notFound);
+      }
     })();
   </script>
 </body>
