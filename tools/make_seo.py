@@ -127,6 +127,9 @@ def clip(s, n):
         return s
     return s[:n - 1].rsplit(' ', 1)[0].rstrip(' ,;:—-') + '…'
 
+# strong profanity: a page whose snippet would carry it gets a plain description instead
+PROFANE = re.compile(r"(?i)\b(fuck\w*|shit\w*|bitch\w*|cunt\w*|cocks?|cocksuck\w*|dick|pussy|motherf\w*|asshole\w*|whore\w*|slut\w*)\b")
+
 def sentences(text, n=110):
     """The opening sentences of text, until there are about n characters."""
     out = ''
@@ -407,6 +410,9 @@ for a in built:
             shown = main_photo(srcs)
             where = '%s, %s, sixosix magazine, %s.' % (a['title'], label, month)
             desc = snippet if len(snippet) >= 60 else joined(snippet, clean_alt(shown[2], a['title']) if shown else '', where)
+        if PROFANE.search(clip(desc, DESC_MAX)):                  # the writing stays as published; the search snippet doesn't swear
+            cred = credit_line(creds) if p['path'] == '' else ''
+            desc = '%s%s, from issue %d of sixosix, a chicago web magazine, %s.' % (name, ', ' + cred if cred else '', a['issue'], month)
         rec = {'name': clip(name, 90), 'title': clip(head, HEAD_MAX) + ' | %s, %s' % (SHORT, month),
                'description': clip(desc, DESC_MAX)}
         if p['url'] in canonical:

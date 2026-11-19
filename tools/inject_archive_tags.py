@@ -35,7 +35,11 @@ if os.path.islink(archive) or os.path.realpath(archive) == repo_site:
 FENCE = re.compile(r'<!--606:(tags|canonical|robots|note|about)-->.*?<!--/606:\1-->', re.S)
 MENU = '<div id="footer_menu">'
 HTML_TAG = re.compile(r'<html\b(?![^>]*\blang\s*=)', re.I)
-NOINDEX = re.compile(r'^(main/[^/]*adj1-[^/]*|popup/[^/]*)\.html$')      # Sad Libs results (some named for the reader), popups
+# not for search: Sad Libs results (some named for the reader) and their lists, the confession and
+# hotline pages (crude reader submissions), popups, the 2004 front door's dated copies and the old
+# home page's daily snapshots (archive/ itself stays the archive's entry page)
+NOINDEX = re.compile(r'^(main/[^/]*adj1-[^/]*|main/general-welikefun_page-sadlib[^/]*|main/general-welikefun_[^/]*page-hell'
+                     r'|main/general-suicide[^/]*|popup/[^/]*|index-2|index\.v\d+|index/leave-1|history/(homepage|front-door)/[^/]*)\.html$')
 OLD_POLICY = 'main/general-footer_page-privacy.html'
 OLD_POLICY_LINK = re.compile(r'href="([^"]*general-footer_page-privacy\.html)"')
 NOTE_AT = '<span class="style6">privacy policy</span><br>'
@@ -83,6 +87,12 @@ for i in issue_list:
     bodies.setdefault('issues/%s/index/index.html' % i['folder'], i['url'])
 for f, url in bodies.items():
     canonical.setdefault(f, site_url + url)
+# straight to the page search should list: a rebuilt page published twice names its first copy
+copies = json.load(open(os.path.join(data, 'seo.json'), encoding='utf-8'))['pages']
+for f, url in canonical.items():
+    first = copies.get(url[len(site_url):], {}).get('canonical')
+    if first:
+        canonical[f] = site_url + first
 # bodies of the 2004 site's own section pages, whose full page is archive/main/general-*.html
 GENERAL_BODY = re.compile(r'^issues/general/[^/]+/index\.html$')
 
