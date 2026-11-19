@@ -22,6 +22,7 @@ from xml.sax.saxutils import escape
 dist, site_url = sys.argv[1].rstrip('/'), sys.argv[2].rstrip('/')
 SKIP = {'404.html', 'archive/_missing.html'}
 LASTMOD = '2026-10-21'          # the last real change to the pages (see above)
+ADDED = {'contributors/': '2026-11-19'}   # sections added since, by path prefix: the day they appeared
 NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="noindex', re.I)
 CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 OLD_LINK = re.compile(r'^(main|index|index\.v\d+)\.php/index\.html$')      # pages/[old]: redirects only
@@ -32,12 +33,17 @@ alt_map = json.load(open(os.path.join(HERE, 'image_alt.json'), encoding='utf-8')
 # the articles' photos in context (tools/make_seo.py): their article, credits and summary
 context = json.load(open(os.path.join(HERE, 'image_alt_context.json'), encoding='utf-8'))['images']
 
+def lastmod(path):
+    return next((day for prefix, day in ADDED.items() if path.startswith(prefix)), LASTMOD)
+
 def priority(path):
     if path == '':
         return '1.0'
     if path in ('about/', 'articles/') or re.fullmatch(r'issues/\d+/', path):
         return '0.8'
-    if re.fullmatch(r'issues/\d+/[^/]+/', path):
+    if path == 'contributors/':
+        return '0.7'
+    if re.fullmatch(r'issues/\d+/[^/]+/', path) or path.startswith('contributors/'):
         return '0.6'
     if path.startswith('issues/'):
         return '0.4'
@@ -90,7 +96,7 @@ with open(os.path.join(dist, 'sitemap.xml'), 'w', encoding='utf-8') as fh:
     fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
              ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n')
     fh.writelines('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>yearly</changefreq><priority>%s</priority>%s</url>\n'
-                  % (escape(u), LASTMOD, priority(u[len(site_url) + 1:]),
+                  % (escape(u), lastmod(u[len(site_url) + 1:]), priority(u[len(site_url) + 1:]),
                      ''.join(image_entry(i, context.get(unquote(i[len(site_url + '/archive/'):])) or alt_map.get(unquote(i[len(site_url + '/archive/'):]), {}).get('alt', '')) for i in imgs))
                   for u, imgs in urls)
     fh.write('</urlset>\n')

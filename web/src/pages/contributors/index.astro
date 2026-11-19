@@ -1,0 +1,15 @@
+---
+// Everyone the magazine credited (lib/contributors.ts). Reached from the sitemap: no visible page
+// links here, so the rebuilt site's pages stay exactly as they are.
+import Magazine from '../../layouts/Magazine.astro';
+import { issueByNumber } from '../../lib/content';
+import { contributorsSeo } from '../../lib/seo';
+import { contributorsBody } from '../../lib/contributors';
+const issue = issueByNumber.get(12)!;
+const seo = contributorsSeo();
+const body = contributorsBody();
+---
+<Magazine issue={issue} title={seo.title} seo={seo}
+          mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
+  <Fragment set:html={body} />
+</Magazine>

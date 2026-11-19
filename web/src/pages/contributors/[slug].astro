@@ -1,0 +1,20 @@
+---
+// One contributor with three or more pieces (lib/contributors.ts), in the all-articles layout.
+import Magazine from '../../layouts/Magazine.astro';
+import { issueByNumber } from '../../lib/content';
+import { contributors, contributorsSeo, type Contributor } from '../../lib/seo';
+import { contributorBody } from '../../lib/contributors';
+
+export function getStaticPaths() {
+  return Object.entries(contributors).filter(([, c]) => c.page).map(([slug, c]) => ({ params: { slug }, props: { c } }));
+}
+const { slug } = Astro.params as { slug: string };
+const { c } = Astro.props as { c: Contributor };
+const issue = issueByNumber.get(12)!;
+const seo = contributorsSeo(slug);
+const body = contributorBody(c);
+---
+<Magazine issue={issue} title={seo.title} seo={seo}
+          mainAttrs={'valign="top" width="682" class="main_cell_margin"'} pageCss=".left_margin { padding-left: 15px; padding-right: 5px; }">
+  <Fragment set:html={body} />
+</Magazine>

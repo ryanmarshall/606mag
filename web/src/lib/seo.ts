@@ -18,9 +18,25 @@ interface PageSeo {
 interface Credit { role: string; name: string }
 const data = seoData as unknown as {
   pages: Record<string, PageSeo>;
-  articles: Record<string, { name: string; credits: Credit[]; teaser: string }>;
+  articles: Record<string, { name: string; credits: Credit[]; teaser: string; summary: string }>;
   people: Record<string, { name: string; age: number; jobTitle: string }[]>;
+  contributors: Record<string, Contributor>;
 };
+export interface Contributor { name: string; page: boolean; roles: string[]; works: { id: number; role: string }[] }
+/** Everyone credited in an article (tools/make_seo.py), keyed by the slug of their page. */
+export const contributors = data.contributors;
+const slugOf = new Map(Object.entries(data.contributors).map(([slug, c]) => [c.name, slug]));
+/** A contributor's page address (or their entry on /contributors/), for structured data. */
+export function contributorUrl(name: string): string | undefined {
+  const slug = slugOf.get(name);
+  if (!slug) return undefined;
+  return data.contributors[slug].page ? `/contributors/${slug}/` : `/contributors/#${slug}`;
+}
+/** An article's teaser or opening lines (tools/make_seo.py). */
+export function summaryOf(id: number): string {
+  const a = data.articles[String(id)];
+  return a?.summary || a?.teaser || '';
+}
 
 export interface Seo extends PageSeo {
   url: string;
@@ -87,7 +103,11 @@ export function issueSeo(issue: Issue, parts: Article[]): Seo {
 // contributions. A credit to the magazine's staff is the magazine itself, not a person.
 const AUTHOR = /^(by|words|text|story|interview|written|novella)\b/;
 const EDITOR = /^edited\b/;
-const person = (c: Credit) => (c.name === 'sixosix staff' ? { '@id': ORG } : { '@type': 'Person', name: c.name });
+const person = (c: Credit) => {
+  if (c.name === 'sixosix staff') return { '@id': ORG };
+  const url = contributorUrl(c.name);
+  return { '@type': 'Person', name: c.name, ...(url ? { url: SITE + url } : {}) };
+};
 
 export function articleSeo(article: Article, page: Page): Seo {
   const issue = issueByNumber.get(article.issue)!;
@@ -146,6 +166,26 @@ export function articlesSeo(): Seo {
       { '@type': 'CollectionPage', '@id': `${SITE}/articles/`, url: `${SITE}/articles/`, name: p.name ?? p.title,
         description: p.description, inLanguage: 'en', about: { '@id': MAGAZINE }, isPartOf: { '@id': `${SITE}/#website` } },
       crumbs([['sixosix magazine', '/'], ['all articles', '/articles/']]),
+    ],
+  };
+}
+
+/** The contributors list, or one contributor's page (pages/contributors). */
+export function contributorsSeo(slug?: string): Seo {
+  const url = slug ? `/contributors/${slug}/` : '/contributors/';
+  const p = pageSeo(url);
+  const trail: [string, string][] = [['sixosix magazine', '/'], ['contributors', '/contributors/']];
+  const c = slug ? data.contributors[slug] : undefined;
+  return {
+    ...p, url, type: 'website',
+    jsonLd: [
+      c ? { '@type': 'ProfilePage', '@id': `${SITE}${url}`, url: `${SITE}${url}`, name: p.title, description: p.description,
+            inLanguage: 'en', isPartOf: { '@id': `${SITE}/#website` },
+            mainEntity: { '@type': 'Person', '@id': `${SITE}${url}#person`, name: c.name,
+                          affiliation: { '@id': ORG } } }
+        : { '@type': 'CollectionPage', '@id': `${SITE}${url}`, url: `${SITE}${url}`, name: p.name ?? p.title,
+            description: p.description, inLanguage: 'en', about: { '@id': MAGAZINE }, isPartOf: { '@id': `${SITE}/#website` } },
+      crumbs(c ? [...trail, [c.name, url]] : trail),
     ],
   };
 }
